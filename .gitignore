@@ -1,0 +1,11 @@
+# Python虚拟环境
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+# IDE配置
+.idea/
+# 系统缓存
+.DS_Store
