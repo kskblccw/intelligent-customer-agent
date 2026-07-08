@@ -2,7 +2,8 @@ import os
 import hashlib
 from utils.logger_handler import logger
 from langchain_core.documents import Document
-from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader, TextLoader
+
 
 def get_file_md5_hex(filepath: str):    #获取文件的md5十六进制字符串
     if not os.path.exists(filepath):
@@ -43,8 +44,8 @@ def listdir_with_allowed_type(path:str,allowed_types:tuple[str]):   # 返回文�
     return tuple(files)
 
 
-def pdf_loader(filepath:str,passwd=None):
-    pass
+def pdf_loader(filepath:str,passwd=None) -> list[Document]:
+    return PyPDFLoader(filepath,passwd).load()
 
-def txt_loader():
-    pass
+def txt_loader(filepath:str) -> list[Document]:
+    return TextLoader(filepath).load()
