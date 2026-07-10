@@ -1,0 +1,6 @@
+2026-07-09 17:45:29,530 agent        INFO     - vector_store.py:76 -  加载的知识库D:\intelligent-customer-agent\data\扫地机器人100问.pdf已经存在知识库中
+2026-07-09 17:45:29,532 agent        INFO     - vector_store.py:76 -  加载的知识库D:\intelligent-customer-agent\data\扫地机器人100问2.txt已经存在知识库中
+2026-07-09 17:45:29,533 agent        INFO     - vector_store.py:76 -  加载的知识库D:\intelligent-customer-agent\data\扫拖一体机器人100问.txt已经存在知识库中
+2026-07-09 17:45:29,534 agent        INFO     - vector_store.py:76 -  加载的知识库D:\intelligent-customer-agent\data\故障排除.txt已经存在知识库中
+2026-07-09 17:45:29,535 agent        INFO     - vector_store.py:76 -  加载的知识库D:\intelligent-customer-agent\data\维护保养.txt已经存在知识库中
+2026-07-09 17:45:29,536 agent        INFO     - vector_store.py:76 -  加载的知识库D:\intelligent-customer-agent\data\选购指南.txt已经存在知识库中

@@ -1,0 +1,6 @@
+2026-07-09 17:37:46,500 agent        INFO     - vector_store.py:97 -  加载知识库D:\intelligent-customer-agent\data\扫地机器人100问.pdf成功
+2026-07-09 17:37:48,157 agent        INFO     - vector_store.py:97 -  加载知识库D:\intelligent-customer-agent\data\扫地机器人100问2.txt成功
+2026-07-09 17:37:49,864 agent        INFO     - vector_store.py:97 -  加载知识库D:\intelligent-customer-agent\data\扫拖一体机器人100问.txt成功
+2026-07-09 17:37:53,120 agent        INFO     - vector_store.py:97 -  加载知识库D:\intelligent-customer-agent\data\故障排除.txt成功
+2026-07-09 17:37:55,215 agent        INFO     - vector_store.py:97 -  加载知识库D:\intelligent-customer-agent\data\维护保养.txt成功
+2026-07-09 17:37:57,050 agent        INFO     - vector_store.py:97 -  加载知识库D:\intelligent-customer-agent\data\选购指南.txt成功
