@@ -1,13 +1,14 @@
 #进行日志管理
-from datetime import datetime
 import logging
+from logging.handlers import RotatingFileHandler
 import os
 from utils.pyth_tool import get_abs_path
 
 
-
 #日志保存的根目录
 LOG_ROOT = get_abs_path("logs")
+LOG_MAX_BYTES = 10 * 1024 * 1024  # 单文件最大 10MB
+LOG_BACKUP_COUNT = 9              # 保留最近 10 个轮转文件（含当前）
 
 #确保日志的目录存在
 os.makedirs(LOG_ROOT, exist_ok=True)
@@ -26,7 +27,6 @@ def get_logger(
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
 
-    #避免重复添加Hander
     if logger.handlers:
         return logger
 
@@ -34,17 +34,19 @@ def get_logger(
     console_handler = logging.StreamHandler()
     console_handler.setLevel(console_level)
     console_handler.setFormatter(DEFAULT_LOG_FORMAT)
-
     logger.addHandler(console_handler)
 
-    #文件Handler
+    #文件Handler — 固定文件名，按大小自动轮转，超出 backupCount 自动删除最旧的
     if not log_file:
-        log_file = os.path.join(LOG_ROOT, datetime.now().strftime('%Y%m%d-%H%M%S') + '.log')
+        log_file = os.path.join(LOG_ROOT, 'agent.log')
 
-    file_handler = logging.FileHandler(log_file,encoding='utf-8')
+    file_handler = RotatingFileHandler(
+        log_file, encoding='utf-8',
+        maxBytes=LOG_MAX_BYTES,
+        backupCount=LOG_BACKUP_COUNT,
+    )
     file_handler.setLevel(file_level)
     file_handler.setFormatter(DEFAULT_LOG_FORMAT)
-
     logger.addHandler(file_handler)
 
     return logger

@@ -175,7 +175,7 @@ if prompt:
 
     response_messages = []
     with st.spinner("智能客服思考中..."):
-       res_stream =  st.session_state["agent"].execute(prompt)
+       res_stream =  st.session_state["agent"].execute(prompt, history=st.session_state["message"])
 
        def capture(generator,cache_list):
            for chunk in generator:
