@@ -1,0 +1,250 @@
+2026-07-13 17:53:46,121 agent        INFO     - vector_store.py:76 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-13 17:53:46,122 agent        INFO     - vector_store.py:76 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-13 17:53:46,123 agent        INFO     - vector_store.py:76 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-13 17:53:46,124 agent        INFO     - vector_store.py:76 -  知识库故障排除.txt已存在，跳过
+2026-07-13 17:53:46,125 agent        INFO     - vector_store.py:76 -  知识库维护保养.txt已存在，跳过
+2026-07-13 17:53:46,126 agent        INFO     - vector_store.py:76 -  知识库选购指南.txt已存在，跳过
+2026-07-13 17:56:32,083 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-13 17:56:32,084 agent        DEBUG    - middleware.py:37 -  [log_before_model]HumanMessage | 给我推荐一款扫地机器人，在佛山，房屋面积84平
+2026-07-13 17:56:36,112 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_weather
+2026-07-13 17:56:36,113 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'city': '佛山'}
+2026-07-13 17:56:36,113 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 17:56:36,114 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '84平房屋推荐扫地机器人 选购指南'}
+2026-07-13 17:56:36,375 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-13 17:56:37,905 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 17:56:38,570 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-13 17:56:38,571 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 对于84平房屋，推荐选购吸力≥3000Pa、采用激光导航的扫地机器人；小户型适合基础激光导航机型，如米家1C、石头T4。
+2026-07-13 17:56:41,894 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 17:56:41,894 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '扫地机器人推荐 性价比 84平米 扫拖一体'}
+2026-07-13 17:56:44,861 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 17:56:46,516 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-13 17:56:46,516 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 针对84平米户型、追求性价比的扫拖一体机器人，建议优先选择激光导航机型（定位精准、抗干扰强，适合中小户型），吸力≥3000Pa（满足日常清洁需求）。若预算有限，可考虑视觉导航方案（性价比高，但需避免强光环境）。选购时可关注吸力可调节、支持APP定时扫拖和自动回充等功能，并确认整机保修范围包含拖地模组。
+2026-07-13 17:58:00,591 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-13 17:58:00,592 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-13 17:58:00,593 agent        INFO     - vector_store.py:110 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-13 17:58:00,594 agent        INFO     - vector_store.py:110 -  知识库故障排除.txt已存在，跳过
+2026-07-13 17:58:00,597 agent        INFO     - vector_store.py:110 -  知识库维护保养.txt已存在，跳过
+2026-07-13 17:58:00,598 agent        INFO     - vector_store.py:110 -  知识库选购指南.txt已存在，跳过
+2026-07-13 17:58:31,740 agent        INFO     - vector_store.py:67 -  上传文件性能监控字段对应.txt入库成功 (13 块)
+2026-07-13 17:58:32,006 agent        INFO     - vector_store.py:45 -  文件性能监控字段对应.txt已存在，跳过
+2026-07-13 17:59:14,684 agent        INFO     - vector_store.py:67 -  上传文件短信记录接口.txt入库成功 (9 块)
+2026-07-13 17:59:14,931 agent        INFO     - vector_store.py:45 -  文件短信记录接口.txt已存在，跳过
+2026-07-13 18:01:29,339 agent        INFO     - vector_store.py:67 -  上传文件qe-nginx.txt入库成功 (29 块)
+2026-07-13 18:01:29,597 agent        INFO     - vector_store.py:45 -  文件qe-nginx.txt已存在，跳过
+2026-07-13 18:04:42,320 agent        INFO     - vector_store.py:110 -  知识库qe-nginx.txt已存在，跳过
+2026-07-13 18:04:42,327 agent        WARNING  - vector_store.py:125 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:04:42,329 agent        ERROR    - vector_store.py:135 -  加载知识库响应.txt失败，原因是Error loading D:\intelligent-customer-agent\data\响应.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb9 in position 433: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 115, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 94, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\响应.txt
+2026-07-13 18:04:42,345 agent        WARNING  - vector_store.py:125 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:04:42,346 agent        INFO     - vector_store.py:110 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-13 18:04:42,347 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-13 18:04:42,347 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-13 18:04:42,347 agent        INFO     - vector_store.py:110 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-13 18:04:42,348 agent        INFO     - vector_store.py:110 -  知识库故障排除.txt已存在，跳过
+2026-07-13 18:04:42,348 agent        INFO     - vector_store.py:110 -  知识库短信记录接口.txt已存在，跳过
+2026-07-13 18:04:42,350 agent        INFO     - vector_store.py:110 -  知识库维护保养.txt已存在，跳过
+2026-07-13 18:04:42,351 agent        INFO     - vector_store.py:110 -  知识库选购指南.txt已存在，跳过
+2026-07-13 18:04:47,833 agent        INFO     - vector_store.py:110 -  知识库qe-nginx.txt已存在，跳过
+2026-07-13 18:04:47,840 agent        WARNING  - vector_store.py:125 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:04:47,842 agent        ERROR    - vector_store.py:135 -  加载知识库响应.txt失败，原因是Error loading D:\intelligent-customer-agent\data\响应.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb9 in position 433: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 115, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 94, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\响应.txt
+2026-07-13 18:04:47,849 agent        WARNING  - vector_store.py:125 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:04:47,851 agent        INFO     - vector_store.py:110 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-13 18:04:47,854 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-13 18:04:47,855 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-13 18:04:47,855 agent        INFO     - vector_store.py:110 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-13 18:04:47,856 agent        INFO     - vector_store.py:110 -  知识库故障排除.txt已存在，跳过
+2026-07-13 18:04:47,857 agent        INFO     - vector_store.py:110 -  知识库短信记录接口.txt已存在，跳过
+2026-07-13 18:04:47,859 agent        INFO     - vector_store.py:110 -  知识库维护保养.txt已存在，跳过
+2026-07-13 18:04:47,860 agent        INFO     - vector_store.py:110 -  知识库选购指南.txt已存在，跳过
+2026-07-13 18:04:58,062 agent        INFO     - vector_store.py:110 -  知识库qe-nginx.txt已存在，跳过
+2026-07-13 18:04:58,069 agent        WARNING  - vector_store.py:125 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:04:58,070 agent        ERROR    - vector_store.py:135 -  加载知识库响应.txt失败，原因是Error loading D:\intelligent-customer-agent\data\响应.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb9 in position 433: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 115, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 94, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\响应.txt
+2026-07-13 18:04:58,074 agent        WARNING  - vector_store.py:125 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:04:58,076 agent        INFO     - vector_store.py:110 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-13 18:04:58,077 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-13 18:04:58,078 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-13 18:04:58,079 agent        INFO     - vector_store.py:110 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-13 18:04:58,079 agent        INFO     - vector_store.py:110 -  知识库故障排除.txt已存在，跳过
+2026-07-13 18:04:58,079 agent        INFO     - vector_store.py:110 -  知识库短信记录接口.txt已存在，跳过
+2026-07-13 18:04:58,080 agent        INFO     - vector_store.py:110 -  知识库维护保养.txt已存在，跳过
+2026-07-13 18:04:58,080 agent        INFO     - vector_store.py:110 -  知识库选购指南.txt已存在，跳过
+2026-07-13 18:05:33,820 agent        INFO     - vector_store.py:110 -  知识库qe-nginx.txt已存在，跳过
+2026-07-13 18:05:33,826 agent        WARNING  - vector_store.py:125 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:05:33,828 agent        ERROR    - vector_store.py:135 -  加载知识库响应.txt失败，原因是Error loading D:\intelligent-customer-agent\data\响应.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb9 in position 433: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 115, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 94, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\响应.txt
+2026-07-13 18:05:33,835 agent        WARNING  - vector_store.py:125 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:05:33,836 agent        INFO     - vector_store.py:110 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-13 18:05:33,837 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-13 18:05:33,838 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-13 18:05:33,838 agent        INFO     - vector_store.py:110 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-13 18:05:33,839 agent        INFO     - vector_store.py:110 -  知识库故障排除.txt已存在，跳过
+2026-07-13 18:05:33,839 agent        INFO     - vector_store.py:110 -  知识库短信记录接口.txt已存在，跳过
+2026-07-13 18:05:33,840 agent        INFO     - vector_store.py:110 -  知识库维护保养.txt已存在，跳过
+2026-07-13 18:05:33,840 agent        INFO     - vector_store.py:110 -  知识库选购指南.txt已存在，跳过
+2026-07-13 18:08:04,671 agent        INFO     - vector_store.py:110 -  知识库qe-nginx.txt已存在，跳过
+2026-07-13 18:08:04,678 agent        WARNING  - vector_store.py:125 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:08:04,678 agent        ERROR    - vector_store.py:135 -  加载知识库响应.txt失败，原因是Error loading D:\intelligent-customer-agent\data\响应.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb9 in position 433: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 115, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 94, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\响应.txt
+2026-07-13 18:08:04,686 agent        WARNING  - vector_store.py:125 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:08:04,687 agent        INFO     - vector_store.py:110 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-13 18:08:04,689 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-13 18:08:04,690 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-13 18:08:04,691 agent        INFO     - vector_store.py:110 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-13 18:08:04,692 agent        INFO     - vector_store.py:110 -  知识库故障排除.txt已存在，跳过
+2026-07-13 18:08:04,692 agent        INFO     - vector_store.py:110 -  知识库短信记录接口.txt已存在，跳过
+2026-07-13 18:08:04,693 agent        INFO     - vector_store.py:110 -  知识库维护保养.txt已存在，跳过
+2026-07-13 18:08:04,694 agent        INFO     - vector_store.py:110 -  知识库选购指南.txt已存在，跳过
+2026-07-13 18:08:14,253 agent        INFO     - vector_store.py:110 -  知识库qe-nginx.txt已存在，跳过
+2026-07-13 18:08:14,258 agent        WARNING  - vector_store.py:125 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:08:14,267 agent        WARNING  - vector_store.py:125 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:08:14,269 agent        INFO     - vector_store.py:110 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-13 18:08:14,270 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-13 18:08:14,271 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-13 18:08:14,271 agent        INFO     - vector_store.py:110 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-13 18:08:14,271 agent        INFO     - vector_store.py:110 -  知识库故障排除.txt已存在，跳过
+2026-07-13 18:08:14,272 agent        INFO     - vector_store.py:110 -  知识库短信记录接口.txt已存在，跳过
+2026-07-13 18:08:14,272 agent        INFO     - vector_store.py:110 -  知识库维护保养.txt已存在，跳过
+2026-07-13 18:08:14,273 agent        INFO     - vector_store.py:110 -  知识库选购指南.txt已存在，跳过
+2026-07-13 18:13:53,720 agent        INFO     - vector_store.py:110 -  知识库qe-nginx.txt已存在，跳过
+2026-07-13 18:13:53,725 agent        WARNING  - vector_store.py:125 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:13:53,727 agent        ERROR    - vector_store.py:135 -  加载知识库响应.txt失败，原因是Error loading D:\intelligent-customer-agent\data\响应.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb9 in position 433: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 115, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 94, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\响应.txt
+2026-07-13 18:13:53,732 agent        WARNING  - vector_store.py:125 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-13 18:13:53,733 agent        INFO     - vector_store.py:110 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-13 18:13:53,734 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-13 18:13:53,734 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-13 18:13:53,734 agent        INFO     - vector_store.py:110 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-13 18:13:53,735 agent        INFO     - vector_store.py:110 -  知识库故障排除.txt已存在，跳过
+2026-07-13 18:13:53,736 agent        INFO     - vector_store.py:110 -  知识库短信记录接口.txt已存在，跳过
+2026-07-13 18:13:53,736 agent        INFO     - vector_store.py:110 -  知识库维护保养.txt已存在，跳过
+2026-07-13 18:13:53,737 agent        INFO     - vector_store.py:110 -  知识库选购指南.txt已存在，跳过
+2026-07-13 18:14:37,853 agent        INFO     - vector_store.py:45 -  文件性能监控字段对应.txt已存在，跳过
+2026-07-13 18:14:56,309 agent        INFO     - vector_store.py:67 -  上传文件hosts-1.txt入库成功 (6 块)

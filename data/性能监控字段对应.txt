@@ -1,0 +1,84 @@
+光纤传输网：
+设备性能
+cpu利用率 cpu_usage_rate
+内存利用率 memory_usage_rate
+平均温度 temperature
+功耗 power_consumption
+正常状态设备占比 ？
+链路性能
+带宽利用率 bandwidth_usage_rate
+丢包率 packet_loss_rate
+时延 latency
+抖动 jitter
+吞吐量 throughput
+误码率 bit_error_rate
+光功率 optical_power
+光纤损耗 optical_fiber_attenuation
+纤芯利用率 fiber_core_usage_rate
+波道利用率 channel_usage_rate
+
+微波传输网
+eos性能 
+接收方向端口带宽利用率 eos_rx_port_bandwidth_usage_rate
+发送方向端口带宽利用率 eos_tx_port_bandwidth_usage_rate
+收到的总包字节速率 eos_received_total_packet_byte_speed
+发送的总包字节速率 eos_transmitted_total_packet_byte_speed
+接收方向丢包率 eos_rx_packet_loss_rate
+发送方向丢包率 eos_tx_packet_loss_rate
+端口利用率 eos_port_usage_rate
+分组性能
+接收方向端口带宽利用率 group_rx_port_bandwidth_usage_rate
+发送方向端口带宽利用率 group_tx_port_bandwidth_usage_rate
+收到的总包字节速率 group_received_total_packet_byte_speed
+发送的总包字节速率 group_transmitted_total_packet_byte_speed
+接收方向丢包率 group_rx_packet_loss_rate
+发送方向丢包率 group_tx_packet_loss_rate
+端口带宽可用性 group_port_bandwidth_availability
+端口利用率 group_port_usage_rate
+
+卫星通信网
+资源性能
+总资源 resource_cnt
+已分配资源 allocated_resource_cnt
+已使用资源 used_resource_cnt
+资源利用率 ？
+网络性能
+前向带宽利用率 forward_bandwidth_usage_rate
+反向带宽利用率 reverse_bandwidth_usage_rate
+前向信噪比 forward_signal_to_noise_rate
+反向信噪比 reverse_signal_to_noise_rate
+前向速率 forward_speed
+反向速率 reverse_speed
+丢包率 packet_loss_rate
+前向流量 forward_traffic
+反向流量 reverse_traffic
+前向频偏 forward_frequency_offset
+反向频偏 reverse_frequency_offset
+
+集群通信网
+基站性能
+正常状态设备占比 ？
+活跃用户数 active_user_cnt
+基站遇忙排队次数 base_station_busy_queue_cnt
+组呼成功率 group_call_success_rate
+单呼成功率 individual_call_success_rate
+紧急呼叫成功率 emergency_call_success_rate
+呼叫成功率 call_success_rate
+组呼个数 group_call_cnt
+单呼个数 individual_call_cnt
+紧急单呼个数 emergency_call_cnt
+电话呼叫个数 phone_call_cnt
+链路性能
+抖动 jitter
+时延 latency
+丢包率 packet_loss_rate
+
+企业办公网
+设备性能
+cpu利用率 cpu_usage_rate
+内存利用率 memory_usage_rate
+存储利用率 storage_usage_rate
+正常状态设备比例 ？
+链路性能
+带宽利用率 bandwidth_usage_rate
+丢包率 packet_loss_rate
