@@ -11,6 +11,11 @@ from urllib.request import urlopen
 from urllib.error import URLError, HTTPError
 import re
 
+
+class TransientAPIError(RuntimeError):
+    """可重试的 API 错误（网络超时、DNS 失败、服务端 5xx），由中间件捕获后自动重试"""
+    pass
+
 rag = RagSummarizeService()
 user_ids = ["1001", "1002", "1003", "1004", "1005", "1006", "1007", "1008", "1009", "1010",]
 month_arr = ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06",
@@ -61,9 +66,11 @@ def _gaode_get(path: str, params: dict) -> dict:
             data = resp.read().decode("utf-8")
             return json.loads(data)
     except HTTPError as e:
+        if e.code >= 500:
+            raise TransientAPIError(f"高德服务器错误 {e.code}") from e
         raise RuntimeError(f"高德HTTP错误: {e.code}") from e
     except URLError as e:
-        raise RuntimeError(f"高德网络错误: {e.reason}") from e
+        raise TransientAPIError(f"高德网络错误: {e.reason}") from e
     except Exception as e:
         raise RuntimeError(f"高德请求异常: {str(e)}") from e
 
@@ -113,6 +120,8 @@ def get_weather(city: str) -> str:
             f"空气湿度{humidity}%，{wind_direction}风{wind_power}级，"
             f"数据发布时间{report_time}。"
         )
+    except TransientAPIError:
+        raise  # 网络瞬时错误，抛给中间件重试
     except Exception as e:
         logger.error(f"[get_weather]天气查询失败 city={city} err={str(e)}")
         return f"城市{city}天气查询失败，请稍后重试"
@@ -154,6 +163,8 @@ def get_user_location() -> str:
         )
         return "未知城市"
 
+    except TransientAPIError:
+        raise  # 网络瞬时错误，抛给中间件重试
     except Exception as e:
         logger.error(f"[get_user_location]定位失败 err={str(e)}")
         return "未知城市"

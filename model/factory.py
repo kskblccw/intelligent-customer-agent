@@ -15,7 +15,12 @@ class BaseModelFactory(ABC):
 
 class ChatModelFactory(BaseModelFactory):
     def generator(self) -> Optional[Embeddings | BaseChatModel]:
-        return ChatOpenAI(model=rag_config["chat_model_name"],base_url=rag_config["base_url"])
+        return ChatOpenAI(
+            model=rag_config["chat_model_name"],
+            base_url=rag_config["base_url"],
+            max_retries=3,          # SDK 层自动重试网络/5xx 错误
+            timeout=60,             # 单次请求超时 60s
+        )
 
 
 class EmbeddingsModelFactory(BaseModelFactory):
