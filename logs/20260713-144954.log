@@ -1,0 +1,25 @@
+2026-07-13 14:49:54,699 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-13 14:49:54,700 agent        DEBUG    - middleware.py:37 -  [log_before_model]HumanMessage | 扫地机器人在我所在的地区的气温下，如何保养？
+2026-07-13 14:49:56,540 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_user_location
+2026-07-13 14:49:56,540 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{}
+2026-07-13 14:49:56,541 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-13 14:49:56,542 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-13 14:49:56,543 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 广州
+2026-07-13 14:49:58,574 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_weather
+2026-07-13 14:49:58,574 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'city': '广州'}
+2026-07-13 14:49:58,575 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-13 14:49:58,575 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 14:49:58,577 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '扫地机器人 高温潮湿天气 保养维护 注意事项'}
+2026-07-13 14:50:03,472 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 14:50:03,474 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-13 14:50:03,474 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 
+2026-07-13 14:50:05,498 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 14:50:05,498 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '扫地机器人维护保养 高温 潮湿 南方 气候'}
+2026-07-13 14:50:08,031 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 14:50:08,032 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-13 14:50:08,032 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 
+2026-07-13 14:50:09,444 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 14:50:09,444 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '扫拖一体机器人 保养 注意事项 日常维护'}
+2026-07-13 14:50:12,841 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 14:50:12,843 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有10条消息
+2026-07-13 14:50:12,843 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 

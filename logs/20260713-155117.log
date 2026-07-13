@@ -1,0 +1,66 @@
+2026-07-13 15:52:44,402 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-13 15:52:44,403 agent        DEBUG    - middleware.py:37 -  [log_before_model]HumanMessage | 帮我生成一下我的专属使用报告
+2026-07-13 15:52:47,057 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_user_id
+2026-07-13 15:52:47,057 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{}
+2026-07-13 15:52:47,057 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_current_month
+2026-07-13 15:52:47,058 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_user_id调用成功
+2026-07-13 15:52:47,058 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{}
+2026-07-13 15:52:47,061 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_current_month调用成功
+2026-07-13 15:52:47,148 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-13 15:52:47,148 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 2025-02
+2026-07-13 15:52:49,685 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：fill_context_for_report
+2026-07-13 15:52:49,685 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{}
+2026-07-13 15:52:49,685 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：fill_context_for_report调用成功
+2026-07-13 15:52:49,979 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-13 15:52:49,980 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-07-13 15:52:51,359 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-13 15:52:51,359 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'user_id': '1011', 'month': '2025-02'}
+2026-07-13 15:52:51,360 agent        WARNING  - agent_tools.py:77 -  [fetch_external_data]未能检索到用户1011在2025-02的使用记录
+2026-07-13 15:52:51,360 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-13 15:52:51,361 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-13 15:52:51,362 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 
+2026-07-13 15:52:54,005 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 15:52:54,006 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '扫地机器人清洁效率提升 使用技巧 常见问题处理'}
+2026-07-13 15:52:54,006 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 15:52:54,008 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '扫地机器人日常使用建议 保养维护 耗材更换'}
+2026-07-13 15:52:56,607 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 15:52:57,126 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 15:52:57,303 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有11条消息
+2026-07-13 15:52:57,303 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 未提供参考资料，无法生成回答。
+2026-07-13 15:54:35,233 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-13 15:54:35,233 agent        DEBUG    - middleware.py:37 -  [log_before_model]HumanMessage | 请结合我所在城市的天气，告知一下我如何保养机器人
+2026-07-13 15:54:37,577 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_user_location
+2026-07-13 15:54:37,577 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{}
+2026-07-13 15:54:37,578 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-13 15:54:37,611 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-13 15:54:37,611 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 广州
+2026-07-13 15:54:39,515 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_weather
+2026-07-13 15:54:39,516 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'city': '广州'}
+2026-07-13 15:54:39,516 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-13 15:54:39,516 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 15:54:39,517 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '扫地机器人保养维护方法 不同天气环境保养'}
+2026-07-13 15:54:40,683 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 15:54:41,227 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-13 15:54:41,227 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 由于参考资料中未提供关于扫地机器人保养维护方法及不同天气环境保养的相关信息，因此无法生成有效回答。
+2026-07-13 15:54:43,809 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 15:54:43,809 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '扫地机器人潮湿天气保养 南方回南天维护 注意事项'}
+2026-07-13 15:54:46,489 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 15:54:46,588 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-13 15:54:46,589 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 暂无相关参考资料
+2026-07-13 15:55:58,974 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-13 15:55:58,974 agent        DEBUG    - middleware.py:37 -  [log_before_model]HumanMessage | 请结合我所在城市的天气，告知一下我如何保养机器人
+2026-07-13 15:56:00,755 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_user_location
+2026-07-13 15:56:00,755 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{}
+2026-07-13 15:56:00,756 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-13 15:56:00,791 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-13 15:56:00,792 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 深圳
+2026-07-13 15:56:02,490 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_weather
+2026-07-13 15:56:02,491 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'city': '深圳'}
+2026-07-13 15:56:02,491 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-13 15:56:02,817 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-13 15:56:02,817 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 城市深圳天气为晴天，气温26摄氏度，空气湿度为50%，微风
+2026-07-13 15:56:05,079 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 15:56:05,079 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '扫地机器人 保养维护 注意事项 清洁保养'}
+2026-07-13 15:56:07,423 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 15:56:07,651 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有7条消息
+2026-07-13 15:56:07,652 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 未提供参考资料，无法生成基于资料的总结。

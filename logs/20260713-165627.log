@@ -1,0 +1,24 @@
+2026-07-13 16:57:04,185 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-13 16:57:04,186 agent        DEBUG    - middleware.py:37 -  [log_before_model]HumanMessage | 分析一下我所在城市，当前天气下，机器人如何保养
+2026-07-13 16:57:07,710 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_user_location
+2026-07-13 16:57:07,710 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{}
+2026-07-13 16:57:08,468 agent        WARNING  - agent_tools.py:151 -  [get_user_location]空城市信息 info=OK infocode=10000 ip=14.1.28.147 raw={'status': '1', 'info': 'OK', 'infocode': '10000', 'province': [], 'city': [], 'adcode': [], 'rectangle': []}
+2026-07-13 16:57:08,470 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-13 16:57:08,525 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-13 16:57:08,526 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 未知城市
+2026-07-13 17:00:53,934 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-13 17:00:53,935 agent        DEBUG    - middleware.py:37 -  [log_before_model]HumanMessage | 广州
+2026-07-13 17:00:58,597 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_user_location
+2026-07-13 17:00:58,597 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{}
+2026-07-13 17:00:58,598 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_weather
+2026-07-13 17:00:58,599 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'city': '广州'}
+2026-07-13 17:00:58,836 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-13 17:00:59,296 agent        WARNING  - agent_tools.py:151 -  [get_user_location]空城市信息 info=OK infocode=10000 ip=14.1.28.147 raw={'status': '1', 'info': 'OK', 'infocode': '10000', 'province': [], 'city': [], 'adcode': [], 'rectangle': []}
+2026-07-13 17:00:59,296 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-13 17:00:59,948 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-13 17:00:59,948 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 城市广州市天气为阴，气温35摄氏度，空气湿度54%，东风≤3级，数据发布时间2026-07-13 17:00:22。
+2026-07-13 17:01:03,133 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 17:01:03,133 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '广州 高温潮湿 扫地机器人 使用建议 注意事项'}
+2026-07-13 17:01:05,772 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 17:01:06,903 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-13 17:01:06,903 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 在广州高温潮湿环境下使用扫地机器人，建议：避免阳光直射充电座和机器人在暴晒下工作，高温可能影响电池寿命；定期清理电机散热口，防止过热保护；及时补充水箱水量；梅雨季节定期除湿，防止电机受潮，勤换拖布防霉。
