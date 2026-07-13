@@ -1,0 +1,28 @@
+2026-07-13 14:57:02,704 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-13 14:57:02,704 agent        DEBUG    - middleware.py:37 -  [log_before_model]HumanMessage | 给我生成一份我的使用报告信息
+2026-07-13 14:57:04,666 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_user_id
+2026-07-13 14:57:04,666 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{}
+2026-07-13 14:57:04,668 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_user_id调用成功
+2026-07-13 14:57:04,668 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：get_current_month
+2026-07-13 14:57:04,670 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{}
+2026-07-13 14:57:04,672 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：get_current_month调用成功
+2026-07-13 14:57:04,673 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-13 14:57:04,673 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 2025-02
+2026-07-13 14:57:06,309 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：fill_context_for_report
+2026-07-13 14:57:06,309 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{}
+2026-07-13 14:57:06,310 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：fill_context_for_report调用成功
+2026-07-13 14:57:06,311 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-13 14:57:06,311 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-07-13 14:57:07,503 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-13 14:57:07,504 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'user_id': '1001', 'month': '2025-02'}
+2026-07-13 14:57:07,506 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-13 14:57:07,507 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-13 14:57:07,507 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | {"特征": "65㎡公寓 | 单身 | 木地板", "效率": "覆盖率:86%\\n日均清扫:46㎡\\n漏扫区域:沙发底部（高度不足）", "耗材": "主刷寿命:剩余55天\\nHEPA滤网:剩余35%", "对比": "优于68%同面积用户（清洁频率更高）"}
+2026-07-13 14:57:10,589 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 14:57:10,589 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '木地板扫地机器人使用注意事项 沙发底部清洁解决方案'}
+2026-07-13 14:57:10,591 agent        INFO     - middleware.py:17 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 14:57:10,591 agent        INFO     - middleware.py:18 -  [monitor_tool]传入参数：{'query': '扫地机器人主刷保养更换建议 HEPA滤网清洗更换周期'}
+2026-07-13 14:57:12,847 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 14:57:14,520 agent        INFO     - middleware.py:21 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 14:57:14,522 agent        INFO     - middleware.py:36 -  [log_before_model]即将调用模型，带有11条消息
+2026-07-13 14:57:14,522 agent        DEBUG    - middleware.py:37 -  [log_before_model]ToolMessage | 由于参考资料中未包含任何关于木地板扫地机器人使用注意事项或沙发底部清洁解决方案的内容，因此无法提供基于参考资料的概括回答。

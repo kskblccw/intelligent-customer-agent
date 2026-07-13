@@ -1,0 +1,31 @@
+2026-07-09 17:34:19,791 agent        ERROR    - vector_store.py:101 -  加载知识库D:\intelligent-customer-agent\data\扫地机器人100问.pdf失败，原因是`pypdf` package not found, please install it with `pip install pypdf`
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\parsers\pdf.py", line 358, in lazy_parse
+    import pypdf
+ModuleNotFoundError: No module named 'pypdf'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 79, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 62, in get_file_documents
+    return pdf_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 48, in pdf_loader
+    return PyPDFLoader(filepath,passwd).load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\pdf.py", line 305, in lazy_load
+    yield from self.parser.lazy_parse(blob)
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\parsers\pdf.py", line 360, in lazy_parse
+    raise ImportError(
+        "`pypdf` package not found, please install it with `pip install pypdf`"
+    )
+ImportError: `pypdf` package not found, please install it with `pip install pypdf`
+2026-07-09 17:34:22,453 agent        INFO     - vector_store.py:97 -  加载知识库D:\intelligent-customer-agent\data\扫地机器人100问2.txt成功
+2026-07-09 17:34:24,700 agent        INFO     - vector_store.py:97 -  加载知识库D:\intelligent-customer-agent\data\扫拖一体机器人100问.txt成功
+2026-07-09 17:34:28,513 agent        INFO     - vector_store.py:97 -  加载知识库D:\intelligent-customer-agent\data\故障排除.txt成功
+2026-07-09 17:34:30,712 agent        INFO     - vector_store.py:97 -  加载知识库D:\intelligent-customer-agent\data\维护保养.txt成功
+2026-07-09 17:34:32,711 agent        INFO     - vector_store.py:97 -  加载知识库D:\intelligent-customer-agent\data\选购指南.txt成功

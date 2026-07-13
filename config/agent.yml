@@ -1,2 +1,4 @@
-chat_model_name: deepseek-v4-flash
-embedding_model_name: BAAI/bge-small-zh-v1.5
+external_data_path: data/external/records.csv
+gaodekey: 082918284dad91b4c7f43b6924a49389
+gaode_base_url: https://restapi.amap.com
+gaode_timeout: 5
