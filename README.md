@@ -88,6 +88,28 @@
 - `ChatModelFactory`：聊天模型工厂
 - `EmbeddingsModelFactory`：嵌入模型工厂
 
+## 工具模块详解
+
+### 配置处理 (utils/config_handler.py)
+- `load_rag_config()`：加载 RAG 配置
+- `load_chroma_config()`：加载 Chroma 向量数据库配置
+- `load_prompts_config()`：加载提示词配置
+- `load_agent_config()`：加载代理配置
+
+### 文件处理 (utils/file_handler.py)
+- `get_file_md5_hex()`：获取文件 MD5 值
+- `listdir_with_allowed_type()`：按文件类型筛选目录内容
+- `pdf_loader()`：PDF 文档加载
+- `txt_loader()`：文本文件加载
+
+### 日志处理 (utils/logger_handler.py)
+- `get_logger()`：获取日志记录器，支持控制台和文件输出
+
+### 提示词加载 (utils/prompt_loader.py)
+- `load_system_prompts()`：加载系统提示词
+- `load_rag_prompts()`：加载 RAG 提示词
+- `load_report_prompts()`：加载报告提示词
+
 ## 安装配置
 
 ### 环境要求
@@ -95,7 +117,24 @@
 - Python 3.8+
 - LangChain
 - Chroma
-- 其他依赖见代码
+- 其他依赖见 requirements.txt
+
+### 安装步骤
+
+1. 克隆项目：
+```bash
+git clone <repository-url>
+cd intelligent-customer-agent
+```
+
+2. 安装依赖：
+```bash
+pip install -r requirements.txt
+```
+
+3. 配置环境：
+- 在 `config/` 目录下配置各项参数
+- 确保 Chroma 向量数据库已正确初始化
 
 ### 配置说明
 
@@ -127,6 +166,8 @@ print(result)
 - chromadb
 - requests
 - pyyaml
+
+具体版本请参考 `requirements.txt`。
 
 ## 日志
 
