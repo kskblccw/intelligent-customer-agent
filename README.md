@@ -1,137 +1,178 @@
-# 智能客服代理 (Intelligent Customer Agent)
+# 智能扫地机器人维保客服
 
-基于 LangChain 框架开发的智能客服代理系统，采用 ReAct (Reasoning + Acting) 架构，支持多种工具调用、RAG 知识检索和动态提示词切换。
+> 基于 LangGraph ReAct Agent 的企业级智能客服系统。混合检索、工具调用、评测体系、会话持久化。
 
-## 项目简介
+[English](README.en.md)
 
-本项目是一个智能客服代理系统，集成了以下核心功能：
+---
 
-- **ReAct 智能代理**：基于 ReAct 范式的推理与行动框架
-- **工具调用**：支持天气查询、地理位置获取、用户信息管理等工具
-- **RAG 知识检索**：基于 Chroma 向量数据库的检索增强生成
-- **中间件支持**：工具执行监控、日志记录、动态提示词切换
-- **灵活配置**：支持 YAML 配置文件自定义模型、提示词等
-
-## 项目结构
+## 项目架构
 
 ```
-├── agent/                      # 代理核心模块
-│   ├── react_agent.py          # ReAct 代理实现
-│   └── tools/                  # 工具模块
-│       ├── agent_tools.py      # 各种业务工具
-│       └── middleware.py       # 中间件（监控、日志、动态提示词）
-├── rag/                        # RAG 模块
-│   ├── rag_service.py         # RAG 摘要服务
-│   └── vector_store.py         # 向量存储服务
-├── model/                      # 模型工厂
-│   └── factory.py              # 聊天模型和嵌入模型工厂
-├── config/                     # 配置文件
-│   ├── agent.yml              # 代理配置
-│   ├── chroma.yml             # Chroma 配置
-│   ├── prompts.yml            # 提示词配置
-│   └── rag.yml                # RAG 配置
-├── prompts/                    # 提示词模板
-│   ├── main_prompt.txt        # 主提示词
-│   ├── rag_summarize.txt      # RAG 摘要提示词
-│   └── report_prompt.txt      # 报告提示词
-├── utils/                      # 工具模块
-│   ├── config_handler.py      # 配置加载
-│   ├── file_handler.py        # 文件处理
-│   ├── logger_handler.py      # 日志处理
-│   ├── prompt_loader.py       # 提示词加载
-│   └── pyth_tool.py           # Python 工具
-├── data/                       # 数据目录
-│   └── external/              # 外部数据
-│       └── records.csv        # 用户记录数据
-└── chroma_db/                  # Chroma 向量数据库
+├── agent/                      # Agent 核心
+│   ├── react_agent.py          # ReAct Agent (LangGraph create_agent)
+│   └── tools/
+│       ├── agent_tools.py      # 7 个工具
+│       └── middleware.py        # 中间件：监控/日志/动态提示词切换/重试
+├── rag/                        # RAG 检索引擎
+│   ├── hybrid_retriever.py     # BM25 + 向量混合检索 + RRF 融合 + Cross-encoder 重排
+│   ├── rag_service.py          # 检索服务（检索与 LLM 总结解耦）
+│   └── vector_store.py         # ChromaDB 向量存储 + 文档管理
+├── model/
+│   └── factory.py              # DeepSeek + BGE Embedding
+├── storage/
+│   └── conversation_store.py   # SQLite 会话持久化
+├── evaluate/                   # 评测体系
+│   ├── cases.py                # 30 条测试用例（7 类场景）
+│   ├── golden_rag.py           # RAG 检索标注数据集（20 条）
+│   ├── runner.py               # 批量执行 + trace 收集
+│   ├── judge.py                # LLM-as-judge 四维度打分
+│   ├── metrics.py              # 汇总统计 + 基线对比
+│   └── run.py                  # 一键运行入口
+├── utils/                      # 配置、日志、文件、路径、Prompt
+├── config/                     # YAML 配置
+├── prompts/                    # Prompt 模板
+├── data/                       # 知识库文件
+└── app.py                      # Streamlit 前端
 ```
 
-## 核心功能
+## 核心特性
 
-### 1. ReAct 代理 (ReactAgent)
+### RAG 检索链路
 
-`agent/react_agent.py` 中的 `ReactAgent` 类实现了 ReAct 推理框架，支持：
-- 执行用户查询
-- 动态调用各种工具
-- 推理与行动循环
+| 环节 | 技术 |
+|------|------|
+| 文档解析 | PyPDFLoader / TextLoader |
+| 文本分块 | RecursiveCharacterTextSplitter (200/20) |
+| 向量化 | BGE-small-zh-v1.5 |
+| 向量存储 | ChromaDB，MD5 去重，启动自动加载 |
+| 关键词检索 | BM25 (rank-bm25)，中文按字符切分 |
+| 混合融合 | RRF (Reciprocal Rank Fusion)，k=60 |
+| 重排序 | BGE-reranker-v2-m3 Cross-encoder（网络不通时自动降级） |
+| 结果输出 | 直接返回原始参考资料，由 Agent 自行综合 |
 
-### 2. 工具集 (Agent Tools)
+### Agent 引擎
 
-`agent/tools/agent_tools.py` 提供以下工具：
+- **ReAct 循环**：LangGraph `create_agent` 驱动思考→行动→观察→再思考
+- **7 个工具**：`rag_search` / `get_weather` / `get_user_location` / `get_user_id` / `get_current_month` / `fetch_external_data` / `fill_context_for_report`
+- **动态提示词切换**：报告场景自动切换到 `report_prompt.txt`
+- **企业级重试**：指数退避 + 随机抖动，`TransientAPIError` 区分瞬时/永久错误
+- **上下文压缩**：超出 20 条消息自动 LLM 摘要压缩
 
-| 工具名称 | 功能描述 |
-|---------|---------|
-| `get_weather` | 获取指定城市天气 |
-| `get_user_location` | 获取用户所在城市 |
-| `rag_summarize` | 从向量存储检索参考资料 |
-| `get_user_id` | 获取用户ID |
-| `get_current_month` | 获取当前月份 |
-| `fetch_external_data` | 获取外部系统用户使用记录 |
-| `fill_context_for_report` | 触发上下文动态注入 |
+### 评测体系
 
-### 3. 中间件 (Middleware)
+```
+通过率: 33% | Judge 均分: 3.0/5 | 失败原因 8 分类
 
-`agent/tools/middleware.py` 提供中间件功能：
-
-- **工具监控** (`monitor_tool`)：监控工具执行过程
-- **日志记录** (`log_before_model`)：在模型执行前输出日志
-- **动态提示词** (`report_prompt_switch`)：根据请求动态切换提示词
-
-### 4. RAG 服务
-
-- **RAG 摘要服务** (`rag/rag_service.py`)：文档检索与摘要生成
-- **向量存储服务** (`rag/vector_store.py`)：基于 Chroma 的向量存储与检索
-
-### 5. 模型工厂
-
-`model/factory.py` 提供了模型工厂类：
-- `ChatModelFactory`：聊天模型工厂
-- `EmbeddingsModelFactory`：嵌入模型工厂
-
-## 安装配置
-
-### 环境要求
-
-- Python 3.8+
-- LangChain
-- Chroma
-- 其他依赖见代码
-
-### 配置说明
-
-在 `config/` 目录下配置各项参数：
-
-- **agent.yml**：代理模型配置
-- **chroma.yml**：向量数据库配置
-- **prompts.yml**：提示词配置
-- **rag.yml**：RAG 相关配置
-
-## 使用示例
-
-```python
-from agent.react_agent import ReactAgent
-
-# 创建代理实例
-agent = ReactAgent()
-
-# 执行查询
-query = "请帮我查询北京的天气"
-result = agent.execute(query)
-print(result)
+场景分布:
+  边界情况     ██████████ 100%
+  保养咨询     ██████░░░░  60%
+  故障排查     █████░░░░░  50%
+  多工具协作   █████░░░░░  50%
+  报告生成     ██░░░░░░░░  17%
+  天气保养     ░░░░░░░░░░   0%
+  选购建议     ░░░░░░░░░░   0%
 ```
 
-## 依赖项
+```bash
+python -m evaluate.run              # 全链路评测
+python -m evaluate.run --baseline    # 设为基线
+python -m evaluate.run --rag-only    # RAG 独立评测
+```
 
-主要依赖包括：
-- langchain
-- chromadb
-- requests
-- pyyaml
+### 工程化
 
-## 日志
+- **会话持久化**：SQLite，多会话切换/删除，自动标题
+- **知识库管理**：启动自动加载、页面上传入库、MD5 去重
+- **日志轮转**：RotatingFileHandler 按 10MB 自动切分
+- **懒加载启动**：RAG 服务、Embedding、Reranker 延迟初始化
 
-日志文件保存在 `logs/` 目录下，可用于调试和监控代理执行过程。
+## 快速开始
 
-## 许可证
+### 环境
 
-本项目仅供学习和研究使用。
+- Python 3.12+
+- Windows / macOS / Linux
+
+### 安装
+
+```bash
+git clone <repo-url> && cd intelligent-customer-agent
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 配置
+
+**`config/rag.yml`**
+
+```yaml
+chat_model_name: deepseek-v4-flash
+embedding_model_name: BAAI/bge-small-zh-v1.5
+base_url: https://api.deepseek.com
+```
+
+**`config/agent.yml`**
+
+```yaml
+gaodekey: <高德地图 API Key>    # https://lbs.amap.com/
+```
+
+**环境变量**
+
+```bash
+export DEEPSEEK_API_KEY=<your-key>   # Windows: set DEEPSEEK_API_KEY=xxx
+```
+
+### 初始化知识库
+
+首次启动自动加载 `data/` 目录下的文件。也可手动：
+
+```bash
+python rag/vector_store.py
+```
+
+### 启动
+
+```bash
+streamlit run app.py
+```
+
+### 运行评测
+
+```bash
+python -m evaluate.run              # 全链路 30 条用例
+python -m evaluate.run --baseline    # 首次跑完设为基线
+python -m evaluate.run --rag-only    # 仅评测 RAG 检索
+```
+
+## 技术栈
+
+| 层 | 技术 |
+|---|---|
+| Agent 框架 | LangGraph (create_agent) |
+| LLM | DeepSeek V4 (OpenAI 兼容 API) |
+| Embedding | BAAI/bge-small-zh-v1.5 |
+| 向量数据库 | ChromaDB |
+| 关键词检索 | BM25 (rank-bm25) |
+| 重排序 | BAAI/bge-reranker-v2-m3 |
+| 前端 | Streamlit |
+| 持久化 | SQLite |
+| 外部 API | 高德地图（天气 + IP 定位） |
+| 日志 | RotatingFileHandler |
+
+## 面试要点
+
+围绕这个项目可以深入聊的话题：
+
+- **为什么用 RRF 而不是分数加权融合？** — BM25 和向量分数的尺度不可比，RRF 只依赖排名，天然解决归一化问题
+- **ReAct 是 LLM 自带的还是框架做的？** — LLM function calling × System Prompt × LangGraph StateGraph 执行循环，三层协作
+- **检索和生成为什么要解耦？** — 工具内部不应调 LLM 总结，返回原文让 Agent 综合，省 token 且信息不丢失
+- **怎么处理工具调用失败？** — `TransientAPIError` 标记可重试错误 → 中间件指数退避 → 永久失败让 Agent ReAct 换思路
+- **评测体系怎么设计的？** — 30 条用例 × LLM-as-judge × 失败 8 分类 × 基线对比，不只是看通过率
+- **上下文怎么管理？** — LLM 摘要压缩超出的旧消息，保留关键信息（身份、偏好、诉求），丢弃冗余步骤
+
+## 许可
+
+MIT
