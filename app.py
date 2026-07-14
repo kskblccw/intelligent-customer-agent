@@ -6,6 +6,11 @@ import streamlit as st
 from agent.react_agent import ReactAgent
 from agent.tools.agent_tools import _get_rag
 from rag.vector_store import VectorStoreService
+from storage.conversation_store import (
+    create_conversation, list_conversations, delete_conversation,
+    update_conversation_title,
+    save_message, load_messages, load_recent_messages,
+)
 
 # 启动时自动检测并加载知识库
 if "kb_checked" not in st.session_state:
@@ -160,6 +165,38 @@ with st.sidebar:
     else:
         st.caption("暂无知识文件")
 
+    # ── 会话管理 ──
+    st.divider()
+    st.subheader("对话记录")
+    convs = list_conversations()
+    for c in convs:
+        cid = c["id"]
+        label = c["title"] or cid
+        active = cid == st.session_state.get("conv_id", "")
+        prefix = "● " if active else "○ "
+        col1, col2 = st.columns([4, 1])
+        with col1:
+            if st.button(prefix + label, key=f"conv_{cid}", use_container_width=True,
+                         type="primary" if active else "secondary"):
+                st.session_state["conv_id"] = cid
+                st.session_state.pop("message", None)  # 触发重载
+                st.rerun()
+        with col2:
+            if st.button("🗑", key=f"delconv_{cid}"):
+                delete_conversation(cid)
+                if cid == st.session_state.get("conv_id"):
+                    new_convs = list_conversations()
+                    if new_convs:
+                        st.session_state["conv_id"] = new_convs[0]["id"]
+                    else:
+                        st.session_state.pop("conv_id", None)  # 删光了，不自动补
+                    st.session_state.pop("message", None)
+                st.rerun()
+    if st.button("+ 新建会话", use_container_width=True):
+        st.session_state["conv_id"] = create_conversation()
+        st.session_state.pop("message", None)  # 触发重载
+        st.rerun()
+
 def _escape(text: str) -> str:
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
@@ -189,8 +226,25 @@ def _char_generator(text: str, delay: float = 0.015):
 if "agent" not in st.session_state:
     st.session_state["agent"] = ReactAgent()
 
+# ── 会话管理 ──
+if "conv_id" not in st.session_state:
+    convs = list_conversations()
+    if convs:
+        st.session_state["conv_id"] = convs[0]["id"]
+
 if "message" not in st.session_state:
-    st.session_state["message"] = []
+    if "conv_id" in st.session_state:
+        try:
+            rows = load_messages(st.session_state["conv_id"])
+            st.session_state["message"] = [
+                {"role": r["role"], "content": r["content"],
+                 "answer": r.get("answer"), "thinking_html": r.get("thinking_html")}
+                for r in rows
+            ]
+        except Exception:
+            st.session_state["message"] = []
+    else:
+        st.session_state["message"] = []
 
 for message in st.session_state["message"]:
     if message["role"] == "assistant":
@@ -210,8 +264,20 @@ prompt = st.chat_input()
 
 
 if prompt:
+    # 没有会话时自动创建（删光后的首次发言）
+    if "conv_id" not in st.session_state:
+        st.session_state["conv_id"] = create_conversation()
+        st.session_state["message"] = []
+
     st.chat_message("user").write(prompt)
     st.session_state["message"].append({"role": "user", "content": prompt})
+    save_message(st.session_state["conv_id"], "user", prompt)
+    # 首条消息自动设标题：取前 10 字
+    convs = list_conversations()
+    current = next((c for c in convs if c["id"] == st.session_state["conv_id"]), None)
+    if current and not current["title"]:
+        title = prompt.strip()[:10]
+        update_conversation_title(st.session_state["conv_id"], title)
 
     raw_text = ""
     ai_texts: list[str] = []      # AI 文本（原始，未转义）
@@ -220,7 +286,8 @@ if prompt:
         think_placeholder = st.empty()
         answer_placeholder = st.empty()
         with st.spinner("智能客服思考中..."):
-            for chunk in st.session_state["agent"].execute(prompt, history=st.session_state["message"]):
+            history = load_recent_messages(st.session_state["conv_id"], limit=30)
+            for chunk in st.session_state["agent"].execute(prompt, history=history):
                 if not isinstance(chunk, dict):
                     raw_text += str(chunk).strip() + "\n"
                     tool_htmls.append(
@@ -265,13 +332,19 @@ if prompt:
     # 存储：思考 + 回答分开，历史记录能区分
     prev_ai = ai_texts[:-1] if len(ai_texts) > 1 else []
     thinking_html = _build_thinking_html(prev_ai, tool_htmls)
-    answer_text = ai_texts[-1] if ai_texts else raw_text
+    answer_text = ai_texts[-1] if ai_texts else raw_text.strip()
     st.session_state["message"].append({
         "role": "assistant",
         "content": raw_text.strip(),
         "answer": answer_text,
         "thinking_html": thinking_html,
     })
+    save_message(
+        st.session_state["conv_id"], "assistant",
+        content=raw_text.strip(),
+        answer=answer_text,
+        thinking_html=thinking_html,
+    )
     # st.rerun()
 
 
