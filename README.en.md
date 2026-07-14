@@ -62,16 +62,15 @@
 ### Evaluation Framework
 
 ```
-Pass rate: 33% | Judge avg: 3.0/5 | 8 failure categories
 
 By scenario:
-  Edge cases       ██████████ 100%
-  Maintenance      ██████░░░░  60%
-  Troubleshooting  █████░░░░░  50%
-  Multi-tool       █████░░░░░  50%
-  Report gen       ██░░░░░░░░  17%
-  Weather+care     ░░░░░░░░░░   0%
-  Purchase advice  ░░░░░░░░░░   0%
+  Edge cases     
+  Maintenance    
+  Troubleshooting 
+  Multi-tool       
+  Report gen      
+  Weather+care     
+  Purchase advice 
 ```
 
 ```bash
