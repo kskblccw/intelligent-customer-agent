@@ -8403,3 +8403,141 @@ RuntimeError: Error loading D:\intelligent-customer-agent\data\响应.txt
 2026-07-14 16:11:43,590 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 帮我查一下火星的天气，看看我的机器人在火星上怎么用
 2026-07-14 16:11:50,789 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
 2026-07-14 16:11:50,789 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 
+2026-07-14 16:19:51,471 agent        INFO     - vector_store.py:118 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 16:19:51,472 agent        INFO     - vector_store.py:118 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 16:19:51,568 agent        WARNING  - vector_store.py:133 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 16:19:51,572 agent        WARNING  - vector_store.py:133 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 16:19:51,573 agent        INFO     - vector_store.py:118 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 16:19:51,575 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 16:19:51,576 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 16:19:51,578 agent        INFO     - vector_store.py:118 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 16:19:51,579 agent        INFO     - vector_store.py:118 -  知识库故障排除.txt已存在，跳过
+2026-07-14 16:19:51,580 agent        INFO     - vector_store.py:118 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 16:19:51,581 agent        INFO     - vector_store.py:118 -  知识库维护保养.txt已存在，跳过
+2026-07-14 16:19:51,583 agent        INFO     - vector_store.py:118 -  知识库选购指南.txt已存在，跳过
+2026-07-14 16:20:41,258 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有2条消息
+2026-07-14 16:20:41,258 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 我在泰国彼岸岛附近，结合当地的天气，给我一份扫地机器人保养建议
+2026-07-14 16:20:44,895 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_location
+2026-07-14 16:20:44,895 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 16:20:45,822 agent        WARNING  - agent_tools.py:167 -  [get_user_location]空城市信息 info=OK infocode=10000 ip=14.1.28.147 raw={'status': '1', 'info': 'OK', 'infocode': '10000', 'province': [], 'city': [], 'adcode': [], 'rectangle': []}
+2026-07-14 16:20:45,823 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-14 16:20:47,035 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 16:20:47,035 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 未知城市
+2026-07-14 16:20:52,385 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_weather
+2026-07-14 16:20:52,385 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'city': '普吉岛'}
+2026-07-14 16:20:52,385 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 16:20:52,386 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '泰国热带高湿度环境 扫地机器人 保养维护建议'}
+2026-07-14 16:20:52,411 agent        INFO     - rag_service.py:54 -  [RagSummarizeService]混合检索器就绪 vector_k=10 bm25_k=10 final_k=5 corpus_size=385
+2026-07-14 16:20:52,412 agent        INFO     - rag_service.py:69 -  [RagSummarizeService]重排序器模型未缓存，跳过加载（首次使用需联网下载 model=BAAI/bge-reranker-v2-m3）
+2026-07-14 16:20:52,445 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 16:20:52,604 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-14 16:20:53,913 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有7条消息
+2026-07-14 16:20:53,914 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **梅雨季节怎么维护？**
+- 定期除湿，防止电机受潮，勤换拖布防霉。
+85. **夏季高温会影响使用吗？**
+- 避免阳光直射充电座，高温可能影响电池寿命。
+## 十一、对比其他产品类
+86. **扫地机器人和吸尘器怎么选？**
+- 机器人负责日常维护，吸尘器处理深度清洁。
+87. **和洗地机相比优劣如何？**
+- 洗地机清洁力更强但需人工操作，机器人自动化程度高。
+88
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+# 扫地机器人 100 问
+## 一、基础与技术类
+### 导航与路径规划
+1. **扫地机器人是如何实现自主导航的？**
+- 通过激光雷达(LDS)、视觉传感器(VSLAM)或陀螺仪+加速度计实现环境感知和定位。
+2. **LDS 激光导航和 VSLAM 视觉导航哪个更好？**
+- LDS 精度更高、不受光线影响；VSLAM 成本更低、可识别更多物体细节。
+3
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 水泥地/老旧地砖环境：清扫后立即清理机身底部、轮组的泥沙，防止磨损配件，减少拖地频次，避免灰尘结块。
+6. 宠物家庭：每次清扫后全面清理主刷、尘盒、拖布，每周对机器人进行除味消毒，耗材更换周期缩短50%。
+7. 有婴儿/小孩的家庭：拖地仅用清水，避免添加清洁液，拖布每次使用后高温消毒，机器人机身每日擦拭。
+8
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **技术发展经历了哪些阶段？**
+- 随机碰撞→陀螺仪导航→激光导航→AI 视觉导航。
+## 十四、趣味知识类
+97. **为什么叫"扫地机器人"而不是"吸尘机器人"？**
+- 早期产品以扫为主，且"机器人"概念更吸引人。
+98. **最贵的扫地机器人是哪款？**
+- iRobot 的商用机型 Avva 30，售价约 2 万美元。
+99
+2026-07-14 16:20:59,034 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 16:20:59,034 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '沿海地区 高湿度 海岛 扫地机器人 防潮防盐雾保养'}
+2026-07-14 16:20:59,052 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 16:21:00,354 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有9条消息
+2026-07-14 16:21:00,355 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **梅雨季节怎么维护？**
+- 定期除湿，防止电机受潮，勤换拖布防霉。
+85. **夏季高温会影响使用吗？**
+- 避免阳光直射充电座，高温可能影响电池寿命。
+## 十一、对比其他产品类
+86. **扫地机器人和吸尘器怎么选？**
+- 机器人负责日常维护，吸尘器处理深度清洁。
+87. **和洗地机相比优劣如何？**
+- 洗地机清洁力更强但需人工操作，机器人自动化程度高。
+88
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\选购指南.txt）
+扫地/扫拖一体机器人选购指南200条
+
+1. 选购核心：优先明确使用场景，独居小户型侧重轻便灵活，多口之家带宠物需强化吸力和防缠绕功能。
+
+2. 吸力参数：家用建议选择≥3000Pa吸力机型，地毯场景需≥4000Pa，吸力可调节更适配不同地面。
+
+3. 导航技术：激光导航定位精准、抗干扰强，适合复杂户型；视觉导航性价比高，避免强光环境使用。
+
+4
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+# 扫地机器人 100 问
+## 一、基础与技术类
+### 导航与路径规划
+1. **扫地机器人是如何实现自主导航的？**
+- 通过激光雷达(LDS)、视觉传感器(VSLAM)或陀螺仪+加速度计实现环境感知和定位。
+2. **LDS 激光导航和 VSLAM 视觉导航哪个更好？**
+- LDS 精度更高、不受光线影响；VSLAM 成本更低、可识别更多物体细节。
+3
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **技术发展经历了哪些阶段？**
+- 随机碰撞→陀螺仪导航→激光导航→AI 视觉导航。
+## 十四、趣味知识类
+97. **为什么叫"扫地机器人"而不是"吸尘机器人"？**
+- 早期产品以扫为主，且"机器人"概念更吸引人。
+98. **最贵的扫地机器人是哪款？**
+- iRobot 的商用机型 Avva 30，售价约 2 万美元。
+99
+2026-07-14 16:21:39,333 agent        INFO     - vector_store.py:118 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 16:21:39,334 agent        INFO     - vector_store.py:118 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 16:21:39,337 agent        WARNING  - vector_store.py:133 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 16:21:39,340 agent        WARNING  - vector_store.py:133 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 16:21:39,341 agent        INFO     - vector_store.py:118 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 16:21:39,341 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 16:21:39,342 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 16:21:39,343 agent        INFO     - vector_store.py:118 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 16:21:39,343 agent        INFO     - vector_store.py:118 -  知识库故障排除.txt已存在，跳过
+2026-07-14 16:21:39,344 agent        INFO     - vector_store.py:118 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 16:21:39,344 agent        INFO     - vector_store.py:118 -  知识库维护保养.txt已存在，跳过
+2026-07-14 16:21:39,345 agent        INFO     - vector_store.py:118 -  知识库选购指南.txt已存在，跳过
