@@ -1,137 +1,178 @@
-# Intelligent Customer Agent
+# Intelligent Robot Vacuum Customer Service Agent
 
-An intelligent customer agent system developed based on the LangChain framework, employing a ReAct (Reasoning + Acting) architecture, supporting multiple tool invocations, RAG knowledge retrieval, and dynamic prompt switching.
+> Enterprise-grade intelligent customer service system powered by LangGraph ReAct Agent. Hybrid retrieval, tool orchestration, evaluation framework, conversation persistence.
 
-## Project Overview
+[中文文档](README.md)
 
-This project is an intelligent customer agent system integrating the following core features:
+---
 
-- **ReAct Intelligent Agent**: A reasoning and action framework based on the ReAct paradigm
-- **Tool Invocation**: Supports tools such as weather queries, geolocation retrieval, and user information management
-- **RAG Knowledge Retrieval**: Retrieval-augmented generation based on the Chroma vector database
-- **Middleware Support**: Tool execution monitoring, logging, and dynamic prompt switching
-- **Flexible Configuration**: Customizable models and prompts via YAML configuration files
-
-## Project Structure
+## Architecture
 
 ```
-├── agent/                      # Agent core module
-│   ├── react_agent.py          # ReAct agent implementation
-│   └── tools/                  # Tools module
-│       ├── agent_tools.py      # Various business tools
-│       └── middleware.py       # Middleware (monitoring, logging, dynamic prompts)
-├── rag/                        # RAG module
-│   ├── rag_service.py          # RAG summarization service
-│   └── vector_store.py         # Vector storage service
-├── model/                      # Model factory
-│   └── factory.py              # Chat and embedding model factory
-├── config/                     # Configuration files
-│   ├── agent.yml               # Agent configuration
-│   ├── chroma.yml              # Chroma configuration
-│   ├── prompts.yml             # Prompt configuration
-│   └── rag.yml                 # RAG configuration
+├── agent/                      # Agent core
+│   ├── react_agent.py          # ReAct Agent (LangGraph create_agent)
+│   └── tools/
+│       ├── agent_tools.py      # 7 tools
+│       └── middleware.py        # Middleware: monitoring/logging/dynamic prompt/retry
+├── rag/                        # RAG retrieval engine
+│   ├── hybrid_retriever.py     # BM25 + Vector hybrid search + RRF fusion + Cross-encoder rerank
+│   ├── rag_service.py          # Retrieval service (retrieval decoupled from LLM summarization)
+│   └── vector_store.py         # ChromaDB vector store + document management
+├── model/
+│   └── factory.py              # DeepSeek + BGE Embedding factory
+├── storage/
+│   └── conversation_store.py   # SQLite conversation persistence
+├── evaluate/                   # Evaluation framework
+│   ├── cases.py                # 30 test cases across 7 categories
+│   ├── golden_rag.py           # RAG retrieval ground truth (20 queries)
+│   ├── runner.py               # Batch execution + trace collection
+│   ├── judge.py                # LLM-as-judge with 4 scoring dimensions
+│   ├── metrics.py              # Summary stats + baseline diff
+│   └── run.py                  # One-click entry point
+├── utils/                      # Config, logging, file handling, prompt loading
+├── config/                     # YAML configuration files
 ├── prompts/                    # Prompt templates
-│   ├── main_prompt.txt         # Main prompt
-│   ├── rag_summarize.txt       # RAG summarization prompt
-│   └── report_prompt.txt       # Report prompt
-├── utils/                      # Utility modules
-│   ├── config_handler.py       # Configuration loader
-│   ├── file_handler.py         # File handling
-│   ├── logger_handler.py       # Logging handler
-│   ├── prompt_loader.py        # Prompt loader
-│   └── pyth_tool.py            # Python tool
-├── data/                       # Data directory
-│   └── external/               # External data
-│       └── records.csv         # User record data
-└── chroma_db/                  # Chroma vector database
+├── data/                       # Knowledge base files
+└── app.py                      # Streamlit frontend
 ```
 
-## Core Features
+## Key Features
 
-### 1. ReAct Agent (ReactAgent)
+### RAG Retrieval Pipeline
 
-The `ReactAgent` class in `agent/react_agent.py` implements the ReAct reasoning framework, supporting:
-- Execution of user queries
-- Dynamic invocation of various tools
-- Reasoning and action loops
+| Stage | Technology |
+|-------|-----------|
+| Document loading | PyPDFLoader / TextLoader |
+| Text splitting | RecursiveCharacterTextSplitter (200/20) |
+| Embedding | BAAI/bge-small-zh-v1.5 |
+| Vector store | ChromaDB with MD5 dedup and auto-load on startup |
+| Keyword search | BM25 (rank-bm25), character-level tokenization for Chinese |
+| Hybrid fusion | Reciprocal Rank Fusion (RRF), k=60 |
+| Reranking | BAAI/bge-reranker-v2-m3 Cross-encoder (graceful fallback when offline) |
+| Output | Raw reference documents returned directly; Agent synthesizes |
 
-### 2. Tool Set (Agent Tools)
+### Agent Engine
 
-`agent/tools/agent_tools.py` provides the following tools:
+- **ReAct loop**: LangGraph `create_agent` drives Think → Act → Observe → Re-think
+- **7 tools**: `rag_search` / `get_weather` / `get_user_location` / `get_user_id` / `get_current_month` / `fetch_external_data` / `fill_context_for_report`
+- **Dynamic prompt switching**: Report scenarios auto-switch to specialized prompt
+- **Enterprise retry**: Exponential backoff + jitter; `TransientAPIError` distinguishes transient vs permanent failures
+- **Context compaction**: LLM-based summary compression when messages exceed 20
 
-| Tool Name | Function Description |
-|----------|----------------------|
-| `get_weather` | Retrieves weather for a specified city |
-| `get_user_location` | Retrieves the user's current city |
-| `rag_summarize` | Retrieves reference materials from the vector store |
-| `get_user_id` | Retrieves the user ID |
-| `get_current_month` | Retrieves the current month |
-| `fetch_external_data` | Fetches user usage records from external systems |
-| `fill_context_for_report` | Triggers dynamic context injection |
+### Evaluation Framework
 
-### 3. Middleware
+```
+Pass rate: 33% | Judge avg: 3.0/5 | 8 failure categories
 
-`agent/tools/middleware.py` provides middleware functionality:
-
-- **Tool Monitoring** (`monitor_tool`): Monitors tool execution processes
-- **Logging** (`log_before_model`): Logs before model execution
-- **Dynamic Prompts** (`report_prompt_switch`): Dynamically switches prompts based on requests
-
-### 4. RAG Service
-
-- **RAG Summarization Service** (`rag/rag_service.py`): Document retrieval and summary generation
-- **Vector Storage Service** (`rag/vector_store.py`): Vector storage and retrieval based on Chroma
-
-### 5. Model Factory
-
-`model/factory.py` provides model factory classes:
-- `ChatModelFactory`: Chat model factory
-- `EmbeddingsModelFactory`: Embedding model factory
-
-## Installation & Configuration
-
-### System Requirements
-
-- Python 3.8+
-- LangChain
-- Chroma
-- Other dependencies listed in the code
-
-### Configuration Instructions
-
-Configure parameters in the `config/` directory:
-
-- **agent.yml**: Agent model configuration
-- **chroma.yml**: Vector database configuration
-- **prompts.yml**: Prompt configuration
-- **rag.yml**: RAG-related configuration
-
-## Usage Example
-
-```python
-from agent.react_agent import ReactAgent
-
-# Create agent instance
-agent = ReactAgent()
-
-# Execute query
-query = "Please check the weather in Beijing"
-result = agent.execute(query)
-print(result)
+By scenario:
+  Edge cases       ██████████ 100%
+  Maintenance      ██████░░░░  60%
+  Troubleshooting  █████░░░░░  50%
+  Multi-tool       █████░░░░░  50%
+  Report gen       ██░░░░░░░░  17%
+  Weather+care     ░░░░░░░░░░   0%
+  Purchase advice  ░░░░░░░░░░   0%
 ```
 
-## Dependencies
+```bash
+python -m evaluate.run              # Full agent eval
+python -m evaluate.run --baseline    # Save as baseline
+python -m evaluate.run --rag-only    # RAG-only retrieval eval
+```
 
-Primary dependencies include:
-- langchain
-- chromadb
-- requests
-- pyyaml
+### Engineering
 
-## Logging
+- **Conversation persistence**: SQLite, multi-session with auto-titling
+- **KB management**: Auto-load on startup, in-page upload, MD5 dedup
+- **Log rotation**: RotatingFileHandler, 10MB per file, 10 backup files max
+- **Lazy initialization**: RAG service, Embedding model, Reranker all deferred
 
-Log files are stored in the `logs/` directory for debugging and monitoring agent execution.
+## Quick Start
+
+### Prerequisites
+
+- Python 3.12+
+- Windows / macOS / Linux
+
+### Installation
+
+```bash
+git clone <repo-url> && cd intelligent-customer-agent
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### Configuration
+
+**`config/rag.yml`**
+
+```yaml
+chat_model_name: deepseek-v4-flash
+embedding_model_name: BAAI/bge-small-zh-v1.5
+base_url: https://api.deepseek.com
+```
+
+**`config/agent.yml`**
+
+```yaml
+gaodekey: <your Amap API Key>    # https://lbs.amap.com/
+```
+
+**Environment variables**
+
+```bash
+export DEEPSEEK_API_KEY=<your-key>   # Windows: set DEEPSEEK_API_KEY=xxx
+```
+
+### Initialize Knowledge Base
+
+Files in `data/` are auto-loaded on first startup. Manual alternative:
+
+```bash
+python rag/vector_store.py
+```
+
+### Launch
+
+```bash
+streamlit run app.py
+```
+
+### Run Evaluation
+
+```bash
+python -m evaluate.run              # Full 30-case evaluation
+python -m evaluate.run --baseline    # Set current results as baseline
+python -m evaluate.run --rag-only    # RAG retrieval eval only
+```
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Agent Framework | LangGraph (create_agent) |
+| LLM | DeepSeek V4 (OpenAI-compatible API) |
+| Embedding | BAAI/bge-small-zh-v1.5 |
+| Vector DB | ChromaDB |
+| Keyword Search | BM25 (rank-bm25) |
+| Reranking | BAAI/bge-reranker-v2-m3 |
+| Frontend | Streamlit |
+| Persistence | SQLite |
+| External API | Amap (weather + IP geolocation) |
+| Logging | RotatingFileHandler |
+
+## Interview Talking Points
+
+Topics you can discuss in depth around this project:
+
+- **Why RRF over score-weighted fusion?** — BM25 and vector scores are not on the same scale. RRF relies solely on rank position, naturally solving normalization.
+- **Is ReAct built into the LLM or the framework?** — Three-layer collaboration: LLM function calling × System Prompt × LangGraph StateGraph execution loop.
+- **Why decouple retrieval from generation?** — Tools should not invoke LLM summarization internally. Return raw documents and let the Agent synthesize, saving tokens with no information loss.
+- **How are tool failures handled?** — `TransientAPIError` marks retryable errors → middleware exponential backoff → permanent failures returned to Agent for ReAct re-planning.
+- **How is the evaluation system designed?** — 30 cases × LLM-as-judge × 8 failure categories × baseline comparison, not just pass rate.
+- **How is context managed?** — LLM summarization compresses overflow messages, preserving key info (identity, preferences, intent) while discarding redundant steps.
 
 ## License
 
-This project is for learning and research purposes only.
+MIT

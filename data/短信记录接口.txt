@@ -1,0 +1,39 @@
+短信记录接口
+
+接口示例
+GET /alarm/component/push/sms-records?phone=138&receiverName=张&smsContent=告警&startTime=2026-05-21%2000:00:00&endTime=2026-05-22%2023:59:59&pageNum=1&pageSize=10
+
+入参说明：
+{
+  "phone": "138",
+  "receiverName": "张",
+  "smsContent": "告警",
+  "startTime": "2026-05-21 00:00:00",
+  "endTime": "2026-05-22 23:59:59",
+  "pageNum": 1,
+  "pageSize": 10
+}
+
+返回响应：
+{
+  "type": 0,
+  "message": "success",
+  "errorMessage": null,
+  "data": {
+    "list": [
+      {
+        "id": 1770000000000001,
+        "networkType": "集群通信网",
+        "receiverName": "张三",
+        "phone": "13800138000",
+        "smsContent": "【中国雅江集团】【严重告警】【集群通信网】【告警信息:m388.yx.pdt.cn_m388.yx.pdt.cn183590PDS与BS通讯链路发生故障】【站点名称:米林集群基站】，【告警时间:2026-05-18 17:27:40】，请您及时处理！<网络运管平台2026年5月20日09:51发布>",
+        "smsType": 1,
+        "smsTypeName": "告警通知",
+        "sendTime": "2026-05-22 10:30:15"
+      }
+    ],
+    "total": 1,
+    "pageNum": 1,
+    "pageSize": 10
+  }
+}
