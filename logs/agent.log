@@ -5,3 +5,1927 @@
 2026-07-13 19:09:24,050 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
 2026-07-13 19:09:24,053 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
 2026-07-13 19:09:24,055 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 每日使用后，用干软布擦拭机身外壳，清理防撞条缝隙的毛发与线头；每日检查边刷旋转是否卡顿，及时清理；每周检查APP连接状态确保正常接收提醒；每月检查防缠绕梳齿是否变形断裂；保持充电环境通风良好，遵循“轻用轻放、及时清理”原则。
+2026-07-14 09:52:42,428 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:52:42,428 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 请结合我所在城市的天气，告知一下我如何保养机器人
+2026-07-14 09:52:44,103 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_location
+2026-07-14 09:52:44,104 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:52:44,917 agent        WARNING  - agent_tools.py:160 -  [get_user_location]空城市信息 info=OK infocode=10000 ip=14.1.28.147 raw={'status': '1', 'info': 'OK', 'infocode': '10000', 'province': [], 'city': [], 'adcode': [], 'rectangle': []}
+2026-07-14 09:52:44,918 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-14 09:52:44,920 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:52:44,920 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 未知城市
+2026-07-14 09:52:48,762 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:52:48,762 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 今天深圳32度、湿度80%，我的扫拖机器人要怎么维护
+2026-07-14 09:52:51,206 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:52:51,206 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '高温高湿 扫拖机器人 维护保养 注意事项'}
+2026-07-14 09:52:54,933 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:52:54,934 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:52:54,935 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 在高温高湿环境下，扫拖机器人的维护保养需特别注意：每次拖地完成后立即拆卸拖布，用清水冲洗干净并拧干，放在通风处晾干以防发霉；使用水箱时加注清水，避免自来水产生水垢；每日清理拖布支架缠绕的毛发杂物；每月检查拖地模组接口确保无灰尘杂物；同时每日用干软布擦拭机身外壳，去除水渍污渍。
+2026-07-14 09:53:03,214 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:53:03,214 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 广州回南天来了，扫地机要注意什么
+2026-07-14 09:53:05,750 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_weather
+2026-07-14 09:53:05,751 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'city': '广州'}
+2026-07-14 09:53:05,753 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:53:05,754 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '回南天潮湿天气扫地机器人使用注意事项'}
+2026-07-14 09:53:05,964 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-14 09:53:07,337 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:53:07,339 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 09:53:07,339 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 在回南天潮湿天气下，应减少扫地机器人拖地频次，使用干拖模式，每日晾干机器人机身及耗材，每周对机器人进行除湿处理。
+2026-07-14 09:53:09,653 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:53:09,653 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人回南天防潮保养基站拖布尘盒维护'}
+2026-07-14 09:53:15,016 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:53:15,017 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 09:53:15,018 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 根据参考资料，日常维护包括：每日使用后用于软布擦拭机身外壳，清理防撞条缝隙的毛发和线头；检查尘盒密封圈是否老化并确保安装到位；自动洗拖布机型需清理污水仓排水口杂物。参考资料未提及回南天防潮的具体维护方法。
+2026-07-14 09:53:21,940 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:53:21,940 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 北方冬天干燥，扫地机器人使用有什么特别要注意的
+2026-07-14 09:53:23,816 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:53:23,816 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '北方冬天干燥 扫地机器人 使用注意事项'}
+2026-07-14 09:53:25,741 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:53:25,742 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:53:25,742 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 北方冬天干燥环境下使用扫地机器人，需避免机器人在低温中长时间工作（电池续航会衰减），应及时回充并清理机身表面的冰霜。
+2026-07-14 09:53:28,114 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:53:28,114 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人 冬季 静电 干燥 地宝 维护保养'}
+2026-07-14 09:53:32,466 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:53:32,468 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 09:53:32,468 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 根据提供的参考资料，未提及冬季静电或干燥环境下的扫地机器人（地宝）维护保养相关建议。
+2026-07-14 09:53:43,192 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:53:43,192 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 下雨天能不能用扫地机器人
+2026-07-14 09:53:45,295 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_location
+2026-07-14 09:53:45,295 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:53:45,297 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:53:45,297 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '下雨天 潮湿环境 扫地机器人 使用注意事项'}
+2026-07-14 09:53:46,004 agent        WARNING  - agent_tools.py:160 -  [get_user_location]空城市信息 info=OK infocode=10000 ip=14.1.28.147 raw={'status': '1', 'info': 'OK', 'infocode': '10000', 'province': [], 'city': [], 'adcode': [], 'rectangle': []}
+2026-07-14 09:53:46,005 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-14 09:53:47,213 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:53:47,215 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 09:53:47,215 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 在潮湿环境（如梅雨季节、回南天）使用扫地机器人时，建议：减少拖地频次，使用干拖模式；每次使用后及时晾干机器人机身和耗材，每周对机器人进行除湿处理；定期除湿，防止电机受潮，勤换拖布防霉。
+2026-07-14 09:53:56,360 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:53:56,360 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 高温天气对扫地机器人电池有影响吗
+2026-07-14 09:53:57,851 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:53:57,851 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '高温天气对扫地机器人电池的影响'}
+2026-07-14 09:53:59,381 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:53:59,382 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:53:59,383 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 高温天气下，应避免阳光直射充电座，高温可能缩短电池寿命；若电池温度过高触发保护，需移至阴凉处冷却，避免长时间连续工作。
+2026-07-14 09:54:04,300 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:54:04,300 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 我在的城市经常下雪，机器人能正常工作吗
+2026-07-14 09:54:06,401 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_location
+2026-07-14 09:54:06,402 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:54:06,404 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:54:06,405 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '下雪 低温 扫地机器人 能否正常工作 注意事项'}
+2026-07-14 09:54:07,094 agent        WARNING  - agent_tools.py:160 -  [get_user_location]空城市信息 info=OK infocode=10000 ip=14.1.28.147 raw={'status': '1', 'info': 'OK', 'infocode': '10000', 'province': [], 'city': [], 'adcode': [], 'rectangle': []}
+2026-07-14 09:54:07,094 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-14 09:54:08,548 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:54:08,551 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 09:54:08,551 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 在低温环境（低于5℃）下，扫地机器人可能因电池低温保护或机身结冰而无法正常开机工作。下雪天气同样适用此情况。注意事项包括：避免在低温环境下长时间工作，电池续航会衰减，需及时回充并清理机身表面冰霜；若无法开机，应将机器人移至室温环境（5℃以上）静置30分钟，解冻后再充电使用。
+2026-07-14 09:54:16,038 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:54:16,038 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 扫地机器人的滤网多久换一次
+2026-07-14 09:54:17,412 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:54:17,412 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人滤网更换周期 多久换一次'}
+2026-07-14 09:54:19,014 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:54:19,017 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:54:19,017 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 根据参考资料，扫地机器人滤网（HEPA滤网）建议每3到6个月更换一次。
+2026-07-14 09:54:24,469 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:54:24,469 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 边刷缠绕头发了该怎么清理
+2026-07-14 09:54:26,107 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:54:26,107 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '边刷缠绕头发清理方法'}
+2026-07-14 09:54:28,391 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:54:28,392 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:54:28,392 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 每日清理边刷上的灰尘、杂物；若边刷缠绕头发，可用剪刀剪断缠绕物，切勿强行拉扯。
+2026-07-14 09:54:34,060 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:54:34,060 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 扫地机器人日常怎么保养，简单说下
+2026-07-14 09:54:35,469 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:54:35,470 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人日常保养维护'}
+2026-07-14 09:54:37,741 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:54:37,743 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:54:37,743 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 每日使用后，用干软布擦拭机身外壳，清理防撞条缝隙的毛发与线头；每周检查APP连接状态及充电座电源适配器，确保无发热异响；每月检查防缠绕梳齿与拖地模组接口；及时清理边刷卡顿，避免电机烧毁；充电环境需通风良好，远离易燃物；不慎沾到宠物粪便时立即用湿巾清理，再用中性洗涤剂擦拭。
+2026-07-14 09:54:40,443 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:54:40,443 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 拖布发臭是什么原因，怎么处理
+2026-07-14 09:54:42,239 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:54:42,239 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '拖布发臭 原因 处理 扫拖机器人'}
+2026-07-14 09:54:44,561 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:54:44,564 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:54:44,564 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 根据现有参考资料，未找到关于扫拖机器人拖布发臭原因及处理方法的直接信息。
+2026-07-14 09:54:45,841 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:54:45,841 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '拖布异味 清洁 保养 扫拖一体机'}
+2026-07-14 09:54:48,444 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:54:48,446 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 09:54:48,446 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 根据参考资料，扫拖一体机支持干拖和湿拖模式，湿拖需加清水；可关闭自动洗拖布功能仅开启吸尘。震动拖地技术（如高频震动）可提升去污效果，但未提及拖布异味的具体清洁或保养方法。
+2026-07-14 09:54:51,502 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:54:51,503 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '拖布发臭 细菌 清洗 晾干 基站清洁'}
+2026-07-14 09:54:53,639 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:54:53,642 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有7条消息
+2026-07-14 09:54:53,642 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 针对拖布发臭和细菌问题，需每次拖地后拆卸拖布支架并通风晾干，避免潮湿滋生细菌；每周清理拖布支架污渍和水垢，自动洗拖布机型需每日清理清洁仓的清洁刷、每次使用后倾倒并冲洗污水仓，并使用干布擦拭清洁仓外壳保持干净。
+2026-07-14 09:55:00,798 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:55:00,798 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 集尘袋满了会提示吗，多久清理一次尘盒
+2026-07-14 09:55:03,671 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:55:03,671 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '集尘袋满了提示 尘盒清理频率 多久清理一次'}
+2026-07-14 09:55:05,845 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:55:05,848 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:55:05,848 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 集尘袋在普通家庭1-2个月更换，多尘/宠物家庭半个月-1个月更换，集尘量达到80%时及时更换。尘盒建议每次使用后清理，至少每2-3次清扫清理一次。
+2026-07-14 09:55:07,238 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:55:07,239 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '集尘袋满提示 报警 提醒功能'}
+2026-07-14 09:55:10,480 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:55:10,484 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 09:55:10,484 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 集尘袋满时，机器人会触发“集尘系统故障”报警，提示检查集尘袋是否满溢。
+2026-07-14 09:55:14,811 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:55:14,811 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 帮我生成一下我的专属使用报告
+2026-07-14 09:55:16,456 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_id
+2026-07-14 09:55:16,457 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:55:16,457 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_id调用成功
+2026-07-14 09:55:16,458 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_current_month
+2026-07-14 09:55:16,458 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:55:16,459 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_current_month调用成功
+2026-07-14 09:55:16,461 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 09:55:16,461 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 2025-01
+2026-07-14 09:55:18,189 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fill_context_for_report
+2026-07-14 09:55:18,190 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:55:18,190 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fill_context_for_report调用成功
+2026-07-14 09:55:18,191 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 09:55:18,191 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-07-14 09:55:19,494 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 09:55:19,495 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1009', 'month': '2025-01'}
+2026-07-14 09:55:19,499 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 09:55:19,502 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-14 09:55:19,502 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | {"特征": "80㎡两居 | 养宠 | 仿实木", "效率": "宠物毛发清理:85%\\n自动回充成功率:92%", "耗材": "胶刷缠绕:中度\\n滤网更换:剩余30天", "对比": "养宠家庭中清洁效率处于中等水平"}
+2026-07-14 09:55:21,952 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:55:21,952 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '养宠家庭扫地机器人毛发清理胶刷缠绕解决方法'}
+2026-07-14 09:55:21,953 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:55:21,953 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人滤网更换周期保养维护建议'}
+2026-07-14 09:55:23,811 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:55:23,825 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:55:23,828 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有11条消息
+2026-07-14 09:55:23,829 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 滤网（HEPA）建议每3-6个月更换一次，每周用软毛刷轻刷表面灰尘，每1-2个月可用清水冲洗（不可揉搓）并阴凉晾干，注意水洗会降低过滤效果。
+2026-07-14 09:55:33,835 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:55:33,835 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 查一下我的机器人6月份的使用记录
+2026-07-14 09:55:36,247 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_id
+2026-07-14 09:55:36,248 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:55:36,250 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_id调用成功
+2026-07-14 09:55:36,251 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_current_month
+2026-07-14 09:55:36,251 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:55:36,253 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_current_month调用成功
+2026-07-14 09:55:36,257 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 09:55:36,257 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 2025-03
+2026-07-14 09:55:40,907 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fill_context_for_report
+2026-07-14 09:55:40,908 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:55:40,909 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fill_context_for_report调用成功
+2026-07-14 09:55:40,911 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 09:55:40,911 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-07-14 09:55:42,902 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 09:55:42,902 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1001', 'month': '2024-06'}
+2026-07-14 09:55:42,903 agent        WARNING  - agent_tools.py:237 -  [fetch_external_data]未能检索到用户：1001在2024-06的使用记录数据
+2026-07-14 09:55:42,903 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 09:55:42,906 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-14 09:55:42,906 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 
+2026-07-14 09:55:44,749 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 09:55:44,750 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1001', 'month': '2025-06'}
+2026-07-14 09:55:44,751 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 09:55:44,753 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有10条消息
+2026-07-14 09:55:44,753 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | {"特征": "65㎡公寓 | 单身 | 木地板", "效率": "覆盖率:85%\\n日均清扫:45㎡\\n漏扫区域:沙发底部（高度不足）", "耗材": "主刷寿命:剩余60天\\nHEPA滤网:剩余40%", "对比": "优于65%同面积用户（清洁频率更高）"}
+2026-07-14 09:55:47,826 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:55:47,827 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人漏扫低矮区域沙发底部解决方案'}
+2026-07-14 09:55:47,830 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:55:47,830 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人主刷和HEPA滤网保养更换建议'}
+2026-07-14 09:55:47,833 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:55:47,834 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人木地板清洁注意事项'}
+2026-07-14 09:55:49,286 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:55:50,464 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:55:50,861 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:55:50,862 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有14条消息
+2026-07-14 09:55:50,862 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 调小水箱出水量，使用干拖模式，避免地面积水泡坏地板，拖布拧干后使用，及时清理地板水渍。
+2026-07-14 09:56:03,605 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:56:03,605 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 给我做一个扫地机器人的使用总结
+2026-07-14 09:56:05,512 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_id
+2026-07-14 09:56:05,512 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:56:05,513 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_id调用成功
+2026-07-14 09:56:05,514 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_current_month
+2026-07-14 09:56:05,514 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:56:05,515 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_current_month调用成功
+2026-07-14 09:56:05,516 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 09:56:05,516 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 2025-07
+2026-07-14 09:56:06,824 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fill_context_for_report
+2026-07-14 09:56:06,825 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:56:06,826 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fill_context_for_report调用成功
+2026-07-14 09:56:06,829 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 09:56:06,829 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-07-14 09:56:07,999 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 09:56:08,000 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1004', 'month': '2025-07'}
+2026-07-14 09:56:08,001 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 09:56:08,004 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-14 09:56:08,004 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | {"特征": "85㎡ | 2猫 | 混合地面", "效率": "猫砂泼洒处理:9次/月\\n自动回充成功率:87%", "耗材": "主刷缠绕:严重+\\n滤网更换:紧急", "对比": "建议升级吸力+更换防缠绕主刷"}
+2026-07-14 09:56:10,984 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:56:10,985 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人主刷缠绕毛发严重怎么办 防缠绕主刷推荐'}
+2026-07-14 09:56:10,986 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:56:10,986 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人滤网多久更换 如何保养滤网'}
+2026-07-14 09:56:10,987 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:56:10,987 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人处理宠物猫砂 养猫家庭扫地机器人使用建议'}
+2026-07-14 09:56:10,990 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:56:10,990 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人自动回充成功率低怎么办'}
+2026-07-14 09:56:12,958 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:56:13,137 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:56:13,339 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:56:13,580 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:56:13,584 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有13条消息
+2026-07-14 09:56:13,584 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 建议检查APP是否关闭了自动回充功能，确认地图中充电座位置未被修改，并清理机器人回充传感器的灰尘；同时擦拭传感器、调整充电座位置并检测信号是否正常。
+2026-07-14 09:56:30,727 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:56:30,727 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 看看我的机器人最近用得怎么样，帮我分析一下
+2026-07-14 09:56:34,031 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_id
+2026-07-14 09:56:34,032 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:56:34,033 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_id调用成功
+2026-07-14 09:56:34,034 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_current_month
+2026-07-14 09:56:34,035 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:56:34,037 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_current_month调用成功
+2026-07-14 09:56:34,040 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 09:56:34,040 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 2025-06
+2026-07-14 09:56:35,349 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fill_context_for_report
+2026-07-14 09:56:35,349 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:56:35,350 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fill_context_for_report调用成功
+2026-07-14 09:56:35,351 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 09:56:35,351 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-07-14 09:56:36,449 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 09:56:36,449 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1001', 'month': '2025-06'}
+2026-07-14 09:56:36,450 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 09:56:36,451 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-14 09:56:36,451 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | {"特征": "65㎡公寓 | 单身 | 木地板", "效率": "覆盖率:85%\\n日均清扫:45㎡\\n漏扫区域:沙发底部（高度不足）", "耗材": "主刷寿命:剩余60天\\nHEPA滤网:剩余40%", "对比": "优于65%同面积用户（清洁频率更高）"}
+2026-07-14 09:56:39,240 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:56:39,240 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人主刷多久更换 HEPA滤网清洗周期 维护保养建议'}
+2026-07-14 09:56:39,244 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:56:39,244 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人覆盖率低 漏扫区域 沙发底部避障 清洁效率提升'}
+2026-07-14 09:56:39,247 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:56:39,248 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '木地板扫地机器人使用注意事项 保养技巧'}
+2026-07-14 09:56:41,963 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:56:42,466 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:56:43,625 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:56:43,629 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有12条消息
+2026-07-14 09:56:43,629 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 使用木地板时，应调小扫地机器人的水箱出水量，优先使用干拖模式，避免地面积水泡坏地板；拖布需拧干后再使用，并及时清理地板上的水渍。
+2026-07-14 09:56:55,908 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:56:55,908 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 生成一份2025年3月的使用报告
+2026-07-14 09:56:59,714 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_id
+2026-07-14 09:56:59,714 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:56:59,716 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_id调用成功
+2026-07-14 09:56:59,717 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_current_month
+2026-07-14 09:56:59,718 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:56:59,719 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_current_month调用成功
+2026-07-14 09:56:59,721 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 09:56:59,721 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 2025-09
+2026-07-14 09:57:01,172 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fill_context_for_report
+2026-07-14 09:57:01,172 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:57:01,174 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fill_context_for_report调用成功
+2026-07-14 09:57:01,176 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 09:57:01,176 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-07-14 09:57:03,461 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 09:57:03,462 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1005', 'month': '2025-03'}
+2026-07-14 09:57:03,463 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 09:57:03,464 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-14 09:57:03,464 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | {"特征": "120㎡ | 老人 | 防滑砖", "效率": "手动操作占比:93%\\n定时清扫使用率:2次/周", "耗材": "电池衰减:27%\\n水箱首次激活:使用1次", "对比": "语音控制功能已预约安装"}
+2026-07-14 09:57:07,094 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:57:07,094 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人电池衰减修复保养建议'}
+2026-07-14 09:57:07,096 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:57:07,096 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人老人使用 定时清扫 语音控制'}
+2026-07-14 09:57:07,100 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:57:07,101 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人防滑砖地面清洁 水箱拖地使用频率'}
+2026-07-14 09:57:09,253 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:57:09,760 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:57:11,316 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:57:11,318 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有12条消息
+2026-07-14 09:57:11,318 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 在防滑砖地面清洁方面，若出现打滑，可检查驱动轮是否磨损、地面是否有水渍，并更换驱动轮、清理水渍。避免瓷砖地面水渍的方法是：更换吸水性好的拖布、调小出水量、低速拖地，清扫后开窗通风。关于水箱拖地使用频率，参考资料中未提供相关信息。
+2026-07-14 09:57:26,699 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:57:26,700 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 12月份我的扫地机用得频繁吗，帮我出个报告
+2026-07-14 09:57:29,600 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_id
+2026-07-14 09:57:29,601 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:57:29,601 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_id调用成功
+2026-07-14 09:57:29,603 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_current_month
+2026-07-14 09:57:29,604 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:57:29,605 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_current_month调用成功
+2026-07-14 09:57:29,608 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 09:57:29,608 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 2025-08
+2026-07-14 09:57:33,965 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fill_context_for_report
+2026-07-14 09:57:33,965 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:57:33,966 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fill_context_for_report调用成功
+2026-07-14 09:57:33,967 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 09:57:33,967 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-07-14 09:57:36,224 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 09:57:36,224 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1004', 'month': '2024-12'}
+2026-07-14 09:57:36,226 agent        WARNING  - agent_tools.py:237 -  [fetch_external_data]未能检索到用户：1004在2024-12的使用记录数据
+2026-07-14 09:57:36,226 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 09:57:36,229 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-14 09:57:36,229 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 
+2026-07-14 09:57:38,472 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 09:57:38,472 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1004', 'month': '2023-12'}
+2026-07-14 09:57:38,473 agent        WARNING  - agent_tools.py:237 -  [fetch_external_data]未能检索到用户：1004在2023-12的使用记录数据
+2026-07-14 09:57:38,473 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 09:57:38,475 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有10条消息
+2026-07-14 09:57:38,475 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 
+2026-07-14 09:57:40,311 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 09:57:40,311 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1004', 'month': '2025-12'}
+2026-07-14 09:57:40,312 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 09:57:40,313 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有12条消息
+2026-07-14 09:57:40,313 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | {"特征": "85㎡ | 2猫 | 混合地面", "效率": "猫砂泼洒处理:5次/月\\n自动回充成功率:95%", "耗材": "主刷寿命:剩余40天\\n滤网寿命:剩余45天", "对比": "清洁效率优于同类养宠家庭35%"}
+2026-07-14 09:57:43,798 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:57:43,798 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人 养宠家庭 使用建议 主刷保养 滤网更换 猫砂处理'}
+2026-07-14 09:57:46,053 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:57:46,057 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有14条消息
+2026-07-14 09:57:46,057 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 养宠家庭使用扫地机器人时：主刷建议1-3个月更换一次，若出现磨损、变形、开裂需立即更换；HEPA滤网每周轻刷表面，每1-2个月清水冲洗阴干，3-6个月更换新滤网；清理猫砂应调至大吸力模式，避免大颗粒卡入滚刷并及时清理尘盒，若漏扫宠物毛发可更换防缠绕主刷并开启宠物模式。
+2026-07-14 09:57:58,743 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:57:58,743 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 扫地机器人不充电了怎么办
+2026-07-14 09:58:00,023 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:58:00,023 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人不充电 故障排查 解决方法'}
+2026-07-14 09:58:03,472 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:58:03,474 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:58:03,474 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 根据参考资料，扫地机器人不充电的故障排查与解决方法包括：检查电源适配器是否插紧、电源线是否破损，电池是否安装到位；确保充电座通电。修复方法：更换完好电源线，重新插拔电池，若仍无反应联系售后检测主板。此外，若电池漏液需立即停止使用并清理，联系售后更换电池。
+2026-07-14 09:58:08,637 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:58:08,638 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 机器人一直在一个地方转圈，好像迷路了
+2026-07-14 09:58:10,628 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:58:10,628 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人一直转圈迷路 原地打转 原因 解决方法'}
+2026-07-14 09:58:13,571 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:58:13,574 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:58:13,574 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 扫地机器人一直转圈迷路、原地打转，通常由定位不准导致。原因包括：地图建图不完整、定点位置设置不准确、传感器被灰尘遮挡。解决方法：重新建图，在APP中重新标定定点清扫位置，擦拭机身传感器（如沿边传感器），清理该区域障碍物，并重启设备。
+2026-07-14 09:58:21,230 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:58:21,230 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 扫地机吸力越来越小了，感觉吸不干净
+2026-07-14 09:58:22,790 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:58:22,790 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机吸力变小 吸不干净 原因 解决方法'}
+2026-07-14 09:58:25,335 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:58:25,339 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:58:25,340 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 扫地机吸力变小、吸不干净的原因可能包括：滤网过脏、尘盒或风道堵塞、主刷缠绕杂物、吸口被遮挡、未开启精扫模式或吸力设置不足。解决方法：清洗或更换滤网，清理尘盒、风道、吸口和主刷上的缠绕物（如毛发），将吸力调至最高档，并在APP中开启精扫或深度拖扫模式。
+2026-07-14 09:58:32,015 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:58:32,016 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 运行时噪音特别大，是不是哪里坏了
+2026-07-14 09:58:33,898 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:58:33,898 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人运行时噪音大 原因 故障处理'}
+2026-07-14 09:58:35,902 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:58:35,904 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:58:35,904 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 扫地机器人运行时噪音大的原因可能包括：主刷、边刷缠绕杂物，轮组卡顿，电机故障，或风道内有杂物卡顿。故障处理：清理主刷、边刷和风道内的缠绕物或杂物，润滑轮组；若电机异响或工作异常，需联系售后检测。
+2026-07-14 09:58:42,579 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:58:42,579 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 84平的房子，养了一只猫，适合哪种扫地机器人
+2026-07-14 09:58:44,953 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:58:44,954 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '养猫 84平米 扫地机器人推荐 宠物毛发'}
+2026-07-14 09:58:47,558 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:58:47,559 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:58:47,560 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 推荐选择吸力≥3000Pa、具备防缠绕设计和宠物模式的扫地机器人，优先考虑激光导航机型，并根据家中地面材质（木地板或瓷砖）选择适配的拖布抬升或强吸力组合。84平米户型可侧重轻便灵活的型号。
+2026-07-14 09:58:59,560 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:58:59,560 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 家里有长毛地毯，推荐一款不会卡住的机器人
+2026-07-14 09:59:01,105 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:59:01,105 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '长毛地毯 不卡住 扫地机器人 推荐'}
+2026-07-14 09:59:03,921 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:59:03,924 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:59:03,924 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 选择支持长毛地毯清扫的扫地机器人，使用时调至大吸力模式，清理地毯表面杂物，避免滚刷缠绕长毛，必要时关闭地毯增压；同时确认机器人越障能力（多数机型越障高度1.5-2cm），若驱动轮打滑可更换防滑贴。
+2026-07-14 09:59:05,176 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:59:05,176 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '长毛地毯 扫地机器人 推荐型号 防缠绕 越障能力'}
+2026-07-14 09:59:07,880 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:59:07,883 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 09:59:07,884 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 针对长毛地毯场景，选择扫地机器人需关注：越障能力方面，多数机型最大越障高度为1.5-2cm，高端机型可达2.5cm，应对地毯边缘或门槛时需确保驱动轮动力足够；防缠绕方面，建议选用带硅胶条的防缠绕主刷，适合长发或宠物家庭，并开启防缠绕功能，否则可能因缠绕导致停机。具体型号未在参考资料中提及，建议结合上述要点自行筛选。
+2026-07-14 09:59:19,635 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:59:19,635 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 预算三千以内，扫拖一体机有什么推荐
+2026-07-14 09:59:21,282 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:59:21,283 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '3000元以内扫拖一体机推荐 高性价比'}
+2026-07-14 09:59:23,828 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:59:23,831 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 09:59:23,831 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 根据参考资料，3000元以内高性价比扫拖一体机选购需关注以下要点：优先选择吸力≥3000Pa的机型（地毯场景需≥4000Pa），导航技术推荐激光导航（定位精准、抗干扰强）；独居小户型可选轻便灵活款，多口之家带宠物需强化吸力和防缠绕功能。此外，整机保修通常包含拖地模组（电机、水箱、拖布支架等非易损件），过保后维修费用视故障部件而定。建议参考上述参数挑选符合预算的型号。
+2026-07-14 09:59:25,376 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:59:25,376 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '3000元以内扫拖一体机器人型号推荐 石头 科沃斯 追觅 小米'}
+2026-07-14 09:59:29,001 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:59:29,005 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 09:59:29,006 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 基于参考资料，在3000元以内价位，石头和米家（小米）有提及具体型号：石头T4和小米米家1C为适合小户型的基础激光导航机型，可满足扫拖一体需求；科沃斯和追觅未在资料中列出具体型号。此外，选购时建议关注吸力≥3000Pa、导航类型、电池容量等参数。
+2026-07-14 09:59:36,267 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 09:59:36,267 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 结合我的城市天气和使用习惯，帮我全面评估一下扫地机器人的耗材更换周期
+2026-07-14 09:59:39,424 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_location
+2026-07-14 09:59:39,424 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:59:39,425 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_current_month
+2026-07-14 09:59:39,425 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:59:39,425 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_current_month调用成功
+2026-07-14 09:59:39,426 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_id
+2026-07-14 09:59:39,426 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 09:59:39,427 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_id调用成功
+2026-07-14 09:59:39,428 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:59:39,428 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人耗材更换周期 滤网 边刷 主刷 拖布 结合天气湿度环境'}
+2026-07-14 09:59:40,161 agent        WARNING  - agent_tools.py:160 -  [get_user_location]空城市信息 info=OK infocode=10000 ip=14.1.28.147 raw={'status': '1', 'info': 'OK', 'infocode': '10000', 'province': [], 'city': [], 'adcode': [], 'rectangle': []}
+2026-07-14 09:59:40,161 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-14 09:59:42,788 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:59:42,792 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 09:59:42,792 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 根据参考资料，扫地机器人耗材更换周期如下：滤网（HEPA滤网3-6个月，海绵滤网可水洗但需定期更换）；边刷（约6-12个月，视使用频率）；主刷（胶刷1-2年，毛刷6-12个月检查磨损）；拖布未明确更换周期，但洗拖布水泵滤网建议6个月更换一次。结合天气湿度环境，参考资料仅提及木地板环境需调低拖地出水量、使用干拖模式避免积水，以及清洁液残留时需减少用量、调小出水量，未直接说明湿度对耗材更换周期的影响。
+2026-07-14 09:59:46,094 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 09:59:46,095 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人耗材边刷主刷滤网多久换一次 潮湿天气南方梅雨季影响'}
+2026-07-14 09:59:49,112 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 09:59:49,116 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-14 09:59:49,116 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 根据参考资料，扫地机器人耗材更换周期如下：边刷一般每6-12个月检查更换，刷毛磨损至＜1cm、变形或断裂时需立即更换，多尘环境可能1个月更换；主刷根据类型不同，胶刷1-2年、毛刷6-12个月检查，普通家庭3-6个月更换，宠物或长毛地毯环境1-3个月更换；滤网（HEPA）建议每3-6个月更换，海绵滤网可水洗但需定期更换。关于潮湿天气或南方梅雨季的影响，参考资料中未提及相关内容。
+2026-07-14 09:59:53,680 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 09:59:53,680 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1003', 'month': '2025-10'}
+2026-07-14 09:59:53,681 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 09:59:53,682 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有10条消息
+2026-07-14 09:59:53,683 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | {"特征": "90㎡ | 1狗 | 短毛地毯", "效率": "毛发清理:93%\\n地毯增压使用:17次/月", "耗材": "胶刷寿命:剩余40天\\n尘盒清理:每2天", "对比": "毛发处理效率前12%"}
+2026-07-14 10:00:03,946 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 10:00:03,946 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 广州夏天湿度大，我的机器人在这种环境下怎么调参数能让它更好用
+2026-07-14 10:00:08,326 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_weather
+2026-07-14 10:00:08,326 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'city': '广州'}
+2026-07-14 10:00:08,329 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 10:00:08,329 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人 广州 夏天 湿度大 高湿度 参数调整 使用建议'}
+2026-07-14 10:00:08,526 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-14 10:00:11,455 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 10:00:11,459 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 10:00:11,459 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 针对广州夏天湿度大的环境，建议：减少拖地频次，使用干拖模式；每日晾干机器人机身和耗材，每周对机器人进行除湿处理；梅雨季节定期除湿，勤换拖布防霉；夏季避免阳光直射充电座，以防高温影响电池寿命。
+2026-07-14 10:00:23,127 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 10:00:23,127 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 你好
+2026-07-14 10:00:25,153 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 10:00:25,153 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 帮我查一下火星的天气，看看我的机器人在火星上怎么用
+2026-07-14 10:00:28,345 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 10:00:28,346 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '火星 扫地机器人 使用 环境 太空 外星'}
+2026-07-14 10:00:30,947 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 10:00:30,950 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 10:00:30,951 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 基于现有参考资料，没有找到任何关于火星、太空或外星环境下使用扫地机器人的信息。
+2026-07-14 10:00:39,086 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 10:00:39,086 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 
+2026-07-14 10:00:43,546 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_location
+2026-07-14 10:00:43,547 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 10:00:43,547 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 10:00:43,548 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '高湿度 下雨 拖地 水渍 机器人设置建议'}
+2026-07-14 10:00:44,267 agent        WARNING  - agent_tools.py:160 -  [get_user_location]空城市信息 info=OK infocode=10000 ip=14.1.28.147 raw={'status': '1', 'info': 'OK', 'infocode': '10000', 'province': [], 'city': [], 'adcode': [], 'rectangle': []}
+2026-07-14 10:00:44,268 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-14 10:00:46,233 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 10:00:46,236 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 10:00:46,236 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 调小水箱出水量，更换干净拖布，将拖地模式改为“干拖”或“低速拖地”，避免机器人在同一区域反复停留。
+2026-07-14 10:00:49,913 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 10:00:49,914 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫拖机器人 回南天 湿度高 拖地水量 设置技巧'}
+2026-07-14 10:00:51,550 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 10:00:51,552 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 10:00:51,552 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 在回南天湿度高时，应将扫拖机器人调至“干拖”模式，关闭出水量，利用拖布的吸水性清理地面潮气，同时打开空调除湿，避免拖后地面返潮。
+2026-07-14 10:17:36,383 agent        ERROR    - vector_store.py:135 -  加载知识库1111.txt失败，原因是Error loading D:\intelligent-customer-agent\data\1111.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb0 in position 360: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 115, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 94, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\1111.txt
+2026-07-14 10:17:36,390 agent        INFO     - vector_store.py:110 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 10:17:36,392 agent        INFO     - vector_store.py:110 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 10:17:36,576 agent        WARNING  - vector_store.py:125 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 10:17:36,578 agent        ERROR    - vector_store.py:135 -  加载知识库响应.txt失败，原因是Error loading D:\intelligent-customer-agent\data\响应.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb9 in position 433: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 115, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 94, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\响应.txt
+2026-07-14 10:17:36,589 agent        WARNING  - vector_store.py:125 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 10:17:36,590 agent        INFO     - vector_store.py:110 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 10:17:36,593 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 10:17:36,595 agent        INFO     - vector_store.py:110 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 10:17:36,597 agent        INFO     - vector_store.py:110 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 10:17:36,599 agent        INFO     - vector_store.py:110 -  知识库故障排除.txt已存在，跳过
+2026-07-14 10:17:36,600 agent        INFO     - vector_store.py:110 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 10:17:36,602 agent        INFO     - vector_store.py:110 -  知识库维护保养.txt已存在，跳过
+2026-07-14 10:17:36,603 agent        INFO     - vector_store.py:110 -  知识库选购指南.txt已存在，跳过
+2026-07-14 10:18:34,048 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有2条消息
+2026-07-14 10:18:34,048 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 根据我所在城市的天气情况，给出具体的保养建议
+2026-07-14 10:18:36,474 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_location
+2026-07-14 10:18:36,474 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 10:18:37,375 agent        WARNING  - agent_tools.py:160 -  [get_user_location]空城市信息 info=OK infocode=10000 ip=14.1.28.147 raw={'status': '1', 'info': 'OK', 'infocode': '10000', 'province': [], 'city': [], 'adcode': [], 'rectangle': []}
+2026-07-14 10:18:37,375 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-14 10:18:37,430 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 10:18:37,430 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 未知城市
+2026-07-14 10:19:30,007 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 10:19:30,008 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 中山
+2026-07-14 10:19:32,362 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_weather
+2026-07-14 10:19:32,363 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'city': '中山'}
+2026-07-14 10:19:32,366 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-14 10:19:32,366 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人保养维护建议 天气湿度影响'}
+2026-07-14 10:19:32,569 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-14 10:19:34,357 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-14 10:19:35,001 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有7条消息
+2026-07-14 10:19:35,002 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 在梅雨季节等湿度较高时，应定期除湿防止电机受潮，并勤换拖布以防霉变；同时避免阳光直射充电座，以防高温影响电池寿命。
+2026-07-14 10:27:21,804 agent        INFO     - rag_service.py:46 -  [RagSummarizeService]混合检索器就绪 vector_k=10 bm25_k=10 final_k=5 corpus_size=385
+2026-07-14 10:27:22,942 agent        WARNING  - rag_service.py:59 -  [RagSummarizeService]重排序器加载失败，降级为纯混合检索: We couldn't connect to 'https://hf-mirror.com' to load the files, and couldn't find them in the cached files.
+Check your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+2026-07-14 11:38:10,851 agent        INFO     - rag_service.py:41 -  [RagSummarizeService]混合检索器就绪 vector_k=10 bm25_k=10 final_k=5 corpus_size=385
+2026-07-14 11:42:15,673 agent        INFO     - rag_service.py:41 -  [RagSummarizeService]混合检索器就绪 vector_k=10 bm25_k=10 final_k=5 corpus_size=385
+2026-07-14 11:47:31,668 agent        INFO     - rag_service.py:54 -  [RagSummarizeService]混合检索器就绪 vector_k=10 bm25_k=10 final_k=5 corpus_size=385
+2026-07-14 11:47:31,671 agent        INFO     - rag_service.py:69 -  [RagSummarizeService]重排序器模型未缓存，跳过加载（首次使用需联网下载 model=BAAI/bge-reranker-v2-m3）
+2026-07-14 11:54:22,668 agent        ERROR    - vector_store.py:143 -  加载知识库1111.txt失败，原因是Error loading D:\intelligent-customer-agent\data\1111.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb0 in position 360: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 123, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 102, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\1111.txt
+2026-07-14 11:54:22,681 agent        INFO     - vector_store.py:118 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 11:54:22,683 agent        INFO     - vector_store.py:118 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 11:54:23,005 agent        WARNING  - vector_store.py:133 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 11:54:23,007 agent        ERROR    - vector_store.py:143 -  加载知识库响应.txt失败，原因是Error loading D:\intelligent-customer-agent\data\响应.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb9 in position 433: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 123, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 102, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\响应.txt
+2026-07-14 11:54:23,021 agent        WARNING  - vector_store.py:133 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 11:54:23,024 agent        INFO     - vector_store.py:118 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 11:54:23,029 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 11:54:23,031 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 11:54:23,034 agent        INFO     - vector_store.py:118 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 11:54:23,037 agent        INFO     - vector_store.py:118 -  知识库故障排除.txt已存在，跳过
+2026-07-14 11:54:23,039 agent        INFO     - vector_store.py:118 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 11:54:23,041 agent        INFO     - vector_store.py:118 -  知识库维护保养.txt已存在，跳过
+2026-07-14 11:54:23,047 agent        INFO     - vector_store.py:118 -  知识库选购指南.txt已存在，跳过
+2026-07-14 11:56:38,167 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有2条消息
+2026-07-14 11:56:38,167 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 分析下在广州”回南天“的情况下，如何保养机器人
+2026-07-14 11:56:41,153 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_weather
+2026-07-14 11:56:41,154 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'city': '广州'}
+2026-07-14 11:56:41,156 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 11:56:41,193 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '回南天 高湿度 扫地机器人 保养 注意事项'}
+2026-07-14 11:56:41,232 agent        INFO     - rag_service.py:54 -  [RagSummarizeService]混合检索器就绪 vector_k=10 bm25_k=10 final_k=5 corpus_size=385
+2026-07-14 11:56:41,233 agent        INFO     - rag_service.py:69 -  [RagSummarizeService]重排序器模型未缓存，跳过加载（首次使用需联网下载 model=BAAI/bge-reranker-v2-m3）
+2026-07-14 11:56:41,274 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 11:56:41,397 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-14 11:56:54,671 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 11:56:54,671 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **梅雨季节怎么维护？**
+- 定期除湿，防止电机受潮，勤换拖布防霉。
+85. **夏季高温会影响使用吗？**
+- 避免阳光直射充电座，高温可能影响电池寿命。
+## 十一、对比其他产品类
+86. **扫地机器人和吸尘器怎么选？**
+- 机器人负责日常维护，吸尘器处理深度清洁。
+87. **和洗地机相比优劣如何？**
+- 洗地机清洁力更强但需人工操作，机器人自动化程度高。
+88
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每周检查机器人APP连接状态，确保网络正常，及时接收耗材、故障提醒。
+48. 机器人充电时，保证充电环境通风良好，无易燃、易爆物品。
+49. 每月检查机器人的防缠绕梳齿（若有），确保无变形、断裂，正常梳理毛发。
+50. 日常使用遵循“轻用轻放、及时清理”原则，减少配件磨损，延长整机寿命。
+
+## 扫地功能专属维护（30条）
+1
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+# 扫地机器人 100 问
+## 一、基础与技术类
+### 导航与路径规划
+1. **扫地机器人是如何实现自主导航的？**
+- 通过激光雷达(LDS)、视觉传感器(VSLAM)或陀螺仪+加速度计实现环境感知和定位。
+2. **LDS 激光导航和 VSLAM 视觉导航哪个更好？**
+- LDS 精度更高、不受光线影响；VSLAM 成本更低、可识别更多物体细节。
+3
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每月检查机器人拖地模组接口（扫拖一体），保证无灰尘、杂物，连接顺畅。
+38. 日常使用后，将机器人的清扫模式调至“待机”，减少电量消耗。
+39. 每周检查充电座电源适配器，无发热、异响，避免长时间超负荷工作。
+40. 机器人若不慎沾到宠物粪便，立即用湿巾清理干净，再用中性洗涤剂擦拭，避免滋生细菌。
+41. 每日检查机器人边刷的旋转情况，若卡顿立即停机清理，防止电机烧毁。
+42
+2026-07-14 11:56:57,419 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 11:56:57,419 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '回南天 梅雨季 高湿度 扫地机器人 防潮 防霉 拖布 保养 充电'}
+2026-07-14 11:56:57,442 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 11:57:10,274 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有7条消息
+2026-07-14 11:57:10,275 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **梅雨季节怎么维护？**
+- 定期除湿，防止电机受潮，勤换拖布防霉。
+85. **夏季高温会影响使用吗？**
+- 避免阳光直射充电座，高温可能影响电池寿命。
+## 十一、对比其他产品类
+86. **扫地机器人和吸尘器怎么选？**
+- 机器人负责日常维护，吸尘器处理深度清洁。
+87. **和洗地机相比优劣如何？**
+- 洗地机清洁力更强但需人工操作，机器人自动化程度高。
+88
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\选购指南.txt）
+. 清洁液容量：清洁液盒容量≥100ml，可使用1-2周，避免频繁添加。
+
+87. 机身指示灯：不同颜色指示灯区分工作、充电、故障状态，直观了解机身情况。
+
+88. 防倾倒设计：机身重心偏低，避免在斜坡或不平整地面倾倒，保护机身和家具。
+
+89. 软件稳定性：APP无频繁卡顿、闪退，连接稳定性≥95%，避免控制失效。
+
+90
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\扫拖一体机器人100问.txt）
+. **一次性拖布可以水洗后重复使用吗？**
+- 不建议，一次性拖布的吸水性和清洁性为单次设计，水洗后会变硬、掉毛，影响拖地效果，还可能堵塞拖地模组。
+
+### 场景适配与使用技巧类
+66. **南方回南天如何用机器人拖地？**
+- 调至“干拖”模式，关闭出水量，利用拖布的吸水性清理地面潮气，同时打开空调除湿，避免拖后地面返潮。
+67
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 水泥地/老旧地砖环境：清扫后立即清理机身底部、轮组的泥沙，防止磨损配件，减少拖地频次，避免灰尘结块。
+6. 宠物家庭：每次清扫后全面清理主刷、尘盒、拖布，每周对机器人进行除味消毒，耗材更换周期缩短50%。
+7. 有婴儿/小孩的家庭：拖地仅用清水，避免添加清洁液，拖布每次使用后高温消毒，机器人机身每日擦拭。
+8
+2026-07-14 11:58:08,884 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 11:58:08,885 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 小米的扫地机器人
+2026-07-14 11:58:11,335 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 11:58:11,335 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '小米扫地机器人 回南天 高湿度 保养 注意事项'}
+2026-07-14 11:58:11,358 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 11:58:23,310 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 11:58:23,311 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.
+#	127.0.0.1       localhost
+#	::1             localhost
+192.168.0.145 monitor.jzywjk.local
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每周检查机器人APP连接状态，确保网络正常，及时接收耗材、故障提醒。
+48. 机器人充电时，保证充电环境通风良好，无易燃、易爆物品。
+49. 每月检查机器人的防缠绕梳齿（若有），确保无变形、断裂，正常梳理毛发。
+50. 日常使用遵循“轻用轻放、及时清理”原则，减少配件磨损，延长整机寿命。
+
+## 扫地功能专属维护（30条）
+1
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+## 五、选购指南类
+### 选购要素
+39. **选购时最应该关注哪些参数？**
+- 导航类型、吸力大小、电池容量、尘盒/水箱容量。
+40. **小户型适合哪种扫地机器人？**
+- 基础激光导航机型即可，如米家 1C、石头 T4。
+41. **大户型应该注意什么？**
+- 选择大电池(>5200mAh)、自动集尘或自动洗拖布机型。
+42
+2026-07-14 11:58:25,406 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 11:58:25,406 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '小米扫地机器人 拖布 尘盒 防潮 发霉 广州回南天'}
+2026-07-14 11:58:25,427 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 11:58:37,734 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-14 11:58:37,735 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\故障排除.txt）
+. 故障现象：尘盒有异味，清理后仍存在；检测：尘盒是否滋生细菌，滤网是否发霉；修复：用中性除味剂清洗尘盒，更换发霉滤网，晾干后使用。
+
+74. 故障现象：拖地时机器人机身沾有油污，难以清理；检测：是否在厨房重油污区域工作，拖布是否脏污；修复：用中性洗涤剂擦拭机身，彻底清洗拖布，手动预处理油污。
+
+75
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 水泥地/老旧地砖环境：清扫后立即清理机身底部、轮组的泥沙，防止磨损配件，减少拖地频次，避免灰尘结块。
+6. 宠物家庭：每次清扫后全面清理主刷、尘盒、拖布，每周对机器人进行除味消毒，耗材更换周期缩短50%。
+7. 有婴儿/小孩的家庭：拖地仅用清水，避免添加清洁液，拖布每次使用后高温消毒，机器人机身每日擦拭。
+8
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\故障排除.txt）
+. 故障现象：尘盒安装后漏灰，污染机身；检测：尘盒密封圈是否老化，安装是否到位；修复：更换密封圈，重新安装尘盒，确保密封严实。
+
+130. 故障现象：自动洗拖布机型污水仓无法倾倒污水；检测：污水仓卡扣是否卡住，是否有杂物堵塞排水口；修复：松开卡扣，清理排水口杂物。
+
+131
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 存放时，将机器人放在**阴凉、干燥、通风**的环境，避免高温、低温、潮湿、阳光直射。
+7. 存放温度控制在5℃-35℃，相对湿度≤60%，远离易燃、易爆、腐蚀性物品。
+8. 存放时，机器人与充电座断开连接，不可长期插电充电，防止电池过充损坏。
+9. 配件单独存放于密封袋中，放入干燥剂，防止受潮、发霉、老化。
+10. 水箱密封圈存放前，涂一层薄硅胶油，放在密封袋中，防止老化开裂。
+11
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\扫拖一体机器人100问.txt）
+. **长时间出差，如何设置机器人自动扫拖？**
+- 在APP中设置“定时扫拖”，选择合适的出水量和吸力，确保水箱水量充足、尘盒为空，开启“完成后自动回充”功能。
+74. **装修后开荒清洁可以用扫拖一体机器人吗？**
+- 不建议，装修后地面有大量水泥渣、沙粒、尖锐杂物，会刮伤机器人机身和地面，还会堵塞滤网、卡死机件，需手动开荒后再使用。
+75
+2026-07-14 11:58:40,604 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 11:58:40,604 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '小米米家扫地机器人 扫拖一体 型号 拖布 水箱 维护'}
+2026-07-14 11:58:40,629 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 11:58:53,637 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有10条消息
+2026-07-14 11:58:53,638 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\扫拖一体机器人100问.txt）
+. **扫拖一体机器人的保修范围包括拖地模组吗？**
+- 包括，整机保修范围内（一般1-2年），拖地模组的电机、水箱、拖布支架等非易损件出现故障可免费维修或更换，易损件（拖布、密封圈）不在保修范围内。
+92. **过保后拖地系统故障，维修费用高吗？**
+- 维修费用根据故障部件而定，拖布电机、水泵等核心部件费用稍高，滤网、卡扣等小配件费用较低，建议选择官方售后维修，保证配件原装。
+93
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\扫拖一体机器人100问.txt）
+. **长时间出差，如何设置机器人自动扫拖？**
+- 在APP中设置“定时扫拖”，选择合适的出水量和吸力，确保水箱水量充足、尘盒为空，开启“完成后自动回充”功能。
+74. **装修后开荒清洁可以用扫拖一体机器人吗？**
+- 不建议，装修后地面有大量水泥渣、沙粒、尖锐杂物，会刮伤机器人机身和地面，还会堵塞滤网、卡死机件，需手动开荒后再使用。
+75
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 厨房重油污环境：拖地后立即清理拖布、水箱，用中性洗涤剂清洗拖布，每周对水箱进行除垢，避免油污堵塞。
+12. 卫生间环境：仅进行扫地，不拖地，防止机器人接触积水，清理后擦拭机身底部，确保无水渍。
+13. 阳台封闭环境：拖地后及时开窗通风，清理机器人轮组的泥沙，避免阳台灰尘与水渍混合。
+14. 复式/多层楼层：为每层楼单独建图，更换楼层使用前，清理机器人底部、传感器，校准扫拖参数。
+15
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\扫拖一体机器人100问.txt）
+. **扫拖一体机器人支持干湿两拖吗？**
+- 支持，干拖可清理浮尘、毛发，湿拖可去除污渍，在APP中切换“干拖/湿拖”模式，湿拖需往水箱加注清水。
+8. **自动洗拖布机型可以只扫不洗拖布吗？**
+- 可以，关闭“自动洗拖布”功能，仅开启吸尘模式，拖布未湿润时不会进行拖地操作。
+9
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 水泥地/老旧地砖环境：清扫后立即清理机身底部、轮组的泥沙，防止磨损配件，减少拖地频次，避免灰尘结块。
+6. 宠物家庭：每次清扫后全面清理主刷、尘盒、拖布，每周对机器人进行除味消毒，耗材更换周期缩短50%。
+7. 有婴儿/小孩的家庭：拖地仅用清水，避免添加清洁液，拖布每次使用后高温消毒，机器人机身每日擦拭。
+8
+2026-07-14 12:26:22,578 agent        ERROR    - vector_store.py:143 -  加载知识库1111.txt失败，原因是Error loading D:\intelligent-customer-agent\data\1111.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb0 in position 360: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 123, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 102, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\1111.txt
+2026-07-14 12:26:22,581 agent        INFO     - vector_store.py:118 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 12:26:22,582 agent        INFO     - vector_store.py:118 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 12:26:22,586 agent        WARNING  - vector_store.py:133 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 12:26:22,587 agent        ERROR    - vector_store.py:143 -  加载知识库响应.txt失败，原因是Error loading D:\intelligent-customer-agent\data\响应.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb9 in position 433: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 123, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 102, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\响应.txt
+2026-07-14 12:26:22,594 agent        WARNING  - vector_store.py:133 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 12:26:22,594 agent        INFO     - vector_store.py:118 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 12:26:22,595 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 12:26:22,596 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 12:26:22,596 agent        INFO     - vector_store.py:118 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 12:26:22,596 agent        INFO     - vector_store.py:118 -  知识库故障排除.txt已存在，跳过
+2026-07-14 12:26:22,597 agent        INFO     - vector_store.py:118 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 12:26:22,598 agent        INFO     - vector_store.py:118 -  知识库维护保养.txt已存在，跳过
+2026-07-14 12:26:22,599 agent        INFO     - vector_store.py:118 -  知识库选购指南.txt已存在，跳过
+2026-07-14 12:26:50,975 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有2条消息
+2026-07-14 12:26:50,975 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 回南天要怎么保养机器人
+2026-07-14 12:26:53,810 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:26:53,811 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '回南天 潮湿天气 扫地机器人 保养 防潮 注意事项'}
+2026-07-14 12:26:53,811 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_location
+2026-07-14 12:26:53,812 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 12:26:53,826 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:26:54,695 agent        WARNING  - agent_tools.py:167 -  [get_user_location]空城市信息 info=OK infocode=10000 ip=14.1.28.147 raw={'status': '1', 'info': 'OK', 'infocode': '10000', 'province': [], 'city': [], 'adcode': [], 'rectangle': []}
+2026-07-14 12:26:54,695 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-14 12:26:54,747 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 12:26:54,748 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 未知城市
+2026-07-14 12:27:49,597 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 12:27:49,598 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 小米有哪些种类的扫地机器人呢
+2026-07-14 12:27:52,004 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:27:52,005 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '小米扫地机器人种类 产品系列 型号分类'}
+2026-07-14 12:27:52,024 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:28:03,256 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 12:28:03,256 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+## 五、选购指南类
+### 选购要素
+39. **选购时最应该关注哪些参数？**
+- 导航类型、吸力大小、电池容量、尘盒/水箱容量。
+40. **小户型适合哪种扫地机器人？**
+- 基础激光导航机型即可，如米家 1C、石头 T4。
+41. **大户型应该注意什么？**
+- 选择大电池(>5200mAh)、自动集尘或自动洗拖布机型。
+42
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.
+#	127.0.0.1       localhost
+#	::1             localhost
+192.168.0.145 monitor.jzywjk.local
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\选购指南.txt）
+扫地/扫拖一体机器人选购指南200条
+
+1. 选购核心：优先明确使用场景，独居小户型侧重轻便灵活，多口之家带宠物需强化吸力和防缠绕功能。
+
+2. 吸力参数：家用建议选择≥3000Pa吸力机型，地毯场景需≥4000Pa，吸力可调节更适配不同地面。
+
+3. 导航技术：激光导航定位精准、抗干扰强，适合复杂户型；视觉导航性价比高，避免强光环境使用。
+
+4
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **清洁工具怎么选？**
+- 选择配套的小刷子，方便清理各个部件。
+## 九、安全与隐私类
+### 数据安全
+73. **扫地机器人会收集哪些数据？**
+- 家庭地图、清洁记录、设备信息等。
+74. **如何保护家庭地图隐私？**
+- 选择本地存储地图的机型，关闭云同步功能。
+75. **机器人有被黑客入侵的风险吗？**
+- 理论上有，但主流品牌都有数据加密措施。
+### 使用安全
+76
+2026-07-14 12:28:06,030 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:28:06,031 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '米家 小米 扫地机器人 型号 产品线 扫拖一体 自动集尘'}
+2026-07-14 12:28:06,049 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:28:17,582 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-14 12:28:17,582 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\扫拖一体机器人100问.txt）
+. **长时间出差，如何设置机器人自动扫拖？**
+- 在APP中设置“定时扫拖”，选择合适的出水量和吸力，确保水箱水量充足、尘盒为空，开启“完成后自动回充”功能。
+74. **装修后开荒清洁可以用扫拖一体机器人吗？**
+- 不建议，装修后地面有大量水泥渣、沙粒、尖锐杂物，会刮伤机器人机身和地面，还会堵塞滤网、卡死机件，需手动开荒后再使用。
+75
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\扫拖一体机器人100问.txt）
+. **如何清洁拖地系统的传感器？**
+- 用干软布或无尘布轻轻擦拭传感器表面，避免用湿布、酒精擦拭，防止传感器受潮、损坏。
+62. **自动集尘+自动洗拖布机型的耗材如何搭配更换？**
+- 集尘袋1-2个月更换一次，拖布3个月更换一次，滤网1-2个月清洗一次、6个月更换一次，按使用频率灵活调整。
+63
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\选购指南.txt）
+扫地/扫拖一体机器人选购指南200条
+
+1. 选购核心：优先明确使用场景，独居小户型侧重轻便灵活，多口之家带宠物需强化吸力和防缠绕功能。
+
+2. 吸力参数：家用建议选择≥3000Pa吸力机型，地毯场景需≥4000Pa，吸力可调节更适配不同地面。
+
+3. 导航技术：激光导航定位精准、抗干扰强，适合复杂户型；视觉导航性价比高，避免强光环境使用。
+
+4
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 洗拖布水泵滤网（扫拖一体）：每周清理，6个月更换一次，堵塞导致不出水时提前更换。
+30. 所有耗材优先选择**原装配件**，非原装配件尺寸、规格不符，易导致设备故障、清洁效果下降。
+
+## 环境适配维护（20条）
+1. 木地板环境：拖地时调至低档出水量，使用干拖模式，避免地面积水，每周对机器人轮组进行除尘，防止泥沙磨损地板。
+2
+2026-07-14 12:28:20,503 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:28:20,503 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '小米米家扫地机器人 产品系列 分类 导航 激光 视觉 型号大全'}
+2026-07-14 12:28:20,521 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:28:31,603 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有10条消息
+2026-07-14 12:28:31,604 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+## 五、选购指南类
+### 选购要素
+39. **选购时最应该关注哪些参数？**
+- 导航类型、吸力大小、电池容量、尘盒/水箱容量。
+40. **小户型适合哪种扫地机器人？**
+- 基础激光导航机型即可，如米家 1C、石头 T4。
+41. **大户型应该注意什么？**
+- 选择大电池(>5200mAh)、自动集尘或自动洗拖布机型。
+42
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.
+#	127.0.0.1       localhost
+#	::1             localhost
+192.168.0.145 monitor.jzywjk.local
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\选购指南.txt）
+扫地/扫拖一体机器人选购指南200条
+
+1. 选购核心：优先明确使用场景，独居小户型侧重轻便灵活，多口之家带宠物需强化吸力和防缠绕功能。
+
+2. 吸力参数：家用建议选择≥3000Pa吸力机型，地毯场景需≥4000Pa，吸力可调节更适配不同地面。
+
+3. 导航技术：激光导航定位精准、抗干扰强，适合复杂户型；视觉导航性价比高，避免强光环境使用。
+
+4
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+# 扫地机器人 100 问
+## 一、基础与技术类
+### 导航与路径规划
+1. **扫地机器人是如何实现自主导航的？**
+- 通过激光雷达(LDS)、视觉传感器(VSLAM)或陀螺仪+加速度计实现环境感知和定位。
+2. **LDS 激光导航和 VSLAM 视觉导航哪个更好？**
+- LDS 精度更高、不受光线影响；VSLAM 成本更低、可识别更多物体细节。
+3
+2026-07-14 12:34:23,311 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 12:34:23,312 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 扫地机器人怎么保养
+2026-07-14 12:34:24,982 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:34:24,984 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人保养方法 维护 清洁 注意事项'}
+2026-07-14 12:34:25,252 agent        INFO     - rag_service.py:54 -  [RagSummarizeService]混合检索器就绪 vector_k=10 bm25_k=10 final_k=5 corpus_size=385
+2026-07-14 12:34:25,253 agent        INFO     - rag_service.py:69 -  [RagSummarizeService]重排序器模型未缓存，跳过加载（首次使用需联网下载 model=BAAI/bge-reranker-v2-m3）
+2026-07-14 12:34:25,277 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:34:25,279 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-14 12:34:25,279 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.
+#	127.0.0.1       localhost
+#	::1             localhost
+192.168.0.145 monitor.jzywjk.local
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每周检查机器人APP连接状态，确保网络正常，及时接收耗材、故障提醒。
+48. 机器人充电时，保证充电环境通风良好，无易燃、易爆物品。
+49. 每月检查机器人的防缠绕梳齿（若有），确保无变形、断裂，正常梳理毛发。
+50. 日常使用遵循“轻用轻放、及时清理”原则，减少配件磨损，延长整机寿命。
+
+## 扫地功能专属维护（30条）
+1
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每月检查机器人拖地模组接口（扫拖一体），保证无灰尘、杂物，连接顺畅。
+38. 日常使用后，将机器人的清扫模式调至“待机”，减少电量消耗。
+39. 每周检查充电座电源适配器，无发热、异响，避免长时间超负荷工作。
+40. 机器人若不慎沾到宠物粪便，立即用湿巾清理干净，再用中性洗涤剂擦拭，避免滋生细菌。
+41. 每日检查机器人边刷的旋转情况，若卡顿立即停机清理，防止电机烧毁。
+42
+2026-07-14 12:35:49,580 agent        ERROR    - vector_store.py:143 -  加载知识库1111.txt失败，原因是Error loading D:\intelligent-customer-agent\data\1111.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb0 in position 360: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 123, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 102, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\1111.txt
+2026-07-14 12:35:49,582 agent        INFO     - vector_store.py:118 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 12:35:49,583 agent        INFO     - vector_store.py:118 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 12:35:49,589 agent        WARNING  - vector_store.py:133 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 12:35:49,590 agent        ERROR    - vector_store.py:143 -  加载知识库响应.txt失败，原因是Error loading D:\intelligent-customer-agent\data\响应.txt
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 43, in lazy_load
+    text = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb9 in position 433: invalid start byte
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 123, in load_document
+    documents:list[Document] = get_file_documents(file_path)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\intelligent-customer-agent\rag\vector_store.py", line 102, in get_file_documents
+    return txt_loader(read_path)
+  File "D:\intelligent-customer-agent\utils\file_handler.py", line 51, in txt_loader
+    return TextLoader(filepath,encoding='utf-8').load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_core\document_loaders\base.py", line 43, in load
+    return list(self.lazy_load())
+  File "D:\intelligent-customer-agent\.venv\Lib\site-packages\langchain_community\document_loaders\text.py", line 56, in lazy_load
+    raise RuntimeError(f"Error loading {self.file_path}") from e
+RuntimeError: Error loading D:\intelligent-customer-agent\data\响应.txt
+2026-07-14 12:35:49,597 agent        WARNING  - vector_store.py:133 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 12:35:49,598 agent        INFO     - vector_store.py:118 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 12:35:49,599 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 12:35:49,600 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 12:35:49,601 agent        INFO     - vector_store.py:118 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 12:35:49,602 agent        INFO     - vector_store.py:118 -  知识库故障排除.txt已存在，跳过
+2026-07-14 12:35:49,603 agent        INFO     - vector_store.py:118 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 12:35:49,604 agent        INFO     - vector_store.py:118 -  知识库维护保养.txt已存在，跳过
+2026-07-14 12:35:49,605 agent        INFO     - vector_store.py:118 -  知识库选购指南.txt已存在，跳过
+2026-07-14 12:39:19,242 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-14 12:39:19,242 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 我在湖北天门，结合我当地的天气给我一些机器人的保养建议
+2026-07-14 12:39:21,633 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_weather
+2026-07-14 12:39:21,633 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'city': '天门'}
+2026-07-14 12:39:21,634 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:39:21,634 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人保养建议 天气 湿度 维护'}
+2026-07-14 12:39:21,908 agent        INFO     - rag_service.py:54 -  [RagSummarizeService]混合检索器就绪 vector_k=10 bm25_k=10 final_k=5 corpus_size=385
+2026-07-14 12:39:21,909 agent        INFO     - rag_service.py:69 -  [RagSummarizeService]重排序器模型未缓存，跳过加载（首次使用需联网下载 model=BAAI/bge-reranker-v2-m3）
+2026-07-14 12:39:21,932 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:39:21,973 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-14 12:39:21,975 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 12:39:21,975 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.
+#	127.0.0.1       localhost
+#	::1             localhost
+192.168.0.145 monitor.jzywjk.local
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每周检查机器人APP连接状态，确保网络正常，及时接收耗材、故障提醒。
+48. 机器人充电时，保证充电环境通风良好，无易燃、易爆物品。
+49. 每月检查机器人的防缠绕梳齿（若有），确保无变形、断裂，正常梳理毛发。
+50. 日常使用遵循“轻用轻放、及时清理”原则，减少配件磨损，延长整机寿命。
+
+## 扫地功能专属维护（30条）
+1
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每月检查机器人拖地模组接口（扫拖一体），保证无灰尘、杂物，连接顺畅。
+38. 日常使用后，将机器人的清扫模式调至“待机”，减少电量消耗。
+39. 每周检查充电座电源适配器，无发热、异响，避免长时间超负荷工作。
+40. 机器人若不慎沾到宠物粪便，立即用湿巾清理干净，再用中性洗涤剂擦拭，避免滋生细菌。
+41. 每日检查机器人边刷的旋转情况，若卡顿立即停机清理，防止电机烧毁。
+42
+2026-07-14 12:41:20,124 agent        INFO     - vector_store.py:118 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 12:41:20,126 agent        INFO     - vector_store.py:118 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 12:41:20,133 agent        WARNING  - vector_store.py:133 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 12:41:20,142 agent        WARNING  - vector_store.py:133 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 12:41:20,144 agent        INFO     - vector_store.py:118 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 12:41:20,145 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 12:41:20,146 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 12:41:20,148 agent        INFO     - vector_store.py:118 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 12:41:20,149 agent        INFO     - vector_store.py:118 -  知识库故障排除.txt已存在，跳过
+2026-07-14 12:41:20,151 agent        INFO     - vector_store.py:118 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 12:41:20,153 agent        INFO     - vector_store.py:118 -  知识库维护保养.txt已存在，跳过
+2026-07-14 12:41:20,154 agent        INFO     - vector_store.py:118 -  知识库选购指南.txt已存在，跳过
+2026-07-14 12:41:50,173 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有2条消息
+2026-07-14 12:41:50,174 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 湖北天门，按照我当地的天气，给我一些机器人的使用建议
+2026-07-14 12:41:52,900 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_weather
+2026-07-14 12:41:52,900 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'city': '天门'}
+2026-07-14 12:41:52,901 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:41:52,901 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '潮湿天气扫地机器人使用建议 湿度高 注意事项'}
+2026-07-14 12:41:52,918 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:41:53,100 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-14 12:41:53,102 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 12:41:53,102 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\选购指南.txt）
+扫地/扫拖一体机器人选购指南200条
+
+1. 选购核心：优先明确使用场景，独居小户型侧重轻便灵活，多口之家带宠物需强化吸力和防缠绕功能。
+
+2. 吸力参数：家用建议选择≥3000Pa吸力机型，地毯场景需≥4000Pa，吸力可调节更适配不同地面。
+
+3. 导航技术：激光导航定位精准、抗干扰强，适合复杂户型；视觉导航性价比高，避免强光环境使用。
+
+4
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.
+#	127.0.0.1       localhost
+#	::1             localhost
+192.168.0.145 monitor.jzywjk.local
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **梅雨季节怎么维护？**
+- 定期除湿，防止电机受潮，勤换拖布防霉。
+85. **夏季高温会影响使用吗？**
+- 避免阳光直射充电座，高温可能影响电池寿命。
+## 十一、对比其他产品类
+86. **扫地机器人和吸尘器怎么选？**
+- 机器人负责日常维护，吸尘器处理深度清洁。
+87. **和洗地机相比优劣如何？**
+- 洗地机清洁力更强但需人工操作，机器人自动化程度高。
+88
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+2026-07-14 12:41:55,605 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:41:55,605 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '夏季高温扫地机器人使用注意事项 电池保养 充电座摆放'}
+2026-07-14 12:41:55,627 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:41:55,629 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有7条消息
+2026-07-14 12:41:55,629 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\扫地机器人100问2.txt）
+. **机器人充电时发热严重怎么处理？**
+- 检查充电座是否通风良好，避免机器人在密闭环境中充电，暂停充电，待机身冷却后重新充电，若仍发热联系售后。
+98. **如何延长扫地机器人的使用寿命？**
+- 定期清理耗材和传感器，及时更换磨损配件，避免机器人磕碰、摔落，长时间不用时做好电池存放，定期开机维护。
+99
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.
+#	127.0.0.1       localhost
+#	::1             localhost
+192.168.0.145 monitor.jzywjk.local
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\扫地机器人100问2.txt）
+. **冬季使用机器人需要注意什么？**
+- 避免机器人在低温环境下长时间工作，电池在低温下续航会衰减，及时回充，清理机身表面冰霜。
+80. **夏季使用机器人需要注意什么？**
+- 避免机器人在暴晒环境下工作，定期清理电机散热口，防止过热保护，及时补充水箱水量。
+
+### 升级与售后类
+81
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 冬季低温环境：机器人工作前在室温环境静置30分钟，避免电池续航衰减，充电时保证环境温度≥5℃。
+20. 装修后清洁环境：先手动开荒，清理水泥渣、沙粒、尖锐杂物后，再使用机器人，避免卡死机件、刮伤配件。
+
+## 长期存放维护（20条）
+1. 存放前，将机器人完全充满电（电量至80%-90%），避免亏电存放导致电池损坏。
+2
+2026-07-14 12:44:40,401 agent        INFO     - vector_store.py:118 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 12:44:40,402 agent        INFO     - vector_store.py:118 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 12:44:40,469 agent        WARNING  - vector_store.py:133 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 12:44:40,474 agent        WARNING  - vector_store.py:133 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 12:44:40,474 agent        INFO     - vector_store.py:118 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 12:44:40,475 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 12:44:40,475 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 12:44:40,476 agent        INFO     - vector_store.py:118 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 12:44:40,476 agent        INFO     - vector_store.py:118 -  知识库故障排除.txt已存在，跳过
+2026-07-14 12:44:40,477 agent        INFO     - vector_store.py:118 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 12:44:40,478 agent        INFO     - vector_store.py:118 -  知识库维护保养.txt已存在，跳过
+2026-07-14 12:44:40,479 agent        INFO     - vector_store.py:118 -  知识库选购指南.txt已存在，跳过
+2026-07-14 12:45:12,578 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有2条消息
+2026-07-14 12:45:12,578 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 我在吉林白山，结合当地的天气情况，为我给出合理的扫地机器人维保建议
+2026-07-14 12:45:16,119 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_weather
+2026-07-14 12:45:16,119 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'city': '白山'}
+2026-07-14 12:45:16,120 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:45:16,120 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人 寒冷天气 潮湿环境 维保保养建议'}
+2026-07-14 12:45:16,162 agent        INFO     - rag_service.py:54 -  [RagSummarizeService]混合检索器就绪 vector_k=10 bm25_k=10 final_k=5 corpus_size=385
+2026-07-14 12:45:16,163 agent        INFO     - rag_service.py:69 -  [RagSummarizeService]重排序器模型未缓存，跳过加载（首次使用需联网下载 model=BAAI/bge-reranker-v2-m3）
+2026-07-14 12:45:16,195 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:45:16,378 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-14 12:45:16,380 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 12:45:16,380 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **梅雨季节怎么维护？**
+- 定期除湿，防止电机受潮，勤换拖布防霉。
+85. **夏季高温会影响使用吗？**
+- 避免阳光直射充电座，高温可能影响电池寿命。
+## 十一、对比其他产品类
+86. **扫地机器人和吸尘器怎么选？**
+- 机器人负责日常维护，吸尘器处理深度清洁。
+87. **和洗地机相比优劣如何？**
+- 洗地机清洁力更强但需人工操作，机器人自动化程度高。
+88
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 多尘/风沙大的环境：每日清理尘盒、滤网，每周更换边刷，关闭拖地功能，防止灰尘与水渍混合结块。
+9. 南方回南天/潮湿环境：减少拖地频次，使用干拖模式，机器人机身、耗材每日晾干，每周对机器人进行除湿处理。
+10. 北方干燥/多灰环境：增大吸力档位，每日清理尘盒，每月对风道、滤网进行深度清洁，拖地时调至中档出水量。
+11
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每月检查机器人拖地模组接口（扫拖一体），保证无灰尘、杂物，连接顺畅。
+38. 日常使用后，将机器人的清扫模式调至“待机”，减少电量消耗。
+39. 每周检查充电座电源适配器，无发热、异响，避免长时间超负荷工作。
+40. 机器人若不慎沾到宠物粪便，立即用湿巾清理干净，再用中性洗涤剂擦拭，避免滋生细菌。
+41. 每日检查机器人边刷的旋转情况，若卡顿立即停机清理，防止电机烧毁。
+42
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每周检查机器人APP连接状态，确保网络正常，及时接收耗材、故障提醒。
+48. 机器人充电时，保证充电环境通风良好，无易燃、易爆物品。
+49. 每月检查机器人的防缠绕梳齿（若有），确保无变形、断裂，正常梳理毛发。
+50. 日常使用遵循“轻用轻放、及时清理”原则，减少配件磨损，延长整机寿命。
+
+## 扫地功能专属维护（30条）
+1
+2026-07-14 12:51:03,029 agent        INFO     - vector_store.py:118 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 12:51:03,030 agent        INFO     - vector_store.py:118 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 12:51:03,036 agent        WARNING  - vector_store.py:133 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 12:51:03,043 agent        WARNING  - vector_store.py:133 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 12:51:03,045 agent        INFO     - vector_store.py:118 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 12:51:03,046 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 12:51:03,046 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 12:51:03,047 agent        INFO     - vector_store.py:118 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 12:51:03,048 agent        INFO     - vector_store.py:118 -  知识库故障排除.txt已存在，跳过
+2026-07-14 12:51:03,048 agent        INFO     - vector_store.py:118 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 12:51:03,049 agent        INFO     - vector_store.py:118 -  知识库维护保养.txt已存在，跳过
+2026-07-14 12:51:03,049 agent        INFO     - vector_store.py:118 -  知识库选购指南.txt已存在，跳过
+2026-07-14 12:51:30,785 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有2条消息
+2026-07-14 12:51:30,785 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 我在江苏泰州，结合当地天气给我一些机器人的保养建议
+2026-07-14 12:51:33,243 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_weather
+2026-07-14 12:51:33,244 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'city': '泰州'}
+2026-07-14 12:51:33,245 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:51:33,245 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人 潮湿天气 保养建议'}
+2026-07-14 12:51:33,261 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:51:33,444 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-14 12:51:33,446 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 12:51:33,446 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **梅雨季节怎么维护？**
+- 定期除湿，防止电机受潮，勤换拖布防霉。
+85. **夏季高温会影响使用吗？**
+- 避免阳光直射充电座，高温可能影响电池寿命。
+## 十一、对比其他产品类
+86. **扫地机器人和吸尘器怎么选？**
+- 机器人负责日常维护，吸尘器处理深度清洁。
+87. **和洗地机相比优劣如何？**
+- 洗地机清洁力更强但需人工操作，机器人自动化程度高。
+88
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\选购指南.txt）
+扫地/扫拖一体机器人选购指南200条
+
+1. 选购核心：优先明确使用场景，独居小户型侧重轻便灵活，多口之家带宠物需强化吸力和防缠绕功能。
+
+2. 吸力参数：家用建议选择≥3000Pa吸力机型，地毯场景需≥4000Pa，吸力可调节更适配不同地面。
+
+3. 导航技术：激光导航定位精准、抗干扰强，适合复杂户型；视觉导航性价比高，避免强光环境使用。
+
+4
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+# 扫地机器人 100 问
+## 一、基础与技术类
+### 导航与路径规划
+1. **扫地机器人是如何实现自主导航的？**
+- 通过激光雷达(LDS)、视觉传感器(VSLAM)或陀螺仪+加速度计实现环境感知和定位。
+2. **LDS 激光导航和 VSLAM 视觉导航哪个更好？**
+- LDS 精度更高、不受光线影响；VSLAM 成本更低、可识别更多物体细节。
+3
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **技术发展经历了哪些阶段？**
+- 随机碰撞→陀螺仪导航→激光导航→AI 视觉导航。
+## 十四、趣味知识类
+97. **为什么叫"扫地机器人"而不是"吸尘机器人"？**
+- 早期产品以扫为主，且"机器人"概念更吸引人。
+98. **最贵的扫地机器人是哪款？**
+- iRobot 的商用机型 Avva 30，售价约 2 万美元。
+99
+2026-07-14 12:54:25,005 agent        INFO     - vector_store.py:118 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 12:54:25,006 agent        INFO     - vector_store.py:118 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 12:54:25,012 agent        WARNING  - vector_store.py:133 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 12:54:25,019 agent        WARNING  - vector_store.py:133 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 12:54:25,020 agent        INFO     - vector_store.py:118 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 12:54:25,021 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 12:54:25,021 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 12:54:25,022 agent        INFO     - vector_store.py:118 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 12:54:25,022 agent        INFO     - vector_store.py:118 -  知识库故障排除.txt已存在，跳过
+2026-07-14 12:54:25,022 agent        INFO     - vector_store.py:118 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 12:54:25,023 agent        INFO     - vector_store.py:118 -  知识库维护保养.txt已存在，跳过
+2026-07-14 12:54:25,023 agent        INFO     - vector_store.py:118 -  知识库选购指南.txt已存在，跳过
+2026-07-14 12:54:55,945 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有2条消息
+2026-07-14 12:54:55,945 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 生成我的机器人使用报告
+2026-07-14 12:54:59,051 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_current_month
+2026-07-14 12:54:59,051 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 12:54:59,052 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_id
+2026-07-14 12:54:59,052 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_current_month调用成功
+2026-07-14 12:54:59,053 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fill_context_for_report
+2026-07-14 12:54:59,053 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 12:54:59,053 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 12:54:59,053 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_id调用成功
+2026-07-14 12:54:59,054 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fill_context_for_report调用成功
+2026-07-14 12:54:59,055 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 12:54:59,056 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-07-14 12:55:00,460 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 12:55:00,461 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1001', 'month': '2025-03'}
+2026-07-14 12:55:00,464 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 12:55:00,466 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-14 12:55:00,466 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | {"特征": "65㎡公寓 | 单身 | 木地板", "效率": "覆盖率:87%\\n日均清扫:47㎡\\n漏扫区域:沙发底部（高度不足）", "耗材": "主刷寿命:剩余50天\\nHEPA滤网:剩余30%", "对比": "优于70%同面积用户（清洁频率更高）"}
+2026-07-14 12:55:02,901 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:55:02,901 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人 主刷寿命 HEPA滤网 更换保养 建议'}
+2026-07-14 12:55:02,902 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:55:02,902 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人 木地板 清洁 保养注意事项'}
+2026-07-14 12:55:02,903 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 12:55:02,905 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人 沙发底部 漏扫 低矮空间 清洁建议'}
+2026-07-14 12:55:02,933 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:55:02,935 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:55:02,937 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 12:55:02,939 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有12条消息
+2026-07-14 12:55:02,939 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **为什么有些机型采用双主刷设计？**
+- 双向旋转的主刷能更好地拾取颗粒物，特别适合硬质地面。
+## 二、产品功能类
+### 清扫功能
+11. **扫地机器人能清扫哪些类型的地面？**
+- 瓷砖、木地板、短毛地毯等，长毛地毯需确认机器越障能力。
+12. **最大越障高度是多少？**
+- 多数机型 1.5-2cm，高端机型可达 2.5cm。
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\扫地机器人100问2.txt）
+. **大户型房屋如何规划清扫？**
+- 采用“分区清扫”，分批次清扫不同区域，若机器人续航不足，设置“断点续扫”，完成后自动回充。
+68. **木地板上拖地需要注意什么？**
+- 调小水箱出水量，使用干拖模式，避免地面积水泡坏地板，拖布拧干后使用，及时清理地板水渍。
+69
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 水泥地/老旧地砖环境：清扫后立即清理机身底部、轮组的泥沙，防止磨损配件，减少拖地频次，避免灰尘结块。
+6. 宠物家庭：每次清扫后全面清理主刷、尘盒、拖布，每周对机器人进行除味消毒，耗材更换周期缩短50%。
+7. 有婴儿/小孩的家庭：拖地仅用清水，避免添加清洁液，拖布每次使用后高温消毒，机器人机身每日擦拭。
+8
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+# 扫地机器人 100 问
+## 一、基础与技术类
+### 导航与路径规划
+1. **扫地机器人是如何实现自主导航的？**
+- 通过激光雷达(LDS)、视觉传感器(VSLAM)或陀螺仪+加速度计实现环境感知和定位。
+2. **LDS 激光导航和 VSLAM 视觉导航哪个更好？**
+- LDS 精度更高、不受光线影响；VSLAM 成本更低、可识别更多物体细节。
+3
+2026-07-14 13:06:21,595 agent        INFO     - vector_store.py:118 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 13:06:21,598 agent        INFO     - vector_store.py:118 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 13:06:21,604 agent        WARNING  - vector_store.py:133 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 13:06:21,612 agent        WARNING  - vector_store.py:133 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 13:06:21,613 agent        INFO     - vector_store.py:118 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 13:06:21,614 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 13:06:21,615 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 13:06:21,616 agent        INFO     - vector_store.py:118 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 13:06:21,617 agent        INFO     - vector_store.py:118 -  知识库故障排除.txt已存在，跳过
+2026-07-14 13:06:21,618 agent        INFO     - vector_store.py:118 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 13:06:21,619 agent        INFO     - vector_store.py:118 -  知识库维护保养.txt已存在，跳过
+2026-07-14 13:06:21,620 agent        INFO     - vector_store.py:118 -  知识库选购指南.txt已存在，跳过
+2026-07-14 13:06:59,872 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有2条消息
+2026-07-14 13:06:59,872 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 广州今日的天气，如何保养机器人
+2026-07-14 13:07:03,256 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_weather
+2026-07-14 13:07:03,256 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'city': '广州'}
+2026-07-14 13:07:03,257 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 13:07:03,257 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人 保养 维护 方法'}
+2026-07-14 13:07:03,277 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 13:07:03,495 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-14 13:07:04,036 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 13:07:04,036 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每周检查机器人APP连接状态，确保网络正常，及时接收耗材、故障提醒。
+48. 机器人充电时，保证充电环境通风良好，无易燃、易爆物品。
+49. 每月检查机器人的防缠绕梳齿（若有），确保无变形、断裂，正常梳理毛发。
+50. 日常使用遵循“轻用轻放、及时清理”原则，减少配件磨损，延长整机寿命。
+
+## 扫地功能专属维护（30条）
+1
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+# 扫地机器人 100 问
+## 一、基础与技术类
+### 导航与路径规划
+1. **扫地机器人是如何实现自主导航的？**
+- 通过激光雷达(LDS)、视觉传感器(VSLAM)或陀螺仪+加速度计实现环境感知和定位。
+2. **LDS 激光导航和 VSLAM 视觉导航哪个更好？**
+- LDS 精度更高、不受光线影响；VSLAM 成本更低、可识别更多物体细节。
+3
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每月检查机器人拖地模组接口（扫拖一体），保证无灰尘、杂物，连接顺畅。
+38. 日常使用后，将机器人的清扫模式调至“待机”，减少电量消耗。
+39. 每周检查充电座电源适配器，无发热、异响，避免长时间超负荷工作。
+40. 机器人若不慎沾到宠物粪便，立即用湿巾清理干净，再用中性洗涤剂擦拭，避免滋生细菌。
+41. 每日检查机器人边刷的旋转情况，若卡顿立即停机清理，防止电机烧毁。
+42
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **技术发展经历了哪些阶段？**
+- 随机碰撞→陀螺仪导航→激光导航→AI 视觉导航。
+## 十四、趣味知识类
+97. **为什么叫"扫地机器人"而不是"吸尘机器人"？**
+- 早期产品以扫为主，且"机器人"概念更吸引人。
+98. **最贵的扫地机器人是哪款？**
+- iRobot 的商用机型 Avva 30，售价约 2 万美元。
+99
+2026-07-14 13:08:01,832 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 13:08:01,832 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 推荐几款适合的扫地机器人
+2026-07-14 13:08:07,185 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_location
+2026-07-14 13:08:07,185 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 13:08:07,187 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 13:08:07,188 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '潮湿高温地区 扫地机器人 推荐 型号 选购指南'}
+2026-07-14 13:08:07,211 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 13:08:08,021 agent        WARNING  - agent_tools.py:167 -  [get_user_location]空城市信息 info=OK infocode=10000 ip=14.1.28.147 raw={'status': '1', 'info': 'OK', 'infocode': '10000', 'province': [], 'city': [], 'adcode': [], 'rectangle': []}
+2026-07-14 13:08:08,022 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_location调用成功
+2026-07-14 13:08:09,196 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有7条消息
+2026-07-14 13:08:09,197 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **梅雨季节怎么维护？**
+- 定期除湿，防止电机受潮，勤换拖布防霉。
+85. **夏季高温会影响使用吗？**
+- 避免阳光直射充电座，高温可能影响电池寿命。
+## 十一、对比其他产品类
+86. **扫地机器人和吸尘器怎么选？**
+- 机器人负责日常维护，吸尘器处理深度清洁。
+87. **和洗地机相比优劣如何？**
+- 洗地机清洁力更强但需人工操作，机器人自动化程度高。
+88
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **技术发展经历了哪些阶段？**
+- 随机碰撞→陀螺仪导航→激光导航→AI 视觉导航。
+## 十四、趣味知识类
+97. **为什么叫"扫地机器人"而不是"吸尘机器人"？**
+- 早期产品以扫为主，且"机器人"概念更吸引人。
+98. **最贵的扫地机器人是哪款？**
+- iRobot 的商用机型 Avva 30，售价约 2 万美元。
+99
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+## 五、选购指南类
+### 选购要素
+39. **选购时最应该关注哪些参数？**
+- 导航类型、吸力大小、电池容量、尘盒/水箱容量。
+40. **小户型适合哪种扫地机器人？**
+- 基础激光导航机型即可，如米家 1C、石头 T4。
+41. **大户型应该注意什么？**
+- 选择大电池(>5200mAh)、自动集尘或自动洗拖布机型。
+42
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\选购指南.txt）
+扫地/扫拖一体机器人选购指南200条
+
+1. 选购核心：优先明确使用场景，独居小户型侧重轻便灵活，多口之家带宠物需强化吸力和防缠绕功能。
+
+2. 吸力参数：家用建议选择≥3000Pa吸力机型，地毯场景需≥4000Pa，吸力可调节更适配不同地面。
+
+3. 导航技术：激光导航定位精准、抗干扰强，适合复杂户型；视觉导航性价比高，避免强光环境使用。
+
+4
+2026-07-14 13:08:12,669 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 13:08:12,669 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 13:08:12,669 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人 高湿度 防潮 选购推荐 拖地功能 热风烘干拖布'}
+2026-07-14 13:08:12,670 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '适合南方潮湿地区 扫地机器人 自动洗拖布 热风烘干 除菌 推荐'}
+2026-07-14 13:08:12,703 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 13:08:12,707 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 13:08:13,281 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有10条消息
+2026-07-14 13:08:13,282 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\选购指南.txt）
+扫地/扫拖一体机器人选购指南200条
+
+1. 选购核心：优先明确使用场景，独居小户型侧重轻便灵活，多口之家带宠物需强化吸力和防缠绕功能。
+
+2. 吸力参数：家用建议选择≥3000Pa吸力机型，地毯场景需≥4000Pa，吸力可调节更适配不同地面。
+
+3. 导航技术：激光导航定位精准、抗干扰强，适合复杂户型；视觉导航性价比高，避免强光环境使用。
+
+4
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+13. **如何识别并避开地毯？****
+- 通过超声波传感器或 AI 视觉识别，部分机型可自动增压清扫。
+14. **划区清扫功能如何使用？**
+- 在 APP 地图上框选特定区域，机器人会优先清扫该区域。
+15. **虚拟墙功能有哪几种实现方式？**
+- 物理磁条虚拟墙和 APP 电子虚拟墙两种。
+### 拖地功能
+16
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\选购指南.txt）
+. 拖布烘干功率：烘干功率≥30W，烘干速度快，能耗合理。
+
+170. 集尘袋更换：集尘袋带撕拉设计，更换时无灰尘溢出，清洁卫生。
+
+171. 导航避障协同：导航与避障功能协同工作，遇到障碍物时快速调整路径，不影响清扫效率。
+
+172. 低噪音模式：低噪音模式下噪音≤45dB，适合夜间或婴儿休息时使用。
+
+173. 强力模式：强力模式吸力提升50%以上，适合处理顽固污渍和深层灰尘。
+
+174
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\扫拖一体机器人100问.txt）
+# 扫拖一体机器人常见问题及解答（新增100条）
+### 拖扫功能融合类
+1. **扫拖一体机器人可以只扫地不拖地吗？**
+- 可以，在配套APP中进入【清扫模式】，关闭“拖地功能”，仅保留吸尘模式即可单独扫地。
+2. **如何设置先扫后拖的清洁流程？**
+- 打开APP，在【自定义清扫】中选择“先扫后拖”模式，可自定义扫地吸力、拖地出水量，机器人将自动按流程执行。
+3
+2026-07-14 13:09:13,875 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有6条消息
+2026-07-14 13:09:13,876 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 84平
+2026-07-14 13:09:17,220 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 13:09:17,221 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '84平 小户型 扫地机器人 推荐 选购'}
+2026-07-14 13:09:17,240 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 13:09:18,190 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有8条消息
+2026-07-14 13:09:18,191 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+89. **与传统保洁相比优势在哪？**
+- 日常维护成本低，随时保持清洁。
+## 十二、经济性分析类
+90. **扫地机器人真的省钱吗？**
+- 长期看省去保洁费用，但需考虑耗材和维修成本。
+91. **耗材年花费大约多少？**
+- 约 200-500 元，视使用频率和机型而定。
+92. **电费消耗大吗？**
+- 很小，一次清扫约耗电 0.1-0.3 度。
+93
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **技术发展经历了哪些阶段？**
+- 随机碰撞→陀螺仪导航→激光导航→AI 视觉导航。
+## 十四、趣味知识类
+97. **为什么叫"扫地机器人"而不是"吸尘机器人"？**
+- 早期产品以扫为主，且"机器人"概念更吸引人。
+98. **最贵的扫地机器人是哪款？**
+- iRobot 的商用机型 Avva 30，售价约 2 万美元。
+99
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+.1-0.3 度。
+93. **维修成本高吗？**
+- 过保后主板维修较贵，建议购买延保服务。
+## 十三、历史与发展类
+94. **第一台扫地机器人是哪年发明的？**
+- 1996 年伊莱克斯推出三叶虫原型机，2002 年 iRobot 量产 Roomba。
+95. **中国市场何时开始普及？**
+- 2015 年后随着小米生态链产品兴起快速普及。
+96
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+## 五、选购指南类
+### 选购要素
+39. **选购时最应该关注哪些参数？**
+- 导航类型、吸力大小、电池容量、尘盒/水箱容量。
+40. **小户型适合哪种扫地机器人？**
+- 基础激光导航机型即可，如米家 1C、石头 T4。
+41. **大户型应该注意什么？**
+- 选择大电池(>5200mAh)、自动集尘或自动洗拖布机型。
+42
+2026-07-14 13:48:17,004 agent        INFO     - vector_store.py:118 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 13:48:17,006 agent        INFO     - vector_store.py:118 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 13:48:17,013 agent        WARNING  - vector_store.py:133 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 13:48:17,022 agent        WARNING  - vector_store.py:133 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 13:48:17,024 agent        INFO     - vector_store.py:118 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 13:48:17,026 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 13:48:17,028 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 13:48:17,029 agent        INFO     - vector_store.py:118 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 13:48:17,031 agent        INFO     - vector_store.py:118 -  知识库故障排除.txt已存在，跳过
+2026-07-14 13:48:17,032 agent        INFO     - vector_store.py:118 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 13:48:17,034 agent        INFO     - vector_store.py:118 -  知识库维护保养.txt已存在，跳过
+2026-07-14 13:48:17,035 agent        INFO     - vector_store.py:118 -  知识库选购指南.txt已存在，跳过
+2026-07-14 13:48:58,601 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有2条消息
+2026-07-14 13:48:58,602 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 佛山今日天气，机器人如何保养
+2026-07-14 13:49:01,519 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_weather
+2026-07-14 13:49:01,520 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'city': '佛山'}
+2026-07-14 13:49:01,521 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 13:49:01,521 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人保养维护注意事项'}
+2026-07-14 13:49:01,539 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 13:49:01,743 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_weather调用成功
+2026-07-14 13:49:02,348 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 13:49:02,349 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+# 扫地机器人+扫拖一体机器人 维护保养200条（纯保养维度，分通用基础/扫地专属/扫拖一体拖地专属/耗材专项/环境适配/长期存放/故障预防，覆盖全机型日常维护）
+## 通用基础维护（50条）
+1. 每日使用后，用干软布擦拭机器人机身外壳，去除灰尘、水渍，避免污渍附着硬化。
+2. 每次清扫完成，及时清理机身防撞条缝隙的毛发、线头，防止卡扣卡顿影响回弹。
+3
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.
+#	127.0.0.1       localhost
+#	::1             localhost
+192.168.0.145 monitor.jzywjk.local
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每周检查机器人APP连接状态，确保网络正常，及时接收耗材、故障提醒。
+48. 机器人充电时，保证充电环境通风良好，无易燃、易爆物品。
+49. 每月检查机器人的防缠绕梳齿（若有），确保无变形、断裂，正常梳理毛发。
+50. 日常使用遵循“轻用轻放、及时清理”原则，减少配件磨损，延长整机寿命。
+
+## 扫地功能专属维护（30条）
+1
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 每月检查机器人拖地模组接口（扫拖一体），保证无灰尘、杂物，连接顺畅。
+38. 日常使用后，将机器人的清扫模式调至“待机”，减少电量消耗。
+39. 每周检查充电座电源适配器，无发热、异响，避免长时间超负荷工作。
+40. 机器人若不慎沾到宠物粪便，立即用湿巾清理干净，再用中性洗涤剂擦拭，避免滋生细菌。
+41. 每日检查机器人边刷的旋转情况，若卡顿立即停机清理，防止电机烧毁。
+42
+2026-07-14 13:53:31,812 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有4条消息
+2026-07-14 13:53:31,812 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 生成一下我的个人使用报告
+2026-07-14 13:53:33,629 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_id
+2026-07-14 13:53:33,630 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 13:53:33,631 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_id调用成功
+2026-07-14 13:53:33,631 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_current_month
+2026-07-14 13:53:33,631 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 13:53:33,631 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_current_month调用成功
+2026-07-14 13:53:34,141 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有7条消息
+2026-07-14 13:53:34,142 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 2025-02
+2026-07-14 13:53:35,846 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fill_context_for_report
+2026-07-14 13:53:35,846 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 13:53:35,847 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fill_context_for_report调用成功
+2026-07-14 13:53:36,376 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有9条消息
+2026-07-14 13:53:36,376 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-07-14 13:53:37,838 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 13:53:37,838 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1007', 'month': '2025-02'}
+2026-07-14 13:53:37,839 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 13:53:38,371 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有11条消息
+2026-07-14 13:53:38,372 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | {"特征": "55㎡一居 | 独居 | 复合地板", "效率": "覆盖率:91%\\n日均清扫:36㎡\\n沿边清扫无死角", "耗材": "滤网寿命:剩余75天\\n尘盒清理:每4天", "对比": "清洁效率优于72%小户型用户"}
+2026-07-14 13:53:40,670 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 13:53:40,671 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人 复合地板 保养 建议 小户型'}
+2026-07-14 13:53:40,671 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 13:53:40,672 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人 滤网 尘盒 清理 维护 寿命延长'}
+2026-07-14 13:53:40,698 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 13:53:40,698 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 13:53:41,307 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有14条消息
+2026-07-14 13:53:41,307 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 存放前，全面清理机器人机身、尘盒、滤网、主刷、边刷、拖布等所有配件，无灰尘、污渍残留。
+3. 扫拖一体机器人存放前，排空水箱、污水仓内的所有水分，用干布擦拭干净，晾干后再存放。
+4. 拆卸所有可拆卸配件（如拖布、拖布支架、集尘袋、滤网），清洗晾干后单独存放，避免与机身贴合滋生细菌。
+5. 存放前，对机器人电池仓、充电触点、传感器进行一次全面擦拭，保证无灰尘、水渍。
+6
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\维护保养.txt）
+. 集尘款机器人，每日检查集尘通道，无毛发、杂物堵塞，确保集尘顺畅。
+7. 每次清理尘盒后，用干布擦拭尘盒内部，避免灰尘结块，不可用水浸泡（防水尘盒除外）。
+8. 尘盒滤网需与尘盒配套安装，不可缺失，防止灰尘进入电机导致损坏。
+9. 扫地时若吸力下降，优先检查尘盒、滤网、风道是否堵塞，逐一清理后重试。
+10. 每周检查机器人吸口滚刷（无主刷机型），确保无缠绕、磨损，转动顺畅。
+11
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\故障排除.txt）
+. 故障现象：尘盒有异味，清理后仍存在；检测：尘盒是否滋生细菌，滤网是否发霉；修复：用中性除味剂清洗尘盒，更换发霉滤网，晾干后使用。
+
+74. 故障现象：拖地时机器人机身沾有油污，难以清理；检测：是否在厨房重油污区域工作，拖布是否脏污；修复：用中性洗涤剂擦拭机身，彻底清洗拖布，手动预处理油污。
+
+75
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\故障排除.txt）
+. 故障现象：吸力明显下降；检测：尘盒、滤网、风道是否堵塞，主刷是否缠绕杂物，吸口是否被遮挡；修复：逐一清理堵塞部位，剪断主刷缠绕毛发，检查吸口无异物。
+
+8. 故障现象：主刷不旋转；检测：主刷是否被异物卡死，电机线路是否松动，主刷电机是否故障；修复：清理主刷杂物，重新安装主刷，若仍不转联系售后检测电机。
+
+9
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\扫地机器人100问.pdf）
+. **尘盒应该多久清理一次？**
+- 每次使用后清理最佳，至少每 2-3 次清扫清理一次。
+30. **HEPA 滤网需要更换吗？**
+- 建议每 3-6 个月更换，水洗会降低过滤效果。
+31. **边刷需要更换吗？**
+- 每 6-12 个月检查磨损情况，变形严重时需要更换。
+32. **如何清理传感器？**
+- 用干燥软布擦拭激光雷达窗口、悬崖传感器等。
+33
+2026-07-14 13:55:40,508 agent        INFO     - vector_store.py:118 -  知识库hosts-1.txt已存在，跳过
+2026-07-14 13:55:40,509 agent        INFO     - vector_store.py:118 -  知识库qe-nginx.txt已存在，跳过
+2026-07-14 13:55:40,513 agent        WARNING  - vector_store.py:133 -  分片后关于公司文件使用保密的通知_20181212144729.pdf没有得到有效的文本数据，跳过
+2026-07-14 13:55:40,521 agent        WARNING  - vector_store.py:133 -  分片后安全管理制度_20180612090216.pdf没有得到有效的文本数据，跳过
+2026-07-14 13:55:40,522 agent        INFO     - vector_store.py:118 -  知识库性能监控字段对应.txt已存在，跳过
+2026-07-14 13:55:40,524 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问.pdf已存在，跳过
+2026-07-14 13:55:40,525 agent        INFO     - vector_store.py:118 -  知识库扫地机器人100问2.txt已存在，跳过
+2026-07-14 13:55:40,526 agent        INFO     - vector_store.py:118 -  知识库扫拖一体机器人100问.txt已存在，跳过
+2026-07-14 13:55:40,527 agent        INFO     - vector_store.py:118 -  知识库故障排除.txt已存在，跳过
+2026-07-14 13:55:40,528 agent        INFO     - vector_store.py:118 -  知识库短信记录接口.txt已存在，跳过
+2026-07-14 13:55:40,528 agent        INFO     - vector_store.py:118 -  知识库维护保养.txt已存在，跳过
+2026-07-14 13:55:40,529 agent        INFO     - vector_store.py:118 -  知识库选购指南.txt已存在，跳过
+2026-07-14 13:56:06,157 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有2条消息
+2026-07-14 13:56:06,157 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 生成一下我的使用报告
+2026-07-14 13:56:09,053 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_user_id
+2026-07-14 13:56:09,054 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 13:56:09,054 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：get_current_month
+2026-07-14 13:56:09,055 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_user_id调用成功
+2026-07-14 13:56:09,055 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 13:56:09,056 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：get_current_month调用成功
+2026-07-14 13:56:09,553 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有5条消息
+2026-07-14 13:56:09,553 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 2025-03
+2026-07-14 13:56:11,946 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fill_context_for_report
+2026-07-14 13:56:11,946 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{}
+2026-07-14 13:56:11,947 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fill_context_for_report调用成功
+2026-07-14 13:56:12,872 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有7条消息
+2026-07-14 13:56:12,873 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | fill_context_for_report已调用
+2026-07-14 13:56:14,558 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：fetch_external_data
+2026-07-14 13:56:14,558 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'user_id': '1005', 'month': '2025-03'}
+2026-07-14 13:56:14,560 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：fetch_external_data调用成功
+2026-07-14 13:56:14,850 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有9条消息
+2026-07-14 13:56:14,850 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | {"特征": "120㎡ | 老人 | 防滑砖", "效率": "手动操作占比:93%\\n定时清扫使用率:2次/周", "耗材": "电池衰减:27%\\n水箱首次激活:使用1次", "对比": "语音控制功能已预约安装"}
+2026-07-14 13:56:17,758 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 13:56:17,758 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人电池衰减 保养方法 延长寿命'}
+2026-07-14 13:56:17,759 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 13:56:17,762 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人手动操作多 定时清扫 使用建议 老人家庭'}
+2026-07-14 13:56:17,764 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_search
+2026-07-14 13:56:17,769 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人水箱 首次使用 激活 防滑砖地面 清洁建议'}
+2026-07-14 13:56:17,809 agent        INFO     - rag_service.py:54 -  [RagSummarizeService]混合检索器就绪 vector_k=10 bm25_k=10 final_k=5 corpus_size=385
+2026-07-14 13:56:17,819 agent        INFO     - rag_service.py:54 -  [RagSummarizeService]混合检索器就绪 vector_k=10 bm25_k=10 final_k=5 corpus_size=385
+2026-07-14 13:56:17,826 agent        INFO     - rag_service.py:69 -  [RagSummarizeService]重排序器模型未缓存，跳过加载（首次使用需联网下载 model=BAAI/bge-reranker-v2-m3）
+2026-07-14 13:56:17,826 agent        INFO     - rag_service.py:69 -  [RagSummarizeService]重排序器模型未缓存，跳过加载（首次使用需联网下载 model=BAAI/bge-reranker-v2-m3）
+2026-07-14 13:56:17,856 agent        INFO     - rag_service.py:54 -  [RagSummarizeService]混合检索器就绪 vector_k=10 bm25_k=10 final_k=5 corpus_size=385
+2026-07-14 13:56:17,858 agent        INFO     - rag_service.py:69 -  [RagSummarizeService]重排序器模型未缓存，跳过加载（首次使用需联网下载 model=BAAI/bge-reranker-v2-m3）
+2026-07-14 13:56:17,883 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 13:56:17,884 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 13:56:17,884 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_search调用成功
+2026-07-14 13:56:18,267 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有13条消息
+2026-07-14 13:56:18,268 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 【参考资料1】（来源: D:\intelligent-customer-agent\data\扫拖一体机器人100问.txt）
+. **长时间出差，如何设置机器人自动扫拖？**
+- 在APP中设置“定时扫拖”，选择合适的出水量和吸力，确保水箱水量充足、尘盒为空，开启“完成后自动回充”功能。
+74. **装修后开荒清洁可以用扫拖一体机器人吗？**
+- 不建议，装修后地面有大量水泥渣、沙粒、尖锐杂物，会刮伤机器人机身和地面，还会堵塞滤网、卡死机件，需手动开荒后再使用。
+75
+
+【参考资料2】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.
+#	127.0.0.1       localhost
+#	::1             localhost
+192.168.0.145 monitor.jzywjk.local
+
+【参考资料3】（来源: D:\intelligent-customer-agent\data\扫地机器人100问2.txt）
+. **瓷砖地面有水渍怎么避免？**
+- 更换吸水性好的拖布，调小出水量，让机器人以低速拖地，清扫后打开门窗通风，加快地面干燥。
+70. **有儿童的家庭使用机器人需要注意什么？**
+- 设置儿童房专属禁区，避免机器人碰撞儿童玩具，将机器人放在儿童接触不到的地方充电，定期检查耗材。
+71
+
+【参考资料4】（来源: D:\intelligent-customer-agent\data\hosts-1.txt）
+.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0
+
+【参考资料5】（来源: D:\intelligent-customer-agent\data\故障排除.txt）
+. 故障现象：机器人在瓷砖地面打滑，无法正常移动；检测：驱动轮是否磨损，地面是否有水渍；修复：更换驱动轮，清理地面水渍。
+
+70. 故障现象：拖地时清洁液腐蚀地面（如木地板）；检测：清洁液是否为专用款，浓度是否过高；修复：停用腐蚀清洁液，用清水冲洗地面，更换专用清洁液并稀释。
+
+71

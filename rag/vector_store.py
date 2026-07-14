@@ -5,7 +5,7 @@ from langchain_chroma import Chroma
 from langchain_core.documents import Document
 
 from utils.config_handler import chroma_config
-from model.factory import embedding_model
+from model.factory import get_embedding_model
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from utils.file_handler import txt_loader, pdf_loader, listdir_with_allowed_type, get_file_md5_hex
@@ -16,7 +16,7 @@ class VectorStoreService:
     def __init__(self):
         self.vector_store = Chroma(
             collection_name=chroma_config['collection_name'],
-            embedding_function=embedding_model,
+            embedding_function=get_embedding_model(),
             persist_directory=get_abs_path(chroma_config['persist_directory']),
         )
         self.spliter = RecursiveCharacterTextSplitter(
@@ -31,6 +31,14 @@ class VectorStoreService:
 
     def collection_count(self) -> int:
         return self.vector_store._collection.count()
+
+    def get_all_documents(self) -> list[Document]:
+        """从 ChromaDB 导出全量文档，供 BM25 构建语料库"""
+        data = self.vector_store.get(include=["documents", "metadatas"])
+        docs = []
+        for content, meta in zip(data["documents"], data["metadatas"]):
+            docs.append(Document(page_content=content, metadata=meta or {}))
+        return docs
 
     def add_single_file(self, file_path: str) -> bool:
         """处理单个文件入库，已处理过的跳过。返回 True 表示成功入库"""

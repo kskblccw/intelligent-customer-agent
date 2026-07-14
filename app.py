@@ -4,6 +4,7 @@ import hashlib
 
 import streamlit as st
 from agent.react_agent import ReactAgent
+from agent.tools.agent_tools import _get_rag
 from rag.vector_store import VectorStoreService
 
 # 启动时自动检测并加载知识库
@@ -23,6 +24,9 @@ if "kb_checked" not in st.session_state:
             st.session_state["kb_startup_errors"] = stats.get("errors", [])
         st.session_state["kb_total_docs"] = vs.collection_count()
         st.session_state["kb_checked"] = True
+        # 如果启动时新加载了文件，刷新 RAG 的 BM25 语料
+        if st.session_state.get("kb_startup_loaded"):
+            _get_rag().refresh_corpus()
 
 # 启动时一次性 toast
 startup_loaded = st.session_state.pop("kb_startup_loaded", [])
@@ -63,6 +67,7 @@ with st.sidebar:
             is_new = vs.add_single_file(os.path.abspath(pending))
             if is_new:
                 st.session_state["kb_total_docs"] = vs.collection_count()
+                _get_rag().refresh_corpus()  # 新增文档后重建 BM25 索引
                 st.session_state["upload_feedback"] = ("success", f"文件 {os.path.basename(pending)} 入库成功")
             else:
                 st.session_state["upload_feedback"] = ("warning", f"文件 {os.path.basename(pending)} 已存在于知识库中，跳过")
@@ -155,6 +160,32 @@ with st.sidebar:
     else:
         st.caption("暂无知识文件")
 
+def _escape(text: str) -> str:
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+def _build_thinking_html(ai_chunks: list[str], tool_chunks: list[str], *, open_panel: bool = False) -> str:
+    """构建思考过程 HTML：早期 AI + 工具结果。open_panel=True 时默认展开"""
+    parts: list[str] = []
+    for ai in ai_chunks:
+        parts.append(f"<div style='white-space:pre-wrap; line-height:1.5; margin:2px 0;'>{_escape(ai)}</div>")
+    parts.extend(tool_chunks)
+    if not parts:
+        return ""
+    tag = "<details open>" if open_panel else "<details>"
+    return (
+        f"{tag}"
+        "<summary style='font-size:0.85em; color:#999; cursor:pointer;'>思考过程</summary>"
+        f"<div style='padding:4px 0;'>{''.join(parts)}</div>"
+        "</details>"
+    )
+
+def _char_generator(text: str, delay: float = 0.015):
+    """逐字 yield，模拟打字效果"""
+    for ch in text:
+        yield ch
+        time.sleep(delay)
+
+
 if "agent" not in st.session_state:
     st.session_state["agent"] = ReactAgent()
 
@@ -162,7 +193,16 @@ if "message" not in st.session_state:
     st.session_state["message"] = []
 
 for message in st.session_state["message"]:
-    st.chat_message(message['role']).write(message['content'])
+    if message["role"] == "assistant":
+        thinking_html = message.get("thinking_html", "")
+        answer = _escape(message.get("answer", message["content"]))
+        if thinking_html:
+            html = thinking_html + f"<div style='white-space:pre-wrap; line-height:1.6; margin-top:8px;'>{answer}</div>"
+        else:
+            html = f"<div style='white-space:pre-wrap; line-height:1.6;'>{answer}</div>"
+        st.chat_message("assistant").markdown(html, unsafe_allow_html=True)
+    else:
+        st.chat_message(message["role"]).write(message["content"])
 
 
 #用户输入提示词
@@ -171,22 +211,67 @@ prompt = st.chat_input()
 
 if prompt:
     st.chat_message("user").write(prompt)
-    st.session_state["message"].append({"role":"user","content":prompt})
+    st.session_state["message"].append({"role": "user", "content": prompt})
 
-    response_messages = []
-    with st.spinner("智能客服思考中..."):
-       res_stream =  st.session_state["agent"].execute(prompt, history=st.session_state["message"])
+    raw_text = ""
+    ai_texts: list[str] = []      # AI 文本（原始，未转义）
+    tool_htmls: list[str] = []    # 工具结果（已转义 HTML）
+    with st.chat_message("assistant"):
+        think_placeholder = st.empty()
+        answer_placeholder = st.empty()
+        with st.spinner("智能客服思考中..."):
+            for chunk in st.session_state["agent"].execute(prompt, history=st.session_state["message"]):
+                if not isinstance(chunk, dict):
+                    raw_text += str(chunk).strip() + "\n"
+                    tool_htmls.append(
+                        f"<div style='font-size:0.75em; color:#c66; font-family:monospace;'>"
+                        f"[非预期 {type(chunk).__name__}] {_escape(str(chunk)[:200])}</div>"
+                    )
+                    continue
 
-       def capture(generator,cache_list):
-           for chunk in generator:
-               cache_list.append(chunk)
+                text = chunk["content"].strip()
+                if not text:
+                    continue
+                raw_text += text + "\n"
+                safe = _escape(text)
 
-               for char in chunk:
-                   time.sleep(0.01)
-                   yield char
+                if chunk["type"] == "tool":
+                    if len(text) > 200:
+                        display = _escape(text[:200]) + (
+                            f"<br><span style='color:#aaa;'>"
+                            f"（已获取参考资料，共 {len(text)} 字）</span>"
+                        )
+                    else:
+                        display = safe
+                    tool_htmls.append(
+                        f"<div style='font-size:0.75em; color:#999; font-family:monospace; "
+                        f"margin:2px 0; padding:2px 6px; border-left:2px solid #ddd;'>{display}</div>"
+                    )
+                else:
+                    ai_texts.append(text)
 
-       st.chat_message("assistant").write_stream(capture(res_stream,response_messages))
-       st.session_state["message"].append({"role":"assistant","content":response_messages[-1]})
-       st.rerun()
+                # 思考面板：历史 AI + 全部工具结果（block 更新）
+                prev_ai = ai_texts[:-1] if len(ai_texts) > 1 else []
+                thinking_html = _build_thinking_html(prev_ai, tool_htmls)
+                if thinking_html:
+                    think_placeholder.markdown(thinking_html, unsafe_allow_html=True)
+                else:
+                    think_placeholder.empty()
+
+                # 回答区域：最后一个 AI chunk，逐字流式
+                if ai_texts:
+                    answer_placeholder.write_stream(_char_generator(ai_texts[-1]))
+
+    # 存储：思考 + 回答分开，历史记录能区分
+    prev_ai = ai_texts[:-1] if len(ai_texts) > 1 else []
+    thinking_html = _build_thinking_html(prev_ai, tool_htmls)
+    answer_text = ai_texts[-1] if ai_texts else raw_text
+    st.session_state["message"].append({
+        "role": "assistant",
+        "content": raw_text.strip(),
+        "answer": answer_text,
+        "thinking_html": thinking_html,
+    })
+    # st.rerun()
 
 

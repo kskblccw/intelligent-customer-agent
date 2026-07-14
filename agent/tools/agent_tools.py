@@ -16,7 +16,14 @@ class TransientAPIError(RuntimeError):
     """可重试的 API 错误（网络超时、DNS 失败、服务端 5xx），由中间件捕获后自动重试"""
     pass
 
-rag = RagSummarizeService()
+_rag = None
+
+def _get_rag():
+    global _rag
+    if _rag is None:
+        _rag = RagSummarizeService()
+    return _rag
+
 user_ids = ["1001", "1002", "1003", "1004", "1005", "1006", "1007", "1008", "1009", "1010",]
 month_arr = ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06",
              "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", ]
@@ -171,9 +178,9 @@ def get_user_location() -> str:
 
 
 
-@tool(description="从向量存储中检索参考资料")
-def rag_summarize(query: str) -> str:
-    return rag.rag_summarize(query)
+@tool(description="从知识库中检索扫地/扫拖机器人的相关资料，返回原始参考资料文本（由Agent自行综合）")
+def rag_search(query: str) -> str:
+    return _get_rag().rag_search(query)
 
 
 @tool(description="获取用户的ID，以纯字符串形式返回")

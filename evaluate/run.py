@@ -19,7 +19,7 @@ from evaluate.runner import run_batch
 from evaluate.judge import judge_batch
 from evaluate.metrics import compute_summary, save_results, load_baseline, save_baseline, diff_baseline
 from agent.react_agent import ReactAgent
-from rag.rag_service import RagSummarizeService
+from rag.rag_service import RagSummarizeService, FINAL_K
 
 
 def print_header(title: str):
@@ -91,10 +91,9 @@ def eval_agent(set_baseline: bool = False):
 
 
 def eval_rag():
-    """RAG 独立检索评测"""
-    print_header("RAG 检索质量评测")
-    rag = RagSummarizeService()
-    retriever = rag.vector_store.get_retriever()
+    """RAG 独立检索评测（使用混合检索器）"""
+    print_header("RAG 检索质量评测（BM25 + 向量混合检索）")
+    rag_svc = RagSummarizeService()
 
     total = len(RAG_GOLDEN)
     recall_sum = 0.0
@@ -103,7 +102,7 @@ def eval_rag():
     print(f"\n共 {total} 条评测数据\n")
 
     for i, g in enumerate(RAG_GOLDEN):
-        docs = retriever.invoke(g.query)
+        docs = rag_svc.retriever_docs(g.query)  # 混合检索 + 重排序
         retrieved_files = set()
         for doc in docs:
             source = doc.metadata.get("source", "")
@@ -135,8 +134,8 @@ def eval_rag():
 
     avg_recall = recall_sum / total
     avg_precision = precision_sum / total
-    print(f"\n平均 Recall@{3}:  {avg_recall:.2%}")
-    print(f"平均 Precision@{3}: {avg_precision:.2%}")
+    print(f"\n平均 Recall@{FINAL_K}:  {avg_recall:.2%}")
+    print(f"平均 Precision@{FINAL_K}: {avg_precision:.2%}")
 
 
 def main():

@@ -1,8 +1,8 @@
 from langchain.agents import create_agent
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage, AIMessage, ToolMessage
 from model.factory import chat_model
 from utils.prompt_loader import load_system_prompts
-from agent.tools.agent_tools import rag_summarize,get_weather,get_user_location,get_user_id,get_current_month,fetch_external_data,fill_context_for_report
+from agent.tools.agent_tools import rag_search,get_weather,get_user_location,get_user_id,get_current_month,fetch_external_data,fill_context_for_report
 from agent.tools.middleware import monitor_tool,log_before_model,report_prompt_switch
 
 MAX_HISTORY_MESSAGES = 20
@@ -45,7 +45,7 @@ class ReactAgent:
         self.agent = create_agent(
             model=chat_model,
             system_prompt=load_system_prompts(),
-            tools=[rag_summarize,get_weather,get_user_location,get_user_id,get_current_month,fetch_external_data,fill_context_for_report],
+            tools=[rag_search,get_weather,get_user_location,get_user_id,get_current_month,fetch_external_data,fill_context_for_report],
             middleware=[ monitor_tool,log_before_model,report_prompt_switch]
         )
 
@@ -55,9 +55,18 @@ class ReactAgent:
 
         input_dict = {"messages": messages}
         for chunk in self.agent.stream(input_dict, stream_mode="values", context={"report": False}):
-            lasest_message = chunk["messages"][-1]
-            if lasest_message.content:
-                yield lasest_message.content.strip() + '\n'
+            latest = chunk["messages"][-1]
+            if not latest.content:
+                continue
+            text = str(latest.content).strip()
+            if not text:
+                continue
+            if isinstance(latest, AIMessage):
+                yield {"type": "ai", "content": text}
+            elif isinstance(latest, ToolMessage):
+                yield {"type": "tool", "content": text}
+            else:
+                yield {"type": "ai", "content": text}
 
 
 
