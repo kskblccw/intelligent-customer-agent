@@ -16,6 +16,13 @@ from utils.prompt_loader import load_report_prompts,load_system_prompts
 MAX_RETRIES = 3       # 最多重试 3 次（总共 4 次尝试）
 BASE_DELAY = 1.0      # 基础等待秒数
 
+# 评测模式下的工具调用追踪
+_trace_collector: list[dict] | None = None
+
+def set_trace_collector(collector: list[dict] | None):
+    global _trace_collector
+    _trace_collector = collector
+
 
 @wrap_tool_call
 def monitor_tool(request:ToolCallRequest,handler:Callable[[ToolCallRequest],ToolMessage | Command]) -> ToolMessage | Command:
@@ -33,6 +40,13 @@ def monitor_tool(request:ToolCallRequest,handler:Callable[[ToolCallRequest],Tool
                 logger.info(f"[monitor_tool]执行工具：{tool_name}调用成功")
             if tool_name == "fill_context_for_report":
                 request.runtime.context['report'] = True
+            if _trace_collector is not None:
+                _trace_collector.append({
+                    "tool": tool_name,
+                    "args": request.tool_call['args'],
+                    "success": True,
+                    "attempts": attempt + 1,
+                })
             return result
 
         except Exception as e:
@@ -49,6 +63,14 @@ def monitor_tool(request:ToolCallRequest,handler:Callable[[ToolCallRequest],Tool
                     f"[monitor_tool]工具{tool_name}重试{MAX_RETRIES}次后仍失败，"
                     f"原因：{str(e)}"
                 )
+                if _trace_collector is not None:
+                    _trace_collector.append({
+                        "tool": tool_name,
+                        "args": request.tool_call['args'],
+                        "success": False,
+                        "error": str(e),
+                        "attempts": MAX_RETRIES + 1,
+                    })
 
     raise last_exception  # type: ignore[misc]
 

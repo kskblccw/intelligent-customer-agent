@@ -1,0 +1,7 @@
+2026-07-13 19:09:18,375 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有1条消息
+2026-07-13 19:09:18,377 agent        DEBUG    - middleware.py:84 -  [log_before_model]HumanMessage | 扫地机器人日常怎么保养，简单说下
+2026-07-13 19:09:20,701 agent        INFO     - middleware.py:30 -  [monitor_tool]执行工具：rag_summarize
+2026-07-13 19:09:20,701 agent        INFO     - middleware.py:31 -  [monitor_tool]传入参数：{'query': '扫地机器人日常保养方法'}
+2026-07-13 19:09:24,050 agent        INFO     - middleware.py:40 -  [monitor_tool]执行工具：rag_summarize调用成功
+2026-07-13 19:09:24,053 agent        INFO     - middleware.py:83 -  [log_before_model]即将调用模型，带有3条消息
+2026-07-13 19:09:24,055 agent        DEBUG    - middleware.py:84 -  [log_before_model]ToolMessage | 每日使用后，用干软布擦拭机身外壳，清理防撞条缝隙的毛发与线头；每日检查边刷旋转是否卡顿，及时清理；每周检查APP连接状态确保正常接收提醒；每月检查防缠绕梳齿是否变形断裂；保持充电环境通风良好，遵循“轻用轻放、及时清理”原则。
