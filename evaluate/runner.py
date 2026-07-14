@@ -59,7 +59,10 @@ def run_single(agent, case: TestCase) -> CaseResult:
     try:
         full_response = ""
         for chunk in agent.execute(case.query):
-            full_response += chunk
+            if isinstance(chunk, dict):
+                full_response += chunk.get("content", "") + "\n"
+            else:
+                full_response += str(chunk)
         result.response = full_response.strip()
     except Exception as e:
         result.error = f"{type(e).__name__}: {str(e)}"

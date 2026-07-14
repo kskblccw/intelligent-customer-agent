@@ -74,4 +74,5 @@ class ReactAgent:
 if __name__ == '__main__':
     agent = ReactAgent()
     for chunk in agent.execute("给我生成一份我的使用报告信息"):
-        print(chunk,end="",flush=True)
+        text = chunk["content"] if isinstance(chunk, dict) else str(chunk)
+        print(text, end="", flush=True)
