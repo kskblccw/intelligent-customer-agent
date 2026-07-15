@@ -4,13 +4,279 @@ import hashlib
 
 import streamlit as st
 from agent.react_agent import ReactAgent
-from agent.tools.agent_tools import _get_rag
+from agent.tools.agent_tools import _get_rag, set_user_city, set_user_id
 from rag.vector_store import VectorStoreService
 from storage.conversation_store import (
     create_conversation, list_conversations, delete_conversation,
     update_conversation_title,
     save_message, load_messages, load_recent_messages,
+    register_user, verify_user, reset_password,
 )
+from utils.config_handler import agent_config
+import urllib.request, json
+
+# ── 城市定位 ──
+GAODE_KEY = os.environ.get("GAODE_KEY", "") or agent_config.get("gaodekey", "")
+DEFAULT_CITY = agent_config.get("default_city", "广州市")
+
+
+def _ip_to_city(ip: str) -> str | None:
+    try:
+        url = f"https://restapi.amap.com/v3/ip?key={GAODE_KEY}&ip={ip}"
+        with urllib.request.urlopen(url, timeout=3) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        if data.get("status") != "1":
+            return None
+        city = data.get("city", "")
+        province = data.get("province", "")
+        if isinstance(city, list):
+            city = "".join(city)
+        if isinstance(province, list):
+            province = "".join(province)
+        return str(city).strip() or str(province).strip() or None
+    except Exception:
+        return None
+
+
+def _get_client_ip() -> str | None:
+    try:
+        from streamlit.runtime.scriptrunner import get_script_run_ctx
+        ctx = get_script_run_ctx()
+        if ctx is None:
+            return None
+        session = ctx.session
+        for attr in ("_ws", "ws", "_websocket_handler"):
+            ws = getattr(session, attr, None)
+            if ws and hasattr(ws, "request"):
+                return ws.request.remote_ip
+        for name in dir(session):
+            if "ws" in name.lower() or "socket" in name.lower():
+                obj = getattr(session, name, None)
+                if obj is None:
+                    continue
+                if hasattr(obj, "request"):
+                    return obj.request.remote_ip
+                if hasattr(obj, "remote_address"):
+                    addr = obj.remote_address
+                    return addr[0] if isinstance(addr, tuple) else addr
+        return None
+    except Exception:
+        return None
+
+
+# Resolve city once per session
+if "user_city" not in st.session_state:
+    city = None
+    client_ip = _get_client_ip()
+    if client_ip:
+        city = _ip_to_city(client_ip)
+    st.session_state["user_city"] = city or DEFAULT_CITY
+    st.session_state["city_source"] = "IP定位" if city else "默认"
+
+set_user_city(st.session_state["user_city"])
+
+# ── 登录 / 注册 ──
+if "user_id" not in st.session_state:
+    st.markdown("""
+    <style>
+        .stApp { background: #060D1A; }
+        header[data-testid="stHeader"] { display: none; }
+        [data-testid="stToolbar"] { display: none; }
+        section[data-testid="stSidebar"] { display: none; }
+        .stMain > div { padding: 0 !important; max-width: none !important; }
+        [data-testid="stHorizontalBlock"] { gap: 0 !important; flex-wrap: nowrap !important; }
+
+        /* ==== 右栏毛玻璃卡片 ==== */
+        [data-testid="stVerticalBlockBorderWrapper"] {
+            max-width: 54% !important; min-width: 320px !important;
+            margin: 0 auto !important;
+            padding: 28px 32px 20px !important;
+            background: rgba(12,25,50,0.75) !important;
+            backdrop-filter: blur(20px) !important; -webkit-backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(59,130,246,0.12) !important;
+            border-radius: 16px !important;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+        }
+        .auth-input input {
+            border-radius: 8px !important;
+            border: 1px solid transparent !important; background: #1a2438 !important;
+            font-size: 14px !important; color: #E2E8F0 !important;
+            padding: 8px 12px !important; transition: border-color 0.2s !important;
+        }
+        .auth-input input::placeholder { color: #64748B !important; }
+        .auth-input input:hover { border-color: rgba(59,130,246,0.3) !important; }
+        .auth-input input:focus { border-color: #3b82f6 !important; box-shadow: none !important; }
+        .auth-btn button {
+            height: 40px !important; border-radius: 8px !important;
+            background: linear-gradient(135deg, #163270, #254fb8) !important;
+            border: none !important; color: #FFF !important;
+            font-size: 14px !important; font-weight: 600 !important;
+            cursor: pointer !important; transition: all 0.2s !important;
+        }
+        .auth-btn button:hover {
+            background: linear-gradient(135deg, #1a3e8a, #3060d0) !important;
+            transform: translateY(-1px);
+        }
+        .auth-link-btn button {
+            background: transparent !important; border: none !important;
+            color: #94A3B8 !important; font-size: 13px !important;
+            font-weight: 400 !important; padding: 2px 0 !important;
+            height: auto !important; transition: all 0.15s !important;
+        }
+        .auth-link-btn button:hover {
+            color: #60a5fa !important;
+            text-decoration: underline !important;
+            text-underline-offset: 4px !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
+    left_col, right_col = st.columns([1, 1], gap="small")
+
+    with left_col:
+        st.markdown("""
+        <div style="background:linear-gradient(160deg,#0A1629 0%,#132347 40%,#1A3366 100%);
+            min-height:100vh; display:flex; align-items:center; justify-content:center;
+            padding:80px 64px; position:relative; overflow:hidden;">
+        <div style="position:absolute;top:-200px;right:-200px;width:600px;height:600px;
+            border-radius:50%;background:radial-gradient(circle,rgba(22,93,255,0.15) 0%,transparent 70%);"></div>
+        <div style="position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;
+            border-radius:50%;background:radial-gradient(circle,rgba(22,93,255,0.08) 0%,transparent 70%);"></div>
+        <div style="position:relative;z-index:1;max-width:440px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:56px;">
+            <div style="width:36px;height:36px;border-radius:8px;background:#165DFF;
+            color:#FFF;font-size:1.1rem;font-weight:700;line-height:36px;text-align:center;">S</div>
+            <span style="color:#FFF;font-size:18px;font-weight:600;">SmartService</span>
+        </div>
+        <h1 style="font-size:36px;font-weight:700;color:#FFF;margin:0 0 16px;
+            letter-spacing:-0.03em;line-height:1.25;">智能维保<br>客服平台</h1>
+        <p style="font-size:16px;color:rgba(255,255,255,0.55);margin:0 0 48px;line-height:1.6;">
+            企业级智能扫地机器人售后服务系统，融合 RAG 检索与 ReAct Agent，提供专业高效的客户服务体验。</p>
+        <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:28px;">
+            <div style="width:32px;height:32px;border-radius:8px;background:#E8F0FE;
+            display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🤖</div>
+            <div><div style="font-size:15px;color:#FFF;font-weight:600;margin-bottom:4px;">AI 智能客服</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.4);">LangGraph ReAct Agent 多工具协作</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:28px;">
+            <div style="width:32px;height:32px;border-radius:8px;background:#FEF3C7;
+            display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">📚</div>
+            <div><div style="font-size:15px;color:#FFF;font-weight:600;margin-bottom:4px;">RAG 知识检索</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.4);">BM25 + 向量混合检索精准定位</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:28px;">
+            <div style="width:32px;height:32px;border-radius:8px;background:#D1FAE5;
+            display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">📊</div>
+            <div><div style="font-size:15px;color:#FFF;font-weight:600;margin-bottom:4px;">企业级评测</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.4);">30 条用例 × LLM-as-judge</div></div>
+        </div>
+        </div></div>
+        """, unsafe_allow_html=True)
+
+    with right_col:
+        st.markdown('<div style="margin-top:18vh"></div>', unsafe_allow_html=True)
+
+        page = st.session_state.get("auth_page", "login")
+        titles = {"login": "欢迎回来", "register": "创建账号", "forgot": "重置密码"}
+        subtitles = {
+            "login": "登录您的账号以继续使用",
+            "register": "注册后即可使用智能维保客服系统",
+            "forgot": "输入用户名和新密码完成重置",
+        }
+        btn_labels = {"login": "登  录", "register": "注  册", "forgot": "重置密码"}
+
+        with st.container(border=True):
+            st.markdown(f"""
+            <h2 style="font-size:22px;font-weight:700;color:#F1F5F9;margin:0 0 4px;">{titles[page]}</h2>
+            <p style="font-size:13px;color:#94A3B8;margin:0 0 20px;">{subtitles[page]}</p>
+            """, unsafe_allow_html=True)
+
+            with st.form("auth_form", clear_on_submit=False):
+                st.markdown('<div class="auth-input">', unsafe_allow_html=True)
+                username = st.text_input("用户名", placeholder="请输入用户名", label_visibility="collapsed")
+                st.markdown('</div>', unsafe_allow_html=True)
+
+                st.markdown('<div style="height:14px"></div>', unsafe_allow_html=True)
+
+                st.markdown('<div class="auth-input">', unsafe_allow_html=True)
+                if page == "forgot":
+                    password = st.text_input("新密码", type="password", placeholder="新密码（至少4位）", label_visibility="collapsed")
+                else:
+                    password = st.text_input("密码", type="password", placeholder="请输入密码", label_visibility="collapsed")
+                st.markdown('</div>', unsafe_allow_html=True)
+
+                st.markdown('<div style="height:18px"></div>', unsafe_allow_html=True)
+                st.markdown('<div class="auth-btn">', unsafe_allow_html=True)
+                submitted = st.form_submit_button(btn_labels[page], use_container_width=True)
+                st.markdown('</div>', unsafe_allow_html=True)
+
+                if submitted:
+                    if not username.strip() or not password:
+                        st.error("请填写完整信息")
+                    elif page == "register":
+                        if len(password) < 4:
+                            st.error("密码长度不能少于4位")
+                        else:
+                            uid = register_user(username.strip(), password)
+                            if uid:
+                                st.session_state["user_id"] = uid
+                                st.session_state["username"] = username.strip()
+                                st.session_state.pop("auth_page", None)
+                                st.session_state["login_toast"] = True
+                                st.rerun()
+                            else:
+                                st.error("用户名已存在")
+                    elif page == "forgot":
+                        if len(password) < 4:
+                            st.error("新密码长度不能少于4位")
+                        elif reset_password(username.strip(), password):
+                            st.success("密码重置成功，请登录")
+                            st.session_state["auth_page"] = "login"
+                            st.rerun()
+                        else:
+                            st.error("用户名不存在")
+                    else:
+                        uid = verify_user(username.strip(), password)
+                        if uid:
+                            st.session_state["user_id"] = uid
+                            st.session_state["username"] = username.strip()
+                            st.session_state.pop("auth_page", None)
+                            st.session_state["login_toast"] = True
+                            st.rerun()
+                        else:
+                            st.error("用户名或密码错误")
+
+        # 底部链接（也在 container 内）
+        st.markdown('<div style="height:16px"></div>', unsafe_allow_html=True)
+
+        def _switch_page(p):
+            st.session_state["auth_page"] = p
+
+        st.markdown('<div class="auth-link-btn">', unsafe_allow_html=True)
+        if page == "login":
+            c1, c2, c3 = st.columns([1, 0.3, 1])
+            with c1:
+                st.button("忘记密码？", key="go_forgot", use_container_width=True,
+                          on_click=_switch_page, args=("forgot",))
+            with c2:
+                st.markdown('<div style="text-align:center;line-height:32px;color:rgba(148,163,184,0.4);">·</div>', unsafe_allow_html=True)
+            with c3:
+                st.button("注册新账号", key="go_register", use_container_width=True,
+                          on_click=_switch_page, args=("register",))
+        else:
+            st.button("← 返回登录", key="go_login", use_container_width=True,
+                      on_click=_switch_page, args=("login",))
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    st.stop()
+
+# ── 已登录 ──
+user_id = st.session_state["user_id"]
+username = st.session_state["username"]
+set_user_id(user_id)
+
+if st.session_state.pop("login_toast", False):
+    st.toast(f"欢迎回来，{username}！", icon="👋")
 
 # 启动时自动检测并加载知识库
 if "kb_checked" not in st.session_state:
@@ -47,6 +313,38 @@ st.title("智能扫地机器人维保客服")
 st.divider()
 
 with st.sidebar:
+    st.subheader("城市设置")
+    city_source = st.session_state.get("city_source", "默认")
+    st.caption(f"当前城市（{city_source}）")
+
+    def _on_city_change():
+        st.session_state["user_city"] = st.session_state["_city_selector"]
+        st.session_state["city_source"] = "手动选择"
+        set_user_city(st.session_state["_city_selector"])
+
+    city_options = [
+        "广州市", "深圳市", "北京市", "上海市", "杭州市",
+        "成都市", "武汉市", "南京市", "重庆市", "西安市",
+        "长沙市", "苏州市", "天津市", "郑州市", "东莞市",
+    ]
+    current_city = st.session_state.get("user_city", DEFAULT_CITY)
+    if current_city not in city_options:
+        city_options.insert(0, current_city)
+    try:
+        idx = city_options.index(current_city)
+    except ValueError:
+        idx = 0
+
+    st.selectbox(
+        "选择城市",
+        city_options,
+        index=idx,
+        key="_city_selector",
+        on_change=_on_city_change,
+        label_visibility="collapsed",
+    )
+    st.divider()
+
     st.subheader("知识库状态")
     st.metric("文档块总数", st.session_state.get("kb_total_docs", "—"))
 
@@ -168,7 +466,7 @@ with st.sidebar:
     # ── 会话管理 ──
     st.divider()
     st.subheader("对话记录")
-    convs = list_conversations()
+    convs = list_conversations(user_id)
     for c in convs:
         cid = c["id"]
         label = c["title"] or cid
@@ -179,22 +477,29 @@ with st.sidebar:
             if st.button(prefix + label, key=f"conv_{cid}", use_container_width=True,
                          type="primary" if active else "secondary"):
                 st.session_state["conv_id"] = cid
-                st.session_state.pop("message", None)  # 触发重载
+                st.session_state.pop("message", None)
                 st.rerun()
         with col2:
             if st.button("🗑", key=f"delconv_{cid}"):
-                delete_conversation(cid)
+                delete_conversation(cid, user_id)
                 if cid == st.session_state.get("conv_id"):
-                    new_convs = list_conversations()
+                    new_convs = list_conversations(user_id)
                     if new_convs:
                         st.session_state["conv_id"] = new_convs[0]["id"]
                     else:
-                        st.session_state.pop("conv_id", None)  # 删光了，不自动补
+                        st.session_state.pop("conv_id", None)
                     st.session_state.pop("message", None)
                 st.rerun()
     if st.button("+ 新建会话", use_container_width=True):
-        st.session_state["conv_id"] = create_conversation()
-        st.session_state.pop("message", None)  # 触发重载
+        st.session_state["conv_id"] = create_conversation(user_id)
+        st.session_state.pop("message", None)
+        st.rerun()
+
+    # 登出
+    st.divider()
+    if st.button("🚪 退出登录", use_container_width=True):
+        for k in ("user_id", "username", "conv_id", "message", "agent"):
+            st.session_state.pop(k, None)
         st.rerun()
 
 def _escape(text: str) -> str:
@@ -223,15 +528,15 @@ def _char_generator(text: str, delay: float = 0.015):
         time.sleep(delay)
 
 
+@st.cache_resource
+def _get_agent():
+    return ReactAgent()
+
+
 if "agent" not in st.session_state:
-    st.session_state["agent"] = ReactAgent()
+    st.session_state["agent"] = _get_agent()
 
 # ── 会话管理 ──
-if "conv_id" not in st.session_state:
-    convs = list_conversations()
-    if convs:
-        st.session_state["conv_id"] = convs[0]["id"]
-
 if "message" not in st.session_state:
     if "conv_id" in st.session_state:
         try:
@@ -266,18 +571,18 @@ prompt = st.chat_input()
 if prompt:
     # 没有会话时自动创建（删光后的首次发言）
     if "conv_id" not in st.session_state:
-        st.session_state["conv_id"] = create_conversation()
+        st.session_state["conv_id"] = create_conversation(user_id)
         st.session_state["message"] = []
 
     st.chat_message("user").write(prompt)
     st.session_state["message"].append({"role": "user", "content": prompt})
     save_message(st.session_state["conv_id"], "user", prompt)
     # 首条消息自动设标题：取前 10 字
-    convs = list_conversations()
+    convs = list_conversations(user_id)
     current = next((c for c in convs if c["id"] == st.session_state["conv_id"]), None)
     if current and not current["title"]:
         title = prompt.strip()[:10]
-        update_conversation_title(st.session_state["conv_id"], title)
+        update_conversation_title(st.session_state["conv_id"], title, user_id)
 
     raw_text = ""
     ai_texts: list[str] = []      # AI 文本（原始，未转义）
@@ -346,5 +651,3 @@ if prompt:
         thinking_html=thinking_html,
     )
     # st.rerun()
-
-

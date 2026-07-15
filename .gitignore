@@ -9,3 +9,8 @@ __pycache__/
 .idea/
 # 系统缓存
 .DS_Store
+
+# 环境变量
+.env
+
+# Docker

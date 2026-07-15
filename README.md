@@ -1,6 +1,6 @@
 # 智能扫地机器人维保客服
 
-> 基于 LangGraph ReAct Agent 的企业级智能客服系统。混合检索、工具调用、评测体系、会话持久化。
+> 基于 LangGraph ReAct Agent 的企业级智能客服系统。混合检索、工具调用、评测体系、多用户隔离、Docker 部署。
 
 [English](README.en.md)
 
@@ -12,16 +12,16 @@
 ├── agent/                      # Agent 核心
 │   ├── react_agent.py          # ReAct Agent (LangGraph create_agent)
 │   └── tools/
-│       ├── agent_tools.py      # 7 个工具
+│       ├── agent_tools.py      # 7 个工具（用户信息真实化）
 │       └── middleware.py        # 中间件：监控/日志/动态提示词切换/重试
 ├── rag/                        # RAG 检索引擎
 │   ├── hybrid_retriever.py     # BM25 + 向量混合检索 + RRF 融合 + Cross-encoder 重排
 │   ├── rag_service.py          # 检索服务（检索与 LLM 总结解耦）
 │   └── vector_store.py         # ChromaDB 向量存储 + 文档管理
 ├── model/
-│   └── factory.py              # DeepSeek + BGE Embedding
+│   └── factory.py              # DeepSeek + BGE Embedding（延迟加载）
 ├── storage/
-│   └── conversation_store.py   # SQLite 会话持久化
+│   └── conversation_store.py   # SQLite 用户管理 + 会话持久化（多用户隔离）
 ├── evaluate/                   # 评测体系
 │   ├── cases.py                # 30 条测试用例（7 类场景）
 │   ├── golden_rag.py           # RAG 检索标注数据集（20 条）
@@ -32,8 +32,10 @@
 ├── utils/                      # 配置、日志、文件、路径、Prompt
 ├── config/                     # YAML 配置
 ├── prompts/                    # Prompt 模板
-├── data/                       # 知识库文件
-└── app.py                      # Streamlit 前端
+├── data/                       # 知识库文件 + 外部数据 CSV
+├── Dockerfile                  # Docker 镜像构建
+├── docker-compose.yml          # Docker Compose 编排
+└── app.py                      # Streamlit 前端（含登录/注册）
 ```
 
 ## 核心特性
@@ -44,11 +46,11 @@
 |------|------|
 | 文档解析 | PyPDFLoader / TextLoader |
 | 文本分块 | RecursiveCharacterTextSplitter (200/20) |
-| 向量化 | BGE-small-zh-v1.5 |
+| 向量化 | BAAI/bge-small-zh-v1.5 |
 | 向量存储 | ChromaDB，MD5 去重，启动自动加载 |
 | 关键词检索 | BM25 (rank-bm25)，中文按字符切分 |
 | 混合融合 | RRF (Reciprocal Rank Fusion)，k=60 |
-| 重排序 | BGE-reranker-v2-m3 Cross-encoder（网络不通时自动降级） |
+| 重排序 | BAAI/bge-reranker-v2-m3 Cross-encoder（网络不通时自动降级） |
 | 结果输出 | 直接返回原始参考资料，由 Agent 自行综合 |
 
 ### Agent 引擎
@@ -59,10 +61,16 @@
 - **企业级重试**：指数退避 + 随机抖动，`TransientAPIError` 区分瞬时/永久错误
 - **上下文压缩**：超出 20 条消息自动 LLM 摘要压缩
 
+### 多用户体系
+
+- **用户注册/登录**：独立账号体系，密码 PBKDF2 加密存储
+- **会话隔离**：每个用户只能查看自己的对话记录，SQL 层 `WHERE user_id = ?`
+- **真实用户数据**：`get_user_id` 返回登录用户真实 ID，`get_current_month` 返回真实月份
+- **城市定位**：客户端 IP 自动定位 + 侧边栏手动选择兜底，逻辑 `用户手动选择 > IP 定位 > 默认广州`
+
 ### 评测体系
 
 ```
-
 场景分布:
   边界情况    
   保养咨询    
@@ -81,19 +89,22 @@ python -m evaluate.run --rag-only    # RAG 独立评测
 
 ### 工程化
 
+- **Docker 部署**：一键构建 `docker build -t customer-agent .`，volume 挂载持久化
 - **会话持久化**：SQLite，多会话切换/删除，自动标题
 - **知识库管理**：启动自动加载、页面上传入库、MD5 去重
 - **日志轮转**：RotatingFileHandler 按 10MB 自动切分
-- **懒加载启动**：RAG 服务、Embedding、Reranker 延迟初始化
+- **懒加载启动**：RAG 服务、Embedding、Reranker、ChatModel 延迟初始化
 
 ## 快速开始
 
-### 环境
+### 本地开发
+
+**环境要求**
 
 - Python 3.12+
 - Windows / macOS / Linux
 
-### 安装
+**安装**
 
 ```bash
 git clone <repo-url> && cd intelligent-customer-agent
@@ -102,9 +113,9 @@ source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 配置
+**配置**
 
-**`config/rag.yml`**
+`config/rag.yml`
 
 ```yaml
 chat_model_name: deepseek-v4-flash
@@ -112,10 +123,11 @@ embedding_model_name: BAAI/bge-small-zh-v1.5
 base_url: https://api.deepseek.com
 ```
 
-**`config/agent.yml`**
+`config/agent.yml`
 
 ```yaml
 gaodekey: <高德地图 API Key>    # https://lbs.amap.com/
+default_city: 广州市
 ```
 
 **环境变量**
@@ -124,7 +136,7 @@ gaodekey: <高德地图 API Key>    # https://lbs.amap.com/
 export DEEPSEEK_API_KEY=<your-key>   # Windows: set DEEPSEEK_API_KEY=xxx
 ```
 
-### 初始化知识库
+**初始化知识库**
 
 首次启动自动加载 `data/` 目录下的文件。也可手动：
 
@@ -132,11 +144,35 @@ export DEEPSEEK_API_KEY=<your-key>   # Windows: set DEEPSEEK_API_KEY=xxx
 python rag/vector_store.py
 ```
 
-### 启动
+**启动**
 
 ```bash
 streamlit run app.py
 ```
+
+### Docker 部署
+
+```bash
+# 构建镜像
+docker build -t customer-agent .
+
+# 启动容器
+docker run -d --name customer-agent --restart unless-stopped \
+  -p 8501:8501 \
+  -e DEEPSEEK_API_KEY=<your-key> \
+  -e GAODE_KEY=<your-gaode-key> \
+  -v $(pwd)/chroma_db:/app/chroma_db \
+  -v $(pwd)/logs:/app/logs \
+  -v $(pwd)/storage:/app/storage \
+  -v $(pwd)/data:/app/data \
+  customer-agent
+
+# 或使用 Docker Compose
+# 1. 创建 .env 文件填入 DEEPSEEK_API_KEY 和 GAODE_KEY
+# 2. docker compose up -d
+```
+
+访问 `http://<服务器IP>:8501`，首次使用需注册账号。
 
 ### 运行评测
 
@@ -157,8 +193,9 @@ python -m evaluate.run --rag-only    # 仅评测 RAG 检索
 | 关键词检索 | BM25 (rank-bm25) |
 | 重排序 | BAAI/bge-reranker-v2-m3 |
 | 前端 | Streamlit |
-| 持久化 | SQLite |
+| 持久化 | SQLite（用户 + 会话） |
 | 外部 API | 高德地图（天气 + IP 定位） |
+| 部署 | Docker + Docker Compose |
 | 日志 | RotatingFileHandler |
 
 ## 面试要点
@@ -171,6 +208,8 @@ python -m evaluate.run --rag-only    # 仅评测 RAG 检索
 - **怎么处理工具调用失败？** — `TransientAPIError` 标记可重试错误 → 中间件指数退避 → 永久失败让 Agent ReAct 换思路
 - **评测体系怎么设计的？** — 30 条用例 × LLM-as-judge × 失败 8 分类 × 基线对比，不只是看通过率
 - **上下文怎么管理？** — LLM 摘要压缩超出的旧消息，保留关键信息（身份、偏好、诉求），丢弃冗余步骤
+- **多用户隔离怎么做？** — SQLite users 表 + conversations.user_id 外键，所有查询按 user_id 过滤
+- **工具数据如何真实化？** — `get_user_id` 读取登录用户实际 ID，`get_current_month` 返回当前月份，`fetch_external_data` 对接 CSV 外部数据源并支持 demo 兜底
 
 ## 许可
 
