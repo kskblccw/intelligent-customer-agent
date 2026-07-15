@@ -1,6 +1,6 @@
 from langchain.agents import create_agent
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage, ToolMessage
-from model.factory import chat_model
+from model.factory import get_chat_model
 from utils.prompt_loader import load_system_prompts
 from agent.tools.agent_tools import rag_search,get_weather,get_user_location,get_user_id,get_current_month,fetch_external_data,fill_context_for_report
 from agent.tools.middleware import monitor_tool,log_before_model,report_prompt_switch
@@ -29,7 +29,7 @@ def _compact_history(history: list[dict]) -> list[dict]:
             f"{'用户' if m['role'] == 'user' else '客服'}: {m['content']}"
             for m in batch
         )
-        resp = chat_model.invoke([_SUMMARIZE_PROMPT, HumanMessage(content=batch_text)])
+        resp = get_chat_model().invoke([_SUMMARIZE_PROMPT, HumanMessage(content=batch_text)])
         content = resp.content.strip() if hasattr(resp, 'content') else str(resp).strip()
         if content:
             summaries.append(content)
@@ -43,7 +43,7 @@ def _compact_history(history: list[dict]) -> list[dict]:
 class ReactAgent:
     def __init__(self):
         self.agent = create_agent(
-            model=chat_model,
+            model=get_chat_model(),
             system_prompt=load_system_prompts(),
             tools=[rag_search,get_weather,get_user_location,get_user_id,get_current_month,fetch_external_data,fill_context_for_report],
             middleware=[ monitor_tool,log_before_model,report_prompt_switch]

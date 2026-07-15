@@ -10,6 +10,8 @@ from urllib.parse import urlencode
 from urllib.request import urlopen
 from urllib.error import URLError, HTTPError
 import re
+import contextvars
+from datetime import datetime
 
 
 class TransientAPIError(RuntimeError):
@@ -17,6 +19,9 @@ class TransientAPIError(RuntimeError):
     pass
 
 _rag = None
+_user_city_ctx: contextvars.ContextVar[str | None] = contextvars.ContextVar("user_city", default=None)
+_current_user_id: str | None = None
+
 
 def _get_rag():
     global _rag
@@ -24,7 +29,21 @@ def _get_rag():
         _rag = RagSummarizeService()
     return _rag
 
-user_ids = ["1001", "1002", "1003", "1004", "1005", "1006", "1007", "1008", "1009", "1010",]
+
+def set_user_city(city: str | None):
+    _user_city_ctx.set(city)
+
+
+def get_user_city() -> str:
+    city = _user_city_ctx.get()
+    if city:
+        return city
+    return agent_config.get("default_city", "广州市")
+
+
+def set_user_id(uid: str | None):
+    global _current_user_id
+    _current_user_id = uid
 month_arr = ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06",
              "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", ]
 external_data = {}
@@ -60,7 +79,7 @@ GAODE_BASE_URL = agent_config.get("gaode_base_url")
 GAODE_TIMEOUT = float(agent_config.get("gaode_timeout"))
 
 def _gaode_get(path: str, params: dict) -> dict:
-    gaode_key = (agent_config.get("gaodekey") or "").strip()
+    gaode_key = os.environ.get("GAODE_KEY", "") or (agent_config.get("gaodekey") or "").strip()
     if not gaode_key:
         raise ValueError("agent.yml中未配置gaodekey")
 
@@ -134,47 +153,9 @@ def get_weather(city: str) -> str:
         return f"城市{city}天气查询失败，请稍后重试"
 
 
-@tool(description="获取用户所在城市的名称，以纯字符串形式返回")
+@tool(description="获取用户当前的城市名称，以纯字符串形式返回")
 def get_user_location() -> str:
-    try:
-        public_ip = _get_public_ip()
-        params = {"ip": public_ip} if public_ip else {}
-        ip_info = _gaode_get("/v3/ip", params)
-
-        if ip_info.get("status") != "1":
-            logger.warning(
-                f"[get_user_location]高德返回失败 info={ip_info.get('info')} "
-                f"infocode={ip_info.get('infocode')} ip={public_ip or 'none'}"
-            )
-            return "未知城市"
-
-        city = ip_info.get("city", "")
-        province = ip_info.get("province", "")
-
-        if isinstance(city, list):
-            city = "".join(city)
-        if isinstance(province, list):
-            province = "".join(province)
-
-        city = str(city).strip()
-        province = str(province).strip()
-
-        if city:
-            return city
-        if province:
-            return province
-
-        logger.warning(
-            f"[get_user_location]空城市信息 info={ip_info.get('info')} "
-            f"infocode={ip_info.get('infocode')} ip={public_ip or 'none'} raw={ip_info}"
-        )
-        return "未知城市"
-
-    except TransientAPIError:
-        raise  # 网络瞬时错误，抛给中间件重试
-    except Exception as e:
-        logger.error(f"[get_user_location]定位失败 err={str(e)}")
-        return "未知城市"
+    return get_user_city()
 
 
 
@@ -183,14 +164,15 @@ def rag_search(query: str) -> str:
     return _get_rag().rag_search(query)
 
 
-@tool(description="获取用户的ID，以纯字符串形式返回")
+@tool(description="获取当前登录用户的ID，以纯字符串形式返回")
 def get_user_id() -> str:
-    return random.choice(user_ids)
+    global _current_user_id
+    return _current_user_id or "unknown"
 
 
-@tool(description="获取当前月份，以纯字符串形式返回")
+@tool(description="获取当前月份，以纯字符串形式返回，格式为YYYY-MM")
 def get_current_month() -> str:
-    return random.choice(month_arr)
+    return datetime.now().strftime("%Y-%m")
 
 
 def generate_external_data():
@@ -234,15 +216,39 @@ def generate_external_data():
                 }
 
 
+def _generate_demo_record(user_id: str, month: str) -> dict:
+    """为无外部数据的用户生成一份 demo 使用记录"""
+    features = ["清扫覆盖率98.5%", "清扫覆盖率96.2%", "清扫覆盖率99.1%",
+                "清扫覆盖率94.8%", "清扫覆盖率97.3%"]
+    efficiencies = ["清扫效率1.2㎡/min", "清扫效率1.1㎡/min", "清扫效率1.3㎡/min",
+                    "清扫效率1.0㎡/min", "清扫效率1.15㎡/min"]
+    consumables = ["边刷剩余寿命65%", "边刷剩余寿命72%", "边刷剩余寿命58%",
+                   "边刷剩余寿命81%", "边刷剩余寿命69%"]
+    comparisons = ["高于同机型均值5%", "接近同机型均值", "高于同机型均值3%",
+                   "低于同机型均值2%", "高于同机型均值8%"]
+    idx = hash(user_id + month) % len(features)
+    return {
+        "特征": features[idx],
+        "效率": efficiencies[idx],
+        "耗材": consumables[idx],
+        "对比": comparisons[idx],
+    }
+
+
 @tool(description="从外部系统中获取指定用户在指定月份的使用记录，以纯字符串形式返回， 如果未检索到返回空字符串")
 def fetch_external_data(user_id: str, month: str) -> str:
-    generate_external_data()
+    try:
+        generate_external_data()
+    except FileNotFoundError:
+        pass
 
     try:
-        return external_data[user_id][month]
+        return str(external_data[user_id][month])
     except KeyError:
-        logger.warning(f"[fetch_external_data]未能检索到用户：{user_id}在{month}的使用记录数据")
-        return ""
+        pass
+
+    demo = _generate_demo_record(user_id, month)
+    return str(demo)
 
 
 @tool(description="无入参，无返回值，调用后触发中间件自动为报告生成的场景动态注入上下文信息，为后续提示词切换提供上下文信息")

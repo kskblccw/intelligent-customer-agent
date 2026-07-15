@@ -8,7 +8,7 @@ LLM-as-judge — 用独立模型对 Agent 回答打分。
 """
 
 import json
-from model.factory import chat_model
+from model.factory import get_chat_model
 from evaluate.cases import TestCase
 from evaluate.runner import CaseResult
 
@@ -74,7 +74,7 @@ def judge_single(case: TestCase, result: CaseResult) -> dict:
     )
 
     try:
-        resp = chat_model.invoke(prompt)
+        resp = get_chat_model().invoke(prompt)
         text = resp.content.strip() if hasattr(resp, 'content') else str(resp).strip()
 
         # 清理可能的 markdown 代码块包裹

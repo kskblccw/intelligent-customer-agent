@@ -9,7 +9,7 @@
 参考：中期总结中提及的 BM25+向量混合检索 + Re-ranker 重排
 """
 import os
-os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+os.environ.setdefault("HF_ENDPOINT", "https://hf-mirror.com")
 from langchain_core.documents import Document
 from langchain_core.retrievers import BaseRetriever
 from langchain_community.retrievers import BM25Retriever

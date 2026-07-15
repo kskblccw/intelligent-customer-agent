@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    image: intelligent-customer-agent:latest
+    container_name: customer-agent
+    ports:
+      - "8501:8501"
+    environment:
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+      - GAODE_KEY=${GAODE_KEY:-}
+    volumes:
+      - ./chroma_db:/app/chroma_db
+      - ./logs:/app/logs
+      - ./storage:/app/storage
+      - ./data:/app/data
+    restart: unless-stopped
