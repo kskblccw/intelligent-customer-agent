@@ -32,6 +32,16 @@ class VectorStoreService:
     def collection_count(self) -> int:
         return self.vector_store._collection.count()
 
+    def delete_by_source(self, source_path: str) -> int:
+        """按文件路径删除 ChromaDB 中对应的文档块，返回删除数量"""
+        collection = self.vector_store._collection
+        results = collection.get(where={"source": source_path}, include=["metadatas"])
+        ids_to_delete = results.get("ids", [])
+        if ids_to_delete:
+            collection.delete(ids=ids_to_delete)
+            logger.info(f"删除文件 {os.path.basename(source_path)} 对应的 {len(ids_to_delete)} 个文档块")
+        return len(ids_to_delete)
+
     def get_all_documents(self) -> list[Document]:
         """从 ChromaDB 导出全量文档，供 BM25 构建语料库"""
         data = self.vector_store.get(include=["documents", "metadatas"])

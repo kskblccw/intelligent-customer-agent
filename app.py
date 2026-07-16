@@ -1,6 +1,7 @@
 import os
 import time
 import hashlib
+import threading
 
 import streamlit as st
 from agent.react_agent import ReactAgent
@@ -18,6 +19,21 @@ import urllib.request, json
 # ── 城市定位 ──
 GAODE_KEY = os.environ.get("GAODE_KEY", "") or agent_config.get("gaodekey", "")
 DEFAULT_CITY = agent_config.get("default_city", "广州市")
+
+
+def _generate_conversation_title(conv_id: str, prompt: str, user_id: str):
+    """后台线程：用 LLM 生成对话摘要标题，失败时退回前 10 字"""
+    try:
+        from model.factory import get_chat_model
+        llm = get_chat_model()
+        title = llm.invoke(
+            f"将以下用户问题概括为一个简洁的标题（不超过15字），只返回标题文本，不要任何标点或解释：\n{prompt.strip()}"
+        ).content.strip()
+        if len(title) > 20:
+            title = title[:20]
+        update_conversation_title(conv_id, title, user_id)
+    except Exception:
+        update_conversation_title(conv_id, prompt.strip()[:10], user_id)
 
 
 def _ip_to_city(ip: str) -> str | None:
@@ -275,12 +291,80 @@ user_id = st.session_state["user_id"]
 username = st.session_state["username"]
 set_user_id(user_id)
 
+# ── 处理耗时操作（带 loading 反馈）──
+def _process_pending_actions():
+    """统一处理需要 spinner 反馈的耗时操作：删除文件、删除会话、上传文件"""
+    # 1. 删除知识文件
+    pending_del_file = st.session_state.pop("pending_delete_file", None)
+    if pending_del_file:
+        fname = pending_del_file
+        with st.spinner(f"正在删除文件 {fname}..."):
+            fpath = os.path.join("data", fname)
+            target_md5 = None
+            abs_path = os.path.abspath(fpath)
+            if os.path.exists(fpath):
+                with open(fpath, "rb") as f:
+                    target_md5 = hashlib.md5(f.read()).hexdigest()
+                os.remove(fpath)
+            md5_path = "md5.txt"
+            if target_md5 and os.path.exists(md5_path):
+                with open(md5_path, "r", encoding="utf-8") as f:
+                    keep = [l for l in f if l.strip() != target_md5]
+                with open(md5_path, "w", encoding="utf-8") as f:
+                    f.writelines(keep)
+            vs = VectorStoreService()
+            vs.delete_by_source(abs_path)
+            st.session_state["kb_total_docs"] = vs.collection_count()
+            _get_rag().refresh_corpus()
+            errs = st.session_state.get("kb_error_files", [])
+            if fname in errs:
+                errs.remove(fname)
+                st.session_state["kb_error_files"] = errs
+        st.toast(f"文件 {fname} 已删除", icon="🗑")
+        st.rerun()
+
+    # 2. 删除会话
+    pending_del_conv = st.session_state.pop("pending_delete_conv", None)
+    if pending_del_conv:
+        cid, uid = pending_del_conv
+        with st.spinner("正在删除对话记录..."):
+            delete_conversation(cid, uid)
+            if cid == st.session_state.get("conv_id"):
+                new_convs = list_conversations(uid)
+                if new_convs:
+                    st.session_state["conv_id"] = new_convs[0]["id"]
+                else:
+                    st.session_state.pop("conv_id", None)
+                st.session_state.pop("message", None)
+        st.toast("对话记录已删除", icon="🗑")
+        st.rerun()
+
+    # 3. 上传知识文件入库
+    pending_upload = st.session_state.pop("pending_upload_path", None)
+    if pending_upload:
+        basename = os.path.basename(pending_upload)
+        with st.spinner(f"正在处理文件 {basename}..."):
+            vs = VectorStoreService()
+            try:
+                is_new = vs.add_single_file(os.path.abspath(pending_upload))
+                if is_new:
+                    st.session_state["kb_total_docs"] = vs.collection_count()
+                    _get_rag().refresh_corpus()
+                    st.session_state["upload_feedback"] = ("success", f"文件 {basename} 入库成功")
+                else:
+                    st.session_state["upload_feedback"] = ("warning", f"文件 {basename} 已存在于知识库中，跳过")
+            except Exception as e:
+                st.session_state["upload_feedback"] = ("error", f"入库失败: {str(e)}")
+        st.rerun()
+
+_process_pending_actions()
+
 if st.session_state.pop("login_toast", False):
     st.toast(f"欢迎回来，{username}！", icon="👋")
 
 # 启动时自动检测并加载知识库
 if "kb_checked" not in st.session_state:
-    with st.spinner("正在检查知识库..."):
+    with st.spinner("正在加载系统知识库，首次可能需 1-2 分钟，请稍候..."):
         vs = VectorStoreService()
         doc_count = vs.collection_count()
         if doc_count == 0:
@@ -362,22 +446,6 @@ with st.sidebar:
     st.divider()
     st.subheader("上传知识文件")
 
-    # 处理上一轮提交的文件（必须在 file_uploader 渲染之前，否则不能改 kb_uploader）
-    pending = st.session_state.pop("pending_upload_path", None)
-    if pending:
-        vs = VectorStoreService()
-        try:
-            is_new = vs.add_single_file(os.path.abspath(pending))
-            if is_new:
-                st.session_state["kb_total_docs"] = vs.collection_count()
-                _get_rag().refresh_corpus()  # 新增文档后重建 BM25 索引
-                st.session_state["upload_feedback"] = ("success", f"文件 {os.path.basename(pending)} 入库成功")
-            else:
-                st.session_state["upload_feedback"] = ("warning", f"文件 {os.path.basename(pending)} 已存在于知识库中，跳过")
-        except Exception as e:
-            st.session_state["upload_feedback"] = ("error", f"入库失败: {str(e)}")
-        st.rerun()
-
     uploaded = st.file_uploader(
         "支持 TXT / PDF",
         type=["txt", "pdf"],
@@ -390,37 +458,11 @@ with st.sidebar:
         file_path = os.path.join(data_dir, uploaded.name)
         with open(file_path, "wb") as f:
             f.write(uploaded.getbuffer())
-        # 把文件路径存到独立 key，下轮渲染时在 uploader 之前处理
         st.session_state["pending_upload_path"] = file_path
         st.rerun()
 
     st.divider()
     st.subheader("已加载文件列表")
-
-    # 删除文件回调
-    def _delete_file(fname: str):
-        fpath = os.path.join("data", fname)
-        # 先计算 MD5，再删文件
-        target_md5 = None
-        if os.path.exists(fpath):
-            with open(fpath, "rb") as f:
-                target_md5 = hashlib.md5(f.read()).hexdigest()
-            os.remove(fpath)
-        # 从 md5.txt 中移除对应记录
-        md5_path = "md5.txt"
-        if target_md5 and os.path.exists(md5_path):
-            with open(md5_path, "r", encoding="utf-8") as f:
-                keep = [l for l in f if l.strip() != target_md5]
-            with open(md5_path, "w", encoding="utf-8") as f:
-                f.writelines(keep)
-        # 更新文档计数
-        vs = VectorStoreService()
-        st.session_state["kb_total_docs"] = vs.collection_count()
-        # 从 error 列表中移除
-        errs = st.session_state.get("kb_error_files", [])
-        if fname in errs:
-            errs.remove(fname)
-            st.session_state["kb_error_files"] = errs
 
     data_dir = "data"
     if os.path.isdir(data_dir):
@@ -441,7 +483,13 @@ with st.sidebar:
                 loaded_files.append(fname)
         if loaded_files:
             for fname in loaded_files:
-                st.caption(f"📄 {fname}")
+                col1, col2 = st.columns([3, 1])
+                with col1:
+                    st.caption(f"📄 {fname}")
+                with col2:
+                    if st.button("删除", key=f"del_loaded_{fname}"):
+                        st.session_state["pending_delete_file"] = fname
+                        st.rerun()
         else:
             st.caption("暂无知识文件")
 
@@ -456,10 +504,9 @@ with st.sidebar:
                 with col1:
                     st.caption(f"❌ {fname}")
                 with col2:
-                    st.button(
-                        "删除", key=f"del_err_{fname}",
-                        on_click=_delete_file, args=(fname,),
-                    )
+                    if st.button("删除", key=f"del_err_{fname}"):
+                        st.session_state["pending_delete_file"] = fname
+                        st.rerun()
     else:
         st.caption("暂无知识文件")
 
@@ -481,14 +528,7 @@ with st.sidebar:
                 st.rerun()
         with col2:
             if st.button("🗑", key=f"delconv_{cid}"):
-                delete_conversation(cid, user_id)
-                if cid == st.session_state.get("conv_id"):
-                    new_convs = list_conversations(user_id)
-                    if new_convs:
-                        st.session_state["conv_id"] = new_convs[0]["id"]
-                    else:
-                        st.session_state.pop("conv_id", None)
-                    st.session_state.pop("message", None)
+                st.session_state["pending_delete_conv"] = (cid, user_id)
                 st.rerun()
     if st.button("+ 新建会话", use_container_width=True):
         st.session_state["conv_id"] = create_conversation(user_id)
@@ -577,12 +617,15 @@ if prompt:
     st.chat_message("user").write(prompt)
     st.session_state["message"].append({"role": "user", "content": prompt})
     save_message(st.session_state["conv_id"], "user", prompt)
-    # 首条消息自动设标题：取前 10 字
+    # 首条消息自动设标题：LLM 摘要
     convs = list_conversations(user_id)
     current = next((c for c in convs if c["id"] == st.session_state["conv_id"]), None)
     if current and not current["title"]:
-        title = prompt.strip()[:10]
-        update_conversation_title(st.session_state["conv_id"], title, user_id)
+        threading.Thread(
+            target=_generate_conversation_title,
+            args=(st.session_state["conv_id"], prompt, user_id),
+            daemon=True,
+        ).start()
 
     raw_text = ""
     ai_texts: list[str] = []      # AI 文本（原始，未转义）

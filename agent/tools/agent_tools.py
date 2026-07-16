@@ -10,7 +10,6 @@ from urllib.parse import urlencode
 from urllib.request import urlopen
 from urllib.error import URLError, HTTPError
 import re
-import contextvars
 from datetime import datetime
 
 
@@ -19,7 +18,7 @@ class TransientAPIError(RuntimeError):
     pass
 
 _rag = None
-_user_city_ctx: contextvars.ContextVar[str | None] = contextvars.ContextVar("user_city", default=None)
+_user_city: str | None = None
 _current_user_id: str | None = None
 
 
@@ -31,11 +30,12 @@ def _get_rag():
 
 
 def set_user_city(city: str | None):
-    _user_city_ctx.set(city)
+    global _user_city
+    _user_city = city
 
 
 def get_user_city() -> str:
-    city = _user_city_ctx.get()
+    return _user_city or ""
     if city:
         return city
     return agent_config.get("default_city", "广州市")
