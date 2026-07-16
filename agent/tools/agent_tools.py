@@ -1,6 +1,7 @@
 import os
 from utils.logger_handler import logger
 from langchain_core.tools import tool
+from langchain.tools import ToolRuntime
 from rag.rag_service import RagSummarizeService
 import random
 from utils.config_handler import agent_config
@@ -18,8 +19,6 @@ class TransientAPIError(RuntimeError):
     pass
 
 _rag = None
-_user_city: str | None = None
-_current_user_id: str | None = None
 
 
 def _get_rag():
@@ -29,21 +28,6 @@ def _get_rag():
     return _rag
 
 
-def set_user_city(city: str | None):
-    global _user_city
-    _user_city = city
-
-
-def get_user_city() -> str:
-    return _user_city or ""
-    if city:
-        return city
-    return agent_config.get("default_city", "广州市")
-
-
-def set_user_id(uid: str | None):
-    global _current_user_id
-    _current_user_id = uid
 month_arr = ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06",
              "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", ]
 external_data = {}
@@ -154,8 +138,10 @@ def get_weather(city: str) -> str:
 
 
 @tool(description="获取用户当前的城市名称，以纯字符串形式返回")
-def get_user_location() -> str:
-    return get_user_city()
+def get_user_location(runtime: ToolRuntime) -> str:
+    # 城市按会话隔离：从本次执行的 runtime context 读取，而非进程级全局变量
+    city = (runtime.context or {}).get("user_city")
+    return city or agent_config.get("default_city", "广州市")
 
 
 
@@ -165,9 +151,8 @@ def rag_search(query: str) -> str:
 
 
 @tool(description="获取当前登录用户的ID，以纯字符串形式返回")
-def get_user_id() -> str:
-    global _current_user_id
-    return _current_user_id or "unknown"
+def get_user_id(runtime: ToolRuntime) -> str:
+    return (runtime.context or {}).get("user_id") or "unknown"
 
 
 @tool(description="获取当前月份，以纯字符串形式返回，格式为YYYY-MM")

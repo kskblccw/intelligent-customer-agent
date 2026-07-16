@@ -215,8 +215,9 @@ def load_messages(conv_id: str) -> list[dict]:
 
 def load_recent_messages(conv_id: str, limit: int = 30) -> list[dict]:
     conn = _get_conn()
+    # assistant 消息优先取干净的 answer（content 含思考过程与工具输出，会污染模型上下文）
     rows = conn.execute(
-        "SELECT role, content FROM messages "
+        "SELECT role, COALESCE(NULLIF(answer, ''), content) AS content FROM messages "
         "WHERE conversation_id = ? ORDER BY id DESC LIMIT ?",
         (conv_id, limit),
     ).fetchall()

@@ -49,12 +49,14 @@ class ReactAgent:
             middleware=[ monitor_tool,log_before_model,report_prompt_switch]
         )
 
-    def execute(self, query: str, history: list[dict] | None = None):
+    def execute(self, query: str, history: list[dict] | None = None,
+                user_city: str | None = None, user_id: str | None = None):
         messages = _compact_history(history) if history else []
         messages.append({"role": "user", "content": query})
 
         input_dict = {"messages": messages}
-        for chunk in self.agent.stream(input_dict, stream_mode="values", context={"report": False}):
+        context = {"report": False, "user_city": user_city, "user_id": user_id}
+        for chunk in self.agent.stream(input_dict, stream_mode="values", context=context):
             latest = chunk["messages"][-1]
             if not latest.content:
                 continue

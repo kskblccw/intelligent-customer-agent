@@ -5,7 +5,7 @@ import threading
 
 import streamlit as st
 from agent.react_agent import ReactAgent
-from agent.tools.agent_tools import _get_rag, set_user_city, set_user_id
+from agent.tools.agent_tools import _get_rag
 from rag.vector_store import VectorStoreService
 from storage.conversation_store import (
     create_conversation, list_conversations, delete_conversation,
@@ -88,8 +88,6 @@ if "user_city" not in st.session_state:
         city = _ip_to_city(client_ip)
     st.session_state["user_city"] = city or DEFAULT_CITY
     st.session_state["city_source"] = "IP定位" if city else "默认"
-
-set_user_city(st.session_state["user_city"])
 
 # ── 登录 / 注册 ──
 if "user_id" not in st.session_state:
@@ -289,7 +287,6 @@ if "user_id" not in st.session_state:
 # ── 已登录 ──
 user_id = st.session_state["user_id"]
 username = st.session_state["username"]
-set_user_id(user_id)
 
 # ── 处理耗时操作（带 loading 反馈）──
 def _process_pending_actions():
@@ -404,7 +401,6 @@ with st.sidebar:
     def _on_city_change():
         st.session_state["user_city"] = st.session_state["_city_selector"]
         st.session_state["city_source"] = "手动选择"
-        set_user_city(st.session_state["_city_selector"])
 
     city_options = [
         "广州市", "深圳市", "北京市", "上海市", "杭州市",
@@ -635,7 +631,11 @@ if prompt:
         answer_placeholder = st.empty()
         with st.spinner("智能客服思考中..."):
             history = load_recent_messages(st.session_state["conv_id"], limit=30)
-            for chunk in st.session_state["agent"].execute(prompt, history=history):
+            for chunk in st.session_state["agent"].execute(
+                prompt, history=history,
+                user_city=st.session_state.get("user_city", DEFAULT_CITY),
+                user_id=user_id,
+            ):
                 if not isinstance(chunk, dict):
                     raw_text += str(chunk).strip() + "\n"
                     tool_htmls.append(
