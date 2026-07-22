@@ -13,4 +13,9 @@ __pycache__/
 # 环境变量
 .env
 
+# 敏感数据文件
+data/qe-nginx.txt
+data/hosts-1.txt
+data/external/
+
 # Docker

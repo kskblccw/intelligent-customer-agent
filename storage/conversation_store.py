@@ -64,6 +64,15 @@ def init_db():
         );
         CREATE INDEX IF NOT EXISTS idx_messages_conv
             ON messages(conversation_id, id);
+        CREATE TABLE IF NOT EXISTS sessions (
+            token TEXT PRIMARY KEY,
+            user_id TEXT NOT NULL,
+            username TEXT NOT NULL,
+            created_at TEXT NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        );
+        CREATE INDEX IF NOT EXISTS idx_sessions_user
+            ON sessions(user_id);
     """)
     # 兼容旧数据库：如果 conversations 表缺少 user_id 列，自动补充
     cols = {r[1] for r in conn.execute("PRAGMA table_info('conversations')").fetchall()}
@@ -136,6 +145,44 @@ def reset_password(username: str, new_password: str) -> bool:
     conn.commit()
     conn.close()
     return True
+
+
+# ── 登录会话（持久化到 DB，刷新不丢失）──
+
+def create_session(user_id: str, username: str) -> str:
+    token = secrets.token_hex(32)
+    conn = _get_conn()
+    conn.execute(
+        "INSERT INTO sessions (token, user_id, username, created_at) VALUES (?, ?, ?, ?)",
+        (token, user_id, username, _now()),
+    )
+    # 每个用户最多保留 5 个活跃 session
+    conn.execute(
+        "DELETE FROM sessions WHERE user_id = ? AND token NOT IN ("
+        "SELECT token FROM sessions WHERE user_id = ? ORDER BY created_at DESC LIMIT 5"
+        ")", (user_id, user_id),
+    )
+    conn.commit()
+    conn.close()
+    return token
+
+
+def validate_session(token: str) -> dict | None:
+    conn = _get_conn()
+    row = conn.execute(
+        "SELECT user_id, username FROM sessions WHERE token = ?", (token,)
+    ).fetchone()
+    conn.close()
+    if row:
+        return {"user_id": row["user_id"], "username": row["username"]}
+    return None
+
+
+def delete_session(token: str):
+    conn = _get_conn()
+    conn.execute("DELETE FROM sessions WHERE token = ?", (token,))
+    conn.commit()
+    conn.close()
 
 
 # ── 会话操作 ──

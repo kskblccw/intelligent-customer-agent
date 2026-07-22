@@ -12,6 +12,7 @@ from storage.conversation_store import (
     update_conversation_title,
     save_message, load_messages, load_recent_messages,
     register_user, verify_user, reset_password,
+    create_session, validate_session, delete_session,
 )
 from utils.config_handler import agent_config
 import urllib.request, json
@@ -88,6 +89,15 @@ if "user_city" not in st.session_state:
         city = _ip_to_city(client_ip)
     st.session_state["user_city"] = city or DEFAULT_CITY
     st.session_state["city_source"] = "IP定位" if city else "默认"
+
+# ── 刷新后自动恢复登录态 ──
+if "user_id" not in st.session_state:
+    token = st.query_params.get("session_token")
+    if token:
+        session = validate_session(token)
+        if session:
+            st.session_state["user_id"] = session["user_id"]
+            st.session_state["username"] = session["username"]
 
 # ── 登录 / 注册 ──
 if "user_id" not in st.session_state:
@@ -237,6 +247,8 @@ if "user_id" not in st.session_state:
                                 st.session_state["username"] = username.strip()
                                 st.session_state.pop("auth_page", None)
                                 st.session_state["login_toast"] = True
+                                token = create_session(uid, username.strip())
+                                st.query_params["session_token"] = token
                                 st.rerun()
                             else:
                                 st.error("用户名已存在")
@@ -256,6 +268,8 @@ if "user_id" not in st.session_state:
                             st.session_state["username"] = username.strip()
                             st.session_state.pop("auth_page", None)
                             st.session_state["login_toast"] = True
+                            token = create_session(uid, username.strip())
+                            st.query_params["session_token"] = token
                             st.rerun()
                         else:
                             st.error("用户名或密码错误")
@@ -534,8 +548,12 @@ with st.sidebar:
     # 登出
     st.divider()
     if st.button("🚪 退出登录", use_container_width=True):
+        token = st.query_params.get("session_token")
+        if token:
+            delete_session(token)
         for k in ("user_id", "username", "conv_id", "message", "agent"):
             st.session_state.pop(k, None)
+        st.query_params.clear()
         st.rerun()
 
 def _escape(text: str) -> str:
